@@ -29,6 +29,8 @@ PROGRAMMABLE_RESET_ADDRESS	:=	1
 
 RESET_TO_BL31			:=	0
 
+GICV2_G0_FOR_EL3		:=	1
+
 QTI_SDI_BUILD			:=	1
 $(eval $(call assert_boolean,QTI_SDI_BUILD))
 $(eval $(call add_define,QTI_SDI_BUILD))
@@ -59,6 +61,7 @@ QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_helpers.S	\
 				$(QTI_PLAT_PATH)/common/src/qti_stack_protector.c	\
 				$(QTI_PLAT_PATH)/common/src/qti_common.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_bl31_setup.c		\
+				$(QTI_PLAT_PATH)/common/src/qti_gic_v2.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_interrupt_svc.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_topology.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_pm.c			\
@@ -66,7 +69,7 @@ QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_helpers.S	\
 				$(QTI_PLAT_PATH)/qtiseclib/src/qtiseclib_cb_interface.c	\
 
 PLAT_INCLUDES		:=	-Idrivers/arm/gic/common/				\
-				-Idrivers/arm/gic/v3/					\
+				-Idrivers/arm/gic/v2/					\
 				-Iinclude/plat/common/					\
 
 PLAT_INCLUDES		+=	${QTI_EXTERNAL_INCLUDES}
@@ -85,11 +88,11 @@ PSCI_SOURCES		:=	plat/common/plat_psci_common.c			\
 TIMER_SOURCES		:=	drivers/delay_timer/generic_delay_timer.c	\
 				drivers/delay_timer/delay_timer.c
 
-#FIX_ME /*GICv2 support has to be added instead of v3*/
+# Include GICv2 driver files
+include drivers/arm/gic/v2/gicv2.mk
 #GIC sources.
-GIC_SOURCES             :=      plat/common/plat_gicv3.c                        \
-				drivers/arm/gic/v3/gicv3_main.c			\
-				${GICV3_SOURCES}
+GIC_SOURCES		:=	plat/common/plat_gicv2.c			\
+				${GICV2_SOURCES}					\
 
 # Prohibit using deprecated interfaces. We rely on this for this platform.
 ERROR_DEPRECATED	:=	1

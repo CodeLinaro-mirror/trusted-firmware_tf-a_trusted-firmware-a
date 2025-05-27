@@ -131,11 +131,13 @@
 /*----------------------------------------------------------------------------*/
 /* GIC-600 constants */
 /*----------------------------------------------------------------------------*/
-#define BASE_GICD_BASE		0xF200000
-#define BASE_GICC_BASE		0xF240000
+#define BASE_GICD_BASE		0xB000000
+#define BASE_GICC_BASE		0xB002000
 
 #define QTI_GICD_BASE	BASE_GICD_BASE
 #define QTI_GICC_BASE	BASE_GICC_BASE
+
+#define GICD_PIDR2_GICV2	U(0xFD8)
 
 /*----------------------------------------------------------------------------*/
 /* Device address space for mapping. Excluding starting 4K */

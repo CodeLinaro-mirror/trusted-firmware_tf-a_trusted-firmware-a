@@ -16,8 +16,8 @@
 #define QTISECLIB_PLAT_CORE_COUNT	4
 
 /* Chipset specific secure interrupt number/ID defs. */
-#define QTISECLIB_INT_ID_SEC_WDOG_BARK			(0x36)
-#define QTISECLIB_INT_ID_NON_SEC_WDOG_BITE		(0x21)
+#define QTISECLIB_INT_ID_SEC_WDOG_BARK			(0x135)
+#define QTISECLIB_INT_ID_NON_SEC_WDOG_BITE		(0x24)
 #define QTISECLIB_INT_ID_RESET_SGI			(0xf)
 #define QTISECLIB_INT_ID_CPU_WAKEUP_SGI			(0x8)
 
