@@ -19,8 +19,10 @@
 const unsigned char qti_power_domain_tree_desc[] = {
 	/* One domain to represent PDC */
 	PLAT_PDC_COUNT,
+#ifdef PLAT_RSC_COUNT
 	/* One domain to represent RSC */
 	PLAT_RSC_COUNT,
+#endif
 	/* There is one top-level FCM cluster */
 	PLAT_CLUSTER_COUNT,
 	/* No. of cores in the FCM cluster */

@@ -4,8 +4,8 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
- /*
- * ​​​​​Changes from Qualcomm Technologies, Inc. are provided under the following license:
+/*
+ * Changes from Qualcomm Technologies, Inc. are provided under the following license:
  * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: ISC
  */
@@ -42,6 +42,10 @@ const mmap_region_t plat_qti_mmap[] = {
 #ifdef QTI_SHARED_IMEM_RO_BASE
 	MAP_REGION_FLAT(QTI_SHARED_IMEM_RO_BASE, QTI_SHARED_IMEM_RO_SIZE,
 			MT_CODE | MT_SECURE),
+#endif
+#ifdef DCC_SRAM_BASE_ADDR
+	MAP_REGION_FLAT(DCC_SRAM_BASE_ADDR, DCC_SRAM_SIZE,
+			MT_MEMORY | MT_RW | MT_SECURE),
 #endif
 	{0}
 };
