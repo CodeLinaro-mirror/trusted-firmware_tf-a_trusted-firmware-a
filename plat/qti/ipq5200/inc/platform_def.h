@@ -162,8 +162,8 @@
  * Put BL31 at DDR as per memory map. BL31_BASE is calculated using the
  * current BL31 debug size plus a little space for growth.
  */
-#define BL31_BASE						0x8A832000
-#define BL31_SIZE						0x7D000
+#define BL31_BASE						0x8A600000
+#define BL31_SIZE						0x80000
 #define BL31_LIMIT						(BL31_BASE + BL31_SIZE)
 
 /*******************************************************************************
