@@ -4,6 +4,11 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
+/*
+ * Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ * SPDX-License-Identifier: ISC
+ */
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -93,13 +98,16 @@ static bool qti_check_syscall_availability(u_register_t smc_fid)
 	case QTI_SIP_SVC_AVAILABLE_ID:
 	case QTI_SIP_SVC_SECURE_IO_READ_ID:
 	case QTI_SIP_SVC_SECURE_IO_WRITE_ID:
+#ifndef DISABLE_QTI_MEM_ASSIGN
 	case QTI_SIP_SVC_MEM_ASSIGN_ID:
+#endif
 		return true;
 	default:
 		return false;
 	}
 }
 
+#ifndef DISABLE_QTI_MEM_ASSIGN
 bool qti_mem_assign_validate_param(memprot_info_t *mem_info,
 				   u_register_t u_num_mappings,
 				   uint32_t *source_vm_list,
@@ -292,6 +300,7 @@ unmap_return:
 
 	SMC_RET2(handle, QTI_SIP_INVALID_PARAM, ret);
 }
+#endif
 
 /*
  * This function handles QTI specific syscalls. Currently only SiP calls are present.
@@ -364,12 +373,14 @@ static uintptr_t qti_sip_handler(uint32_t smc_fid,
 			SMC_RET1(handle, QTI_SIP_INVALID_PARAM);
 			break;
 		}
+#ifndef DISABLE_QTI_MEM_ASSIGN
 	case QTI_SIP_SVC_MEM_ASSIGN_ID:
 		{
 			return qti_sip_mem_assign(handle, GET_SMC_CC(smc_fid),
 						  x1, x2, x3, x4);
 			break;
 		}
+#endif
 	default:
 		{
 			SMC_RET1(handle, QTI_SIP_NOT_SUPPORTED);

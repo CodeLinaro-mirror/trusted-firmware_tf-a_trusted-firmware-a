@@ -4,6 +4,11 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
+/*
+ * Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ * SPDX-License-Identifier: ISC
+ */
 #include <assert.h>
 
 #include <arch_helpers.h>
@@ -51,6 +56,9 @@
 
 /* QTI_CORE_PWRDN_EN_MASK happens to be same across all CPUs */
 #define QTI_CORE_PWRDN_EN_MASK		1
+
+#pragma weak qti_system_off
+#pragma weak qti_system_reset
 
 /* cpu power control happens to be same across all CPUs */
 DEFINE_RENAME_SYSREG_RW_FUNCS(cpu_pwrctrl_val, S3_0_C15_C2_7)

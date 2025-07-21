@@ -3,6 +3,11 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
+/*
+ * Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ * SPDX-License-Identifier: ISC
+ */
 
 #ifndef QTISECLIB_INTERFACE_H
 #define QTISECLIB_INTERFACE_H
@@ -93,6 +98,8 @@ void qtiseclib_psci_node_on_finish(const uint8_t *states);
 void qtiseclib_psci_cpu_standby(uint8_t pwr_state);
 void qtiseclib_psci_node_power_off(const uint8_t *states);
 void qtiseclib_psci_node_suspend(const uint8_t *states);
+void qtiseclib_psci_system_reset(void);
+void qtiseclib_psci_system_off(void);
 void qtiseclib_psci_node_suspend_finish(const uint8_t *states);
 void qtiseclib_disable_cluster_coherency(uint8_t state);
 

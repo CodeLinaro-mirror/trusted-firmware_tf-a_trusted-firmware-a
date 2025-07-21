@@ -4,6 +4,11 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
+ /*
+ * ​​​​​Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ * SPDX-License-Identifier: ISC
+ */
 
 #include <assert.h>
 #include <errno.h>
@@ -30,8 +35,10 @@
 const mmap_region_t plat_qti_mmap[] = {
 	MAP_REGION_FLAT(QTI_DEVICE_BASE, QTI_DEVICE_SIZE,
 			MT_DEVICE | MT_RW | MT_SECURE),
+#ifdef QTI_AOP_CMD_DB_BASE
 	MAP_REGION_FLAT(QTI_AOP_CMD_DB_BASE, QTI_AOP_CMD_DB_SIZE,
 			MT_NS | MT_RO | MT_EXECUTE_NEVER),
+#endif
 	{0}
 };
 

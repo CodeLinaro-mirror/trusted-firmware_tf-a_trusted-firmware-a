@@ -4,6 +4,11 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
+/*
+ * Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ * SPDX-License-Identifier: ISC
+ */
 
 #include <arch.h>
 
@@ -19,7 +24,11 @@ const unsigned char qti_power_domain_tree_desc[] = {
 	/* There is one top-level FCM cluster */
 	PLAT_CLUSTER_COUNT,
 	/* No. of cores in the FCM cluster */
-	PLAT_CLUSTER0_CORE_COUNT
+	PLAT_CLUSTER0_CORE_COUNT,
+#ifdef PLAT_CLUSTER1_CORE_COUNT
+	/* No. of cores in the cluster 1 */
+	PLAT_CLUSTER1_CORE_COUNT
+#endif
 };
 
 /*******************************************************************************
