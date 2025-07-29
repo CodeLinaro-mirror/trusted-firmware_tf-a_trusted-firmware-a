@@ -50,6 +50,9 @@ DYNAMIC_WORKAROUND_CVE_2018_3639	:=      1
 # Enable stack protector.
 ENABLE_STACK_PROTECTOR := 0
 
+# Enable platform-specific linker script for IMEM region
+PLAT_EXTRA_LD_SCRIPT := 1
+$(eval $(call add_define,PLAT_EXTRA_LD_SCRIPT))
 
 QTI_EXTERNAL_INCLUDES	:=	-I${QTI_PLAT_PATH}/${CHIPSET}/inc			\
 				-I${QTI_PLAT_PATH}/common/inc				\

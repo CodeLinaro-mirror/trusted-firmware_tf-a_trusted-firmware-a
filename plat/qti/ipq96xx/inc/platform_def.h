@@ -181,6 +181,15 @@
  */
 #define BL31_LIMIT				(BL31_BASE + BL31_SIZE)
 
+#define QTI_SHARED_IMEM_BASE			0x08600000
+#define QTI_SHARED_IMEM_RO_BASE			(QTI_SHARED_IMEM_BASE + 0x1000)
+#define QTI_SHARED_IMEM_RO_SIZE			0x4000
+#define QTI_SHARED_IMEM_RW_BASE			(QTI_SHARED_IMEM_RO_BASE + QTI_SHARED_IMEM_RO_SIZE)
+#define QTI_SHARED_IMEM_RW_SIZE			0x2000
+
+#define QTI_DIAG_RG_START			0x860C000
+#define QTI_DIAG_RG_SIZE			0x3000
+
 /*----------------------------------------------------------------------------*/
 /* PS_HOLD registers */
 /*----------------------------------------------------------------------------*/
