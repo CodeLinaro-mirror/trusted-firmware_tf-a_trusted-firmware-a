@@ -91,6 +91,7 @@ unsigned int qtiseclib_cb_plat_my_cluster_pos(void)
 	return plat_qti_my_cluster_pos();
 }
 
+#ifdef ENABLE_GIC
 /* GIC platform functions */
 void qtiseclib_cb_gic_pcpu_init(void)
 {
@@ -109,6 +110,7 @@ void qtiseclib_cb_set_spi_routing(unsigned int id, unsigned int irm,
 	assert(QTI_GICV3_IRM_ANY == GICV3_IRM_ANY);
 	gic_set_spi_routing(id, irm, target);
 }
+#endif
 
 /* Crash reporting api's wrappers */
 void qtiseclib_cb_switch_console_to_crash_state(void)
