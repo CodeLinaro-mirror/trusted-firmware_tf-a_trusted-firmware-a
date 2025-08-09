@@ -1236,7 +1236,6 @@ $(eval $(call assert_booleans,\
 	PLATFORM_REPORT_CTX_MEM_USE \
 	EARLY_CONSOLE \
 	PRESERVE_DSU_PMU_REGS \
-	ENABLE_GIC \
 )))
 
 # Numeric_Flags

@@ -107,12 +107,10 @@ void bl31_plat_arch_setup(void)
  ******************************************************************************/
 void bl31_platform_setup(void)
 {
-#ifdef ENABLE_GIC
 	generic_delay_timer_init();
 	/* Initialize the GIC driver, CPU and distributor interfaces */
 	plat_qti_gic_driver_init();
 	plat_qti_gic_init();
-#endif
 	qti_interrupt_svc_init();
 	qtiseclib_bl31_platform_setup();
 

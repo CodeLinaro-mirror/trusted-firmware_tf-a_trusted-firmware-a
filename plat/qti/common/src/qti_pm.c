@@ -181,9 +181,7 @@ static void qti_cpu_power_on_finish(const psci_power_state_t *target_state)
 	qtiseclib_psci_node_on_finish(pwr_states);
 
 	if (is_cpu_off(target_state)) {
-#ifdef ENABLE_GIC
 		plat_qti_gic_cpuif_enable();
-#endif
 	}
 }
 
@@ -196,9 +194,7 @@ static void qti_node_power_off(const psci_power_state_t *target_state)
 	qtiseclib_psci_node_power_off((const uint8_t *)
 				      target_state->pwr_domain_state);
 	if (is_cpu_off(target_state)) {
-#ifdef ENABLE_GIC
 		plat_qti_gic_cpuif_disable();
-#endif
 		qti_set_cpupwrctlr_val();
 	}
 }
@@ -208,9 +204,7 @@ static void qti_node_suspend(const psci_power_state_t *target_state)
 	qtiseclib_psci_node_suspend((const uint8_t *)target_state->
 				    pwr_domain_state);
 	if (is_cpu_off(target_state)) {
-#ifdef ENABLE_GIC
 		plat_qti_gic_cpuif_disable();
-#endif
 		qti_set_cpupwrctlr_val();
 	}
 }
@@ -221,9 +215,7 @@ static void qti_node_suspend_finish(const psci_power_state_t *target_state)
 	    (const uint8_t *)target_state->pwr_domain_state;
 	qtiseclib_psci_node_suspend_finish(pwr_states);
 	if (is_cpu_off(target_state)) {
-#ifdef ENABLE_GIC
 		plat_qti_gic_cpuif_enable();
-#endif
 	}
 }
 
