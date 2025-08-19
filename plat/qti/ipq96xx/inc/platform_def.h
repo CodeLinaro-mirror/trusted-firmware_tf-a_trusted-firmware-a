@@ -112,14 +112,12 @@
 #define PLAT_RSC_COUNT			1
 
 /* There is one top-level cluster */
-#define PLAT_CLUSTER_COUNT		2
+#define PLAT_CLUSTER_COUNT		1
 
 /* No. of cores in the cluster */
-#define PLAT_CLUSTER0_CORE_COUNT	4
+#define PLAT_CLUSTER0_CORE_COUNT	5
 
-#define PLAT_CLUSTER1_CORE_COUNT	1
-
-#define PLATFORM_CORE_COUNT		(PLAT_CLUSTER0_CORE_COUNT + PLAT_CLUSTER1_CORE_COUNT)
+#define PLATFORM_CORE_COUNT		PLAT_CLUSTER0_CORE_COUNT
 
 #define PLAT_NUM_PWR_DOMAINS		(PLAT_PDC_COUNT +\
 					PLAT_RSC_COUNT	+\
@@ -187,7 +185,7 @@
 #define QTI_SHARED_IMEM_RW_BASE			(QTI_SHARED_IMEM_RO_BASE + QTI_SHARED_IMEM_RO_SIZE)
 #define QTI_SHARED_IMEM_RW_SIZE			0x2000
 
-#define QTI_DIAG_RG_START			0x860C000
+#define QTI_DIAG_RG_START			0x08607000
 #define QTI_DIAG_RG_SIZE			0x3000
 
 /*----------------------------------------------------------------------------*/

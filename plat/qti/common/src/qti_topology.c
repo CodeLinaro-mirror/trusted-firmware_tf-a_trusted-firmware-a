@@ -25,10 +25,6 @@ const unsigned char qti_power_domain_tree_desc[] = {
 	PLAT_CLUSTER_COUNT,
 	/* No. of cores in the FCM cluster */
 	PLAT_CLUSTER0_CORE_COUNT,
-#ifdef PLAT_CLUSTER1_CORE_COUNT
-	/* No. of cores in the cluster 1 */
-	PLAT_CLUSTER1_CORE_COUNT
-#endif
 };
 
 /*******************************************************************************
