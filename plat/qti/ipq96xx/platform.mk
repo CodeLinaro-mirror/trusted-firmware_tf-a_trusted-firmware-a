@@ -128,5 +128,3 @@ else
 LDFLAGS += -L $(dir $(QTISECLIB_PATH))
 LDLIBS += -l$(patsubst lib%.a,%,$(notdir $(QTISECLIB_PATH)))
 endif
-
-INIT_UNUSED_NS_EL2	:=0
