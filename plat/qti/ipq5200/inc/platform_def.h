@@ -174,9 +174,11 @@
 /*
  * DIAG Start is placed 8K apart from __PIL_REGION_END__
  */
-#define QTI_DIAG_RG_START               0x0860C000
-#define QTI_DIAG_RG_SIZE                0x3000
-#define QTI_DIAG_RG_LIMIT               QTI_DIAG_RG_START + QTI_DIAG_RG_SIZE
+#define DIAG_BASE			0x08607000
+#define DIAG_LEN			0x3000
+#define DIAG_LIMIT			DIAG_BASE + DIAG_LEN
+#define DIAG_LOG_START_INFO		0x8600720
+#define DIAG_LOG_SIZE_INFO		0x8600724
 
 /*----------------------------------------------------------------------------*/
 /* SOC hw version register */

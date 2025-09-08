@@ -25,6 +25,7 @@
 #include <qti_interrupt_svc.h>
 #include <qti_plat.h>
 #include <qti_uart_console.h>
+#include <qti_diag_console.h>
 #include <qtiseclib_interface.h>
 
 /*
@@ -58,7 +59,6 @@ uint32_t g_qti_bl31_cold_booted;
 void bl31_early_platform_setup(u_register_t from_bl2,
 			       u_register_t plat_params_from_bl2)
 {
-
 	g_qti_cpu_cntfrq = read_cntfrq_el0();
 
 	bl_aux_params_parse(plat_params_from_bl2, NULL);
@@ -70,6 +70,10 @@ void bl31_early_platform_setup(u_register_t from_bl2,
 		qti_console_uart_register(&g_qti_console_uart,
 					  coreboot_serial.baseaddr);
 	}
+#endif
+
+#if DIAG_LOG
+	diag_init();
 #endif
 
 	/*
