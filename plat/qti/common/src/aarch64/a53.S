@@ -25,7 +25,7 @@
 func qti_a53_reset_func
 
 	mov x19, x30
-	bl qtiseclib_a53_cluster_reset_func
+	bl a53_aarch64_sysini
 
 	mov	x30, x19
 	ret
