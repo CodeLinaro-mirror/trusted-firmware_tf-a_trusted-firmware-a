@@ -132,7 +132,7 @@ void qtiseclib_cb_get_ns_ctx(qtiseclib_dbg_a64_ctxt_regs_type *qti_ns_ctx)
 	void *ctx;
 
 	ctx = cm_get_context(NON_SECURE);
-	if (ctx) {
+	if (!ctx) {
 		/* nothing to be done w/o ns context */
 		return;
 	}
@@ -187,6 +187,21 @@ void qtiseclib_cb_flush_dcache_all(void)
 	dcsw_op_all(DCCISW);
 }
 
+void qtiseclib_cb_flush_dcache_level1(void)
+{
+	dcsw_op_level1(DCCISW);
+}
+
+void qtiseclib_cb_flush_dcache_level2(void)
+{
+	dcsw_op_level2(DCCISW);
+}
+
+void qtiseclib_cb_flush_dcache_level3(void)
+{
+	dcsw_op_level3(DCCISW);
+}
+
 int qtiseclib_cb_mmap_add_dynamic_region(unsigned long long base_pa,
 					 size_t size,
 					 qtiseclib_mmap_attr_t attr)
@@ -207,5 +222,25 @@ int qtiseclib_cb_mmap_remove_dynamic_region(uintptr_t base_va, size_t size)
 {
 	return qti_mmap_remove_dynamic_region(base_va, size);
 }
-#endif
 
+extern entry_point_info_t *bl31_plat_get_bl31_image_ep_info(void);
+
+uint64_t qtiseclib_cb_get_ddr_sf_exit_addr(void)
+{
+	entry_point_info_t *bl31_image_ep_info;
+
+	bl31_image_ep_info = bl31_plat_get_bl31_image_ep_info();
+	if (!bl31_image_ep_info) {
+        	ERROR("BL31 entry point info is NULL\n");
+		return 0;
+	}
+
+	/* Validate that arg0 contains a valid address */
+	if (bl31_image_ep_info->args.arg0 == 0) {
+		ERROR("DDR self-refresh exit address is invalid (zero)\n");
+		return 0;
+	}
+
+	return bl31_image_ep_info->args.arg0;
+}
+#endif

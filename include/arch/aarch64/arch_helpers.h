@@ -249,6 +249,9 @@ bool is_dcache_enabled(void);
 
 void dcsw_op_louis(u_register_t op_type);
 void dcsw_op_all(u_register_t op_type);
+void dcsw_op_level1(u_register_t op_type);
+void dcsw_op_level2(u_register_t op_type);
+void dcsw_op_level3(u_register_t op_type);
 
 void disable_mmu_el1(void);
 void disable_mmu_el3(void);

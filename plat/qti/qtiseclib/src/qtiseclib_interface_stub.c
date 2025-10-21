@@ -140,3 +140,7 @@ void qtiseclib_disable_cluster_coherency(uint8_t state)
 {
 }
 
+int qtiseclib_set_cpu_ctx_buf(uintptr_t addr, uint32_t size)
+{
+	return 0;
+}

@@ -44,6 +44,12 @@
 #define	QTI_SIP_SVC_SECURE_IO_WRITE_ID		U(0x02000502)
 
 /*
+ * Syscall's to allow Non Secure world to share buffer for
+ * dump collection.
+ */
+#define	QTI_SIP_SVC_SET_CPU_CTX_BUF_ID		U(0x02000302)
+
+/*
  * Syscall's to assigns a list of intermediate PAs from a
  * source Virtual Machine (VM) to a destination VM.
  */
@@ -51,6 +57,7 @@
 
 #define	QTI_SIP_SVC_SECURE_IO_READ_PARAM_ID	U(0x1)
 #define	QTI_SIP_SVC_SECURE_IO_WRITE_PARAM_ID	U(0x2)
+#define	QTI_SIP_SVC_SET_CPU_CTX_BUF_PARAM_ID	U(0x22)
 #define	QTI_SIP_SVC_MEM_ASSIGN_PARAM_ID		U(0x1117)
 
 #define	QTI_SIP_SVC_CALL_COUNT			U(0x3)
@@ -98,6 +105,7 @@ static bool qti_check_syscall_availability(u_register_t smc_fid)
 	case QTI_SIP_SVC_AVAILABLE_ID:
 	case QTI_SIP_SVC_SECURE_IO_READ_ID:
 	case QTI_SIP_SVC_SECURE_IO_WRITE_ID:
+	case QTI_SIP_SVC_SET_CPU_CTX_BUF_ID:
 #ifndef DISABLE_QTI_MEM_ASSIGN
 	case QTI_SIP_SVC_MEM_ASSIGN_ID:
 #endif
@@ -372,6 +380,39 @@ static uintptr_t qti_sip_handler(uint32_t smc_fid,
 			}
 			SMC_RET1(handle, QTI_SIP_INVALID_PARAM);
 			break;
+		}
+	case QTI_SIP_SVC_SET_CPU_CTX_BUF_ID:
+		{
+			if (x1 != QTI_SIP_SVC_SET_CPU_CTX_BUF_PARAM_ID) {
+				SMC_RET1(handle, QTI_SIP_INVALID_PARAM);
+			}
+
+			/* Validate buffer address and size */
+			if (x2 == 0 || x3 == 0) {
+				ERROR("Invalid buffer address or size\n");
+				SMC_RET1(handle, QTI_SIP_INVALID_PARAM);
+			}
+
+			/* Check for overflow - use safer comparison */
+			if (x3 > (UINTPTR_MAX - x2)) {
+				ERROR("Buffer size causes address overflow\n");
+				SMC_RET1(handle, QTI_SIP_INVALID_PARAM);
+			}
+
+			/* Ensure buffer doesn't overlap with TF-A regions */
+			if (qti_is_overlap_atf_rg(x2, x3)) {
+				ERROR("Buffer overlaps with secure memory\n");
+				SMC_RET1(handle, QTI_SIP_INVALID_PARAM);
+			}
+
+			/*
+			 * Note: This syscall is expected to be called during early boot
+			 * by a single core. No synchronization is provided for concurrent
+			 * calls from multiple cores.
+			 */
+			int ret = qtiseclib_set_cpu_ctx_buf(x2, x3);
+
+			SMC_RET2(handle, (ret == 0) ? SMC_OK : QTI_SIP_INVALID_PARAM, ret);
 		}
 #ifndef DISABLE_QTI_MEM_ASSIGN
 	case QTI_SIP_SVC_MEM_ASSIGN_ID:

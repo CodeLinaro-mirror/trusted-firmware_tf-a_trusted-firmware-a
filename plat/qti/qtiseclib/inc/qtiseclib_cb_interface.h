@@ -53,7 +53,11 @@ int qtiseclib_cb_mmap_add_dynamic_region(unsigned long long base_pa,
 					 qtiseclib_mmap_attr_t attr);
 
 void qtiseclib_cb_flush_dcache_all(void);
+void qtiseclib_cb_flush_dcache_level1(void);
+void qtiseclib_cb_flush_dcache_level2(void);
+void qtiseclib_cb_flush_dcache_level3(void);
 void qtiseclib_cb_get_ns_ctx(qtiseclib_dbg_a64_ctxt_regs_type *ns_ctx);
+uint64_t qtiseclib_cb_get_ddr_sf_exit_addr(void);
 #endif
 
 #endif /* QTISECLIB_CB_INTERFACE_H */

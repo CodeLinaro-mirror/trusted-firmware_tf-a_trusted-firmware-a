@@ -32,6 +32,7 @@
  * Placeholder variables for copying the arguments that have been passed to
  * BL31 from BL2.
  */
+static entry_point_info_t bl31_image_ep_info;
 static entry_point_info_t bl32_image_ep_info;
 static entry_point_info_t bl33_image_ep_info;
 
@@ -47,6 +48,35 @@ static uint64_t g_qti_cpu_cntfrq;
  * Any other value means cold booted.
  */
 uint32_t g_qti_bl31_cold_booted;
+
+/*******************************************************************************
+ * Helper to extract BL31 entry point info from arg0 passed to BL31
+ ******************************************************************************/
+
+void bl31_parse_ep_info(u_register_t param)
+{
+	bl_params_node_t *node;
+	bl_params_t *v2 = (void *)(uintptr_t)param;
+
+	if (v2 == NULL) {
+		ERROR("Invalid parameter passed to bl31 ep info parsing\n");
+		return;
+	}
+
+	assert(v2->h.version == PARAM_VERSION_2);
+	assert(v2->h.type == PARAM_BL_PARAMS);
+
+	for (node = v2->head; node != NULL; node = node->next_params_info) {
+		if (node->image_id == BL31_IMAGE_ID) {
+			if (node->ep_info == NULL) {
+				ERROR("BL31 entry point info is NULL\n");
+				return;
+			}
+			bl31_image_ep_info = *node->ep_info;
+			return; /* Successfully found and copied */
+		}
+	}
+}
 
 /*******************************************************************************
  * Perform any BL31 early platform setup common to ARM standard platforms.
@@ -81,6 +111,8 @@ void bl31_early_platform_setup(u_register_t from_bl2,
 	 * is located and the entry state information
 	 */
 	bl31_params_parse_helper(from_bl2, &bl32_image_ep_info, &bl33_image_ep_info);
+
+	bl31_parse_ep_info(from_bl2);
 }
 
 void bl31_early_platform_setup2(u_register_t arg0, u_register_t arg1,
@@ -142,6 +174,15 @@ entry_point_info_t *bl31_plat_get_next_image_ep_info(uint32_t type)
 		return &bl32_image_ep_info;
 	}
 	return NULL;
+}
+
+/*******************************************************************************
+ * Return a pointer to the 'entry_point_info' structure of the bl31 image.
+ * Platform specific code can parse it for any args extraction.
+ ******************************************************************************/
+entry_point_info_t *bl31_plat_get_bl31_image_ep_info(void)
+{
+	return &bl31_image_ep_info;
 }
 
 /*******************************************************************************

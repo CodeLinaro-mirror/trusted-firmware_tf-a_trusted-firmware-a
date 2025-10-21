@@ -154,8 +154,8 @@
 #define QTI_SHARED_IMEM_DBG_STACK_SIZE		0x200
 #define QTI_SHARED_IMEM_TF_STACK_CANARY_ADDR	(QTI_SHARED_IMEM_BASE + 0x7F0)
 
-#define DCC_SRAM_BASE_ADDR			0x6080000
-#define DCC_SRAM_SIZE				0x40000
+#define QTI_DCC_SRAM_BASE			0x6080000
+#define QTI_DCC_SRAM_SIZE			0x40000
 
 /*******************************************************************************
  * BL31 specific defines.

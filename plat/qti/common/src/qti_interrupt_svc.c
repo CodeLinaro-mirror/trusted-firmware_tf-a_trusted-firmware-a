@@ -27,10 +27,22 @@ static uint64_t qti_el3_interrupt_handler(uint32_t id, uint32_t flags,
 	uint32_t irq = QTI_INTR_INVALID_INT_NUM;
 
 	/*
-	 * EL3 non-interruptible. Interrupt shouldn't occur when we are at
-	 * EL3 / Secure.
+	 * Previously, the system asserted that interrupts should not occur when
+	 * at EL3 / Secure. This has been updated to handle both secure and
+	 * non-secure interrupt sources by checking the interrupt's origin.
+	 *
+	 * If the interrupt source indicates a Non-Secure origin, the current
+	 * context (`handle`) must match the `NON_SECURE` context.
+	 * Otherwise (if the interrupt source is Secure), the current context
+	 * must match the `SECURE` context. This ensures that the system
+	 * handles the interrupt within the appropriate security state and
+	 * prevents unauthorized access or context mixing.
 	 */
-	assert(handle != cm_get_context(SECURE));
+	if (get_interrupt_src_ss(flags) == NON_SECURE) {
+		assert(handle == cm_get_context(NON_SECURE));
+	} else {
+		assert(handle == cm_get_context(SECURE));
+	}
 
 	irq = plat_ic_acknowledge_interrupt();
 

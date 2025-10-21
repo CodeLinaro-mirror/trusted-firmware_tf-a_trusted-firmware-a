@@ -21,6 +21,7 @@
 int qti_mmap_add_dynamic_region(uintptr_t base_pa, size_t size,
 				unsigned int attr);
 int qti_mmap_remove_dynamic_region(uintptr_t base_va, size_t size);
+bool qti_is_overlap_atf_rg(unsigned long long addr, size_t size);
 
 /*
  * Utility functions common to ARM standard platforms
