@@ -148,3 +148,14 @@ int qtiseclib_set_cpu_ctx_buf(uintptr_t addr, uint32_t size)
 void is_dload_magic_set(void)
 {
 }
+
+int int_svc_register_isr(uint32_t intnum, const char *intdesc,
+			  size_t intdesc_size, int_svc_isr_api_t isr,
+			  void *ctx)
+{
+	return 0;
+}
+
+void dbg_err_fatal(dbg_err_fatal_t err)
+{
+}
