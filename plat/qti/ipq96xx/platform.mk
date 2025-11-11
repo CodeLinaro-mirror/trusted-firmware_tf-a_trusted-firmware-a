@@ -21,6 +21,10 @@ ERRATA_A55_1530923 		:=	1
 ERRATA_A78_1941498 		:=	1
 ERRATA_A78_1951500 		:=	1
 
+# Enable DIAG LOG Console
+DIAG_LOG			:=	1
+$(eval $(call add_define,DIAG_LOG))
+
 # Disable the PSCI platform compatibility layer
 ENABLE_PLAT_COMPAT		:=	0
 
@@ -64,6 +68,7 @@ QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_kryo6_silver.S	\
 				$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_kryo6_gold.S	\
 				$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_helpers.S	\
 				$(QTI_PLAT_PATH)/common/src/qti_stack_protector.c	\
+				$(QTI_PLAT_PATH)/common/src/aarch64/qti_diag_console.S	\
 				$(QTI_PLAT_PATH)/common/src/qti_common.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_interrupt_svc.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_pm.c			\
@@ -73,6 +78,7 @@ QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_kryo6_silver.S	\
 				$(QTI_PLAT_PATH)/common/src/qti_gic_v3.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_syscall.c		\
 				$(QTI_PLAT_PATH)/qtiseclib/src/qtiseclib_cb_interface.c	\
+				$(QTI_PLAT_PATH)/common/src/qti_diag.c		\
 
 
 PLAT_INCLUDES		:=	-Iinclude/plat/common/					\

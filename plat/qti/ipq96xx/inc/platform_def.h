@@ -185,9 +185,6 @@
 #define QTI_SHARED_IMEM_RW_BASE			(QTI_SHARED_IMEM_RO_BASE + QTI_SHARED_IMEM_RO_SIZE)
 #define QTI_SHARED_IMEM_RW_SIZE			0x2000
 
-#define QTI_DIAG_RG_START			0x08607000
-#define QTI_DIAG_RG_SIZE			0x3000
-
 #define QTI_DCC_SRAM_BASE			0x06080000
 #define QTI_DCC_SRAM_SIZE			0x9000
 
@@ -195,6 +192,16 @@
 /* PS_HOLD registers */
 /*----------------------------------------------------------------------------*/
 #define QTI_PS_HOLD_REG				0x4AB000
+
+/*******************************************************************************
+ * Diag Region Defines
+ ******************************************************************************/
+#define DIAG_BASE			0x08607000
+#define DIAG_LEN			0x3000
+#define DIAG_LIMIT			(DIAG_BASE + DIAG_LEN)
+#define DIAG_LOG_START_INFO		0x8600720
+#define DIAG_LOG_SIZE_INFO		0x8600724
+
 /*----------------------------------------------------------------------------*/
 /* SOC hw version register */
 /*----------------------------------------------------------------------------*/

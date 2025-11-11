@@ -144,3 +144,7 @@ int qtiseclib_set_cpu_ctx_buf(uintptr_t addr, uint32_t size)
 {
 	return 0;
 }
+
+void is_dload_magic_set(void)
+{
+}
