@@ -1,0 +1,41 @@
+# xPU4 Code Generation Tool Usage
+
+This directory contains the xPU4CodeGen.py script for generating Access Control (AC) configuration files for various targets.
+
+## Usage
+
+To generate build files for a specific target, use the following command format:
+
+```bash
+python3 xPU4CodeGen.py -x <XML_FILE> -j <JSON_CONFIG_1> -j <JSON_CONFIG_2> -j <JSON_CONFIG_3> -o <OUTPUT_DIR> -i <IMAGE_TYPE>
+```
+
+### Parameters:
+- `-x, --xml`: Access control XML xPU policy file
+- `-j, --json_config`: JSON configuration files (can be specified multiple times)
+- `-o, --out_dir`: Output directory where generated files will be placed
+- `-i, --image`: Image type to generate policy for (TME_FW, xBL_SC, TZ, AOP, MSA, xBL_SC_DEVPRG)
+
+### Example - IPQ96XX Target (TZ Image):
+
+```bash
+cd drivers/qcom/accessd/ACConfigDataLib/ipq96xx
+python3 ../tools/CodeGen/xPU4CodeGen.py -x ipq96xxAccessControl.xml -j ac_settings.json -j target_info.json -j ../common_info.json -o . -i TZ
+```
+
+This command generates the following files in the target directory:
+- ACApuRpuIOMapping.c - APU/RPU I/O mapping configurations
+- ACTarget.c - Target-specific access control configurations
+- ACTargetData.c - Target data structures and configurations
+- ACTargetData.h - Target data header definitions
+- ACXpuStaticConfig.c - Static XPU configuration data
+- ACXpuTargetInfo.h - Target-specific header definitions
+
+### Input Files Required:
+1. XML policy file (e.g., ipq96xxAccessControl.xml)
+2. Target-specific settings JSON (e.g., ac_settings.json)
+3. Target information JSON (e.g., target_info.json)
+4. Common configuration JSON (e.g., common_info.json)
+
+### Generated Output:
+The tool generates C source files and header files containing access control policies and configuration data for the specified target and image type.

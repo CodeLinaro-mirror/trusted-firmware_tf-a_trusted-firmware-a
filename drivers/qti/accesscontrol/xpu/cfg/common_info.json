@@ -1,0 +1,945 @@
+{
+    "domain_to_bit_mappings": {
+        "": ["AC_DOMAIN_NONE"],
+        "TME_FW": ["AC_DOMAIN_TME_FW_BIT"],
+        "TME_ROM": ["AC_DOMAIN_TME_ROM_BIT"],
+        "TZ": ["AC_DOMAIN_APPS_SEC_BIT"],
+        "MSA": ["AC_DOMAIN_MSA_BIT"],
+        "SP": ["AC_DOMAIN_SP_BIT"],
+        "HYP": ["AC_DOMAIN_AP_NS_BIT"],
+        "DEBUG": ["AC_DOMAIN_DEBUG_BIT"],
+        "AOP": ["AC_DOMAIN_AP_QC_BL_BIT"],
+        "PRIME": ["AC_DOMAIN_PRIME_BIT"]
+    },
+
+    "domain_to_qad_mappings": {
+        "AP": "QAD_APPS",
+        "APPS": "QAD_APPS",
+        "HYP": "QAD_APPS",
+        "TZ": "QAD_APPS",
+        "TME_ROM": "QAD_TME_ROM",
+        "TME_FW": "QAD_TME_FW",
+        "DEBUG": "QAD_DEBUG",
+        "AOP": "QAD_AP_QC_BL",
+        "MSA": "QAD_MSA",
+        "PRIME": "QAD_PRIME"
+    },
+
+    "qad_bit_to_val_mappings": {
+        "AC_DOMAIN_APPS_SEC_BIT": 0,
+        "AC_DOMAIN_AP_NS_BIT": 0,
+        "AC_DOMAIN_TME_ROM_BIT": 1,
+        "AC_DOMAIN_TME_FW_BIT": 2,
+        "AC_DOMAIN_DEBUG_BIT": 3,
+        "AC_DOMAIN_AP_QC_BL_BIT": 4,
+        "AC_DOMAIN_MSA_BIT": 5,
+        "AC_DOMAIN_PRIME_BIT": 6,
+        "AC_DOMAIN_RESERVED_7_BIT": 7,
+        "AC_DOMAIN_RESERVED_8_BIT": 8,
+        "AC_DOMAIN_RESERVED_9_BIT": 9,
+        "AC_DOMAIN_RESERVED_10_BIT": 10,
+        "AC_DOMAIN_RESERVED_11_BIT": 11
+    },
+
+    "autogen_header": "/*\n * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.\n * SPDX-License-Identifier: ISC\n */\n\n/*---------------------THIS FILE IS AUTO GENERATED---------------------*/\n\n\n",
+
+    "qad_defines": "\n#define QAD_APPS\t(0)\n#define QAD_TME_ROM\t(1)\n#define QAD_TME_FW\t(2)\n#define QAD_DEBUG\t(3)\n#define QAD_AP_QC_BL\t(4)\n#define QAD_MSA\t\t(5)\n#define QAD_PRIME\t(6)\n\n#define AC_AP_NS_QAD_VECTOR_OFFSET\t(30)\n#define AC_AP_SEC_QAD_VECTOR_OFFSET\t(31)\n\n#define AC_DOMAIN_NONE\t\t\t(0)\n#define AC_DOMAIN_AP_NS_BIT\t\t((1U << QAD_APPS) | (0x1U << AC_AP_NS_QAD_VECTOR_OFFSET))\n#define AC_DOMAIN_APPS_SEC_BIT\t((1U << QAD_APPS) | (0x1U << AC_AP_SEC_QAD_VECTOR_OFFSET))\n#define AC_DOMAIN_TME_ROM_BIT\t(1U << QAD_TME_ROM)\n#define AC_DOMAIN_TME_FW_BIT\t(1U << QAD_TME_FW)\n#define AC_DOMAIN_DEBUG_BIT\t\t(1U << QAD_DEBUG)\n#define AC_DOMAIN_AP_QC_BL_BIT\t\t(1U << QAD_AP_QC_BL)\n#define AC_DOMAIN_MSA_BIT\t\t(1U << QAD_MSA)\n#define AC_DOMAIN_PRIME_BIT\t\t(1U << QAD_PRIME)\n#define AC_DOMAIN_RESERVED_7_BIT\t(1U << 7)\n#define AC_DOMAIN_RESERVED_8_BIT\t(1U << 8)\n#define AC_DOMAIN_RESERVED_9_BIT\t(1U << 9)\n#define AC_DOMAIN_RESERVED_10_BIT\t(1U << 10)\n#define AC_DOMAIN_RESERVED_11_BIT\t(1U << 11)\n",
+
+    "file_include_default": "#include <stdint.h>\n#include <stddef.h>\n#include \"access_control_target.h\"\n\n",
+
+    "file_include_xbl": "#include <stdint.h>\n#include <stddef.h>\n#include \"access_control_target.h\"\n\n",
+
+    "file_include_tz": "#include <stdint.h>\n#include <stddef.h>\n#include \"hal_xpu4_target.h\"\n#include \"ac_xpu.h\"\n#include \"ac_xpu_target_info.h\"\n\n",
+
+    "file_include_tmefw": "#include <stdint.h>\n#include <stddef.h>\n#include \"access_control_target.h\"\n\n",
+
+    "pragma_defs": "\n",
+
+    "apurpu_include": "#include <stdint.h>\n#include <stddef.h>\n#include \"hal_xpu4_target.h\"\n#include \"access_control_tz.h\"\n\n",
+
+    "smmu_include": "\n#include \"access_control_hyp.h\"\n",
+
+    "attributes": {
+        "TME_FW": {
+            "RO": "",
+            "RW": "",
+            "Reclaim": ""
+        },
+        "xBL_SC": {
+            "RO": "",
+            "RW": "",
+            "Reclaim": ""
+        },
+        "TZ": {
+            "RO": "",
+            "RW": "",
+            "Reclaim": "__section(\".ac_static_cfg_data.xpu\") "
+        },
+        "MSA": {
+            "RO": "",
+            "RW": "",
+            "Reclaim": ""
+        },
+        "AOP": {
+            "RO": "__section(\"rinit_data_sec_pool3\") ",
+            "RW": "__section(\"rinit_data_sec_pool2\") ",
+            "Reclaim": "__section(\"rinit_data_sec_pool3\") "
+        }
+    },
+
+    "perm_dict": {
+        "R": "AC_PERM_R",
+        "W": "AC_PERM_W",
+        "RW": "AC_PERM_R | AC_PERM_W",
+        "RWX": "AC_PERM_R | AC_PERM_W | AC_PERM_X"
+    },
+
+    "name_to_vm": {
+        "video_fw": "AC_VM_VIDEO_FW",
+        "adsp_q6_elf": "AC_VM_ADSP_Q6_ELF",
+        "adsp0_q6_elf": "AC_VM_ADSP0_Q6_ELF",
+        "adsp1_q6_elf": "AC_VM_ADSP1_Q6_ELF",
+        "adsp2_q6_elf": "AC_VM_ADSP2_Q6_ELF",
+        "camera_fw": "AC_VM_FW_CAMERA",
+        "camera2_fw": "AC_VM_FW_CAMERA_2",
+        "spss_sp": "AC_VM_SPSS_SP",
+        "hlos": "AC_VM_HLOS",
+        "cdsp_q6_elf": "AC_VM_CDSP_Q6_ELF",
+        "cdsp0_q6_elf": "AC_VM_CDSP0_Q6_ELF",
+        "cdsp1_q6_elf": "AC_VM_CDSP1_Q6_ELF",
+        "cdsp2_q6_elf": "AC_VM_CDSP2_Q6_ELF",
+        "cdsp_q6_elf_00": "AC_VM_CDSP_Q6_ELF_00",
+        "cdsp_q6_elf_01": "AC_VM_CDSP_Q6_ELF_01",
+        "cdsp_q6_elf_10": "AC_VM_CDSP_Q6_ELF_10",
+        "cdsp_q6_elf_11": "AC_VM_CDSP_Q6_ELF_11",
+        "cvp_fw": "AC_VM_CVP_FW",
+        "npu_fw": "AC_VM_NPU_FW",
+        "ssc_q6_elf": "AC_VM_SSC_Q6_ELF",
+        "fusion_modem": "AC_VM_FUSION_MODEM",
+        "mvm": "AC_VM_GUEST_OS",
+        "gpdsp0_q6_elf": "AC_VM_GPDSP0_Q6_ELF",
+        "gpdsp1_q6_elf": "AC_VM_GPDSP1_Q6_ELF",
+        "soccp": "AC_VM_SOCCP_ELF",
+        "soccp_dma": "AC_VM_SOCCP_DMA",
+        "dcp_fw": "AC_VM_DCP_ELF",
+        "spss_nonsp": "AC_VM_SPSS_NONSP"
+    },
+
+    "valid_qad_bits": [
+        "AC_SD_AP_SEC",
+        "AC_SD_TME_ROM",
+        "AC_SD_TME_FW",
+        "AC_SD_DEBUG",
+        "AC_SD_AOP",
+        "AC_SD_MODEM",
+        "AC_SD_SP",
+        "AC_SD_AP_NS"
+    ],
+
+    "shadow_vms": {
+        "AC_VM_ADSP_SHARED": "AC_VM_ADSP_Q6_ELF",
+        "AC_VM_SPSS_SP_SHARED": "AC_VM_SPSS_SP",
+        "AC_VM_SPSS_HLOS_SHARED": "AC_VM_SPSS_NONSP",
+        "AC_VM_KERNEL_PROTECTION": "AC_VM_HLOS",
+        "AC_VM_ADSP_HEAP": "AC_VM_ADSP_Q6_ELF"
+    },
+
+    "vmid_cfg_arr": {
+        "AC_VM_RPM": {
+            "type": "AC_SEC",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_HLOS": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_HYP": {
+            "type": "AC_SMMU_NO_INIT",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_ADSP_Q6_ELF": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_CP_BITSTREAM": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_CP_PIXEL": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_CP_NON_PIXEL": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_VIDEO_FW": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_NOT_EQUALS_PA",
+            "input": 32,
+            "output": 36
+        },
+        "AC_VM_VIDEO_2_FW": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_NOT_EQUALS_PA",
+            "input": 32,
+            "output": 36
+        },
+        "AC_VM_CP_CAMERA": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_CP_CAMERA_PREVIEW": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_HLOS_UNMAPPED": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_MSS_MSA": {
+            "type": "AC_SEC",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 32
+        },
+        "AC_VM_CP_SECDISP": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 36
+        },
+        "AC_VM_CP_APP": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_TME_FW": {
+            "type": "AC_SEC",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_TZ": {
+            "type": "AC_SEC",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_TZ_UNMAPPED": {
+            "type": "AC_SEC",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_TZ_STATIC": {
+            "type": "AC_SEC",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_LPASS": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 36
+        },
+        "AC_VM_SPSS_SP": {
+            "type": "AC_SEC",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_SPSS_NONSP": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_CDSP_Q6_ELF": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 36
+        },
+        "AC_VM_KERNEL_PROTECTION": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 36
+        },
+        "AC_VM_SPSS_SP_SHARED": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_SPSS_HLOS_SHARED": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_ADSP_SHARED": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 36
+        },
+        "AC_VM_ADSP_HEAP": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 36
+        },
+        "AC_VM_SHARED_GPU_PIL": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_SHARED_GPU2_PIL": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_CP_CDSP": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_MSS_NAV": {
+            "type": "AC_SEC",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 32
+        },
+        "AC_VM_CVP_FW": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_NOT_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_DSP_EXT": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_VOICE_PRINT": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_TRUSTED_UI": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_HYP_DEBUG_VM": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_OEM": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_FW_CAMERA": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_NOT_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_FW_CAMERA_2": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_NOT_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_OEM1": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_OEM2": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_HYP_SVM": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_HYP_RM": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_NOT_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_SOCCP_ELF": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_SOCCP_DMA": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_WLAN_DSP": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 32
+        },
+        "AC_VM_WLAN": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_WLAN_COPYENG": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_SSC_Q6_ELF": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 36
+        },
+        "AC_VM_MSS_NONMSA": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_GVM1": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_GVM2": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_GVM3": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_GVM4": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_GUEST_OS": {
+            "type": "AC_OTHER",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_DCP_ELF": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_DISPLAY": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_ADSP0_Q6_ELF": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 40
+        },
+        "AC_VM_ADSP1_Q6_ELF": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 40
+        },
+        "AC_VM_ADSP2_Q6_ELF": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 40
+        },
+        "AC_VM_CP_BITSTREAM_GVM1": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 40,
+            "output": 40
+        },
+        "AC_VM_CP_BITSTREAM_GVM2": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 40,
+            "output": 40
+        },
+        "AC_VM_CP_BITSTREAM_GVM3": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 40,
+            "output": 40
+        },
+        "AC_VM_CP_PIXEL_GVM1": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 40,
+            "output": 40
+        },
+        "AC_VM_CP_PIXEL_GVM2": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 40,
+            "output": 40
+        },
+        "AC_VM_CP_PIXEL_GVM3": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 40,
+            "output": 40
+        },
+        "AC_VM_CP_NON_PIXEL_GVM1": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 40,
+            "output": 40
+        },
+        "AC_VM_CP_NON_PIXEL_GVM2": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 40,
+            "output": 40
+        },
+        "AC_VM_CP_NON_PIXEL_GVM3": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 40,
+            "output": 40
+        },
+        "AC_VM_CP_0_CAMERA": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 40
+        },
+        "AC_VM_CP_1_CAMERA": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 40
+        },
+        "AC_VM_CDSP0_Q6_ELF": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 40
+        },
+        "AC_VM_CDSP1_Q6_ELF": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 40
+        },
+        "AC_VM_CDSP2_Q6_ELF": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 40
+        },
+        "AC_VM_CDSP_Q6_ELF_00": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 40
+        },
+        "AC_VM_CDSP_Q6_ELF_01": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 40
+        },
+        "AC_VM_CDSP_Q6_ELF_10": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 40
+        },
+        "AC_VM_CDSP_Q6_ELF_11": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 32,
+            "output": 40
+        },
+        "AC_VM_DMS": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_MM_DMA": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_SAFE_DMA": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_NSP_EMAC": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        },
+        "AC_VM_ROCE": {
+            "type": "AC_SMMU",
+            "ipa_eq_pa": "AC_SMMU_IPA_EQUALS_PA",
+            "input": 36,
+            "output": 36
+        }
+    },
+
+    "xpu_names": {
+        "AMM_LPMLA_ENPU_SCH_MPU_XPU4": "HAL_XPU2_LPASS_ENPU_SCH_MPU",
+        "AMM_LPMLA_ENPU0_MPU_XPU4": "HAL_XPU2_ENPU_AUDIO_MPU",
+        "AMM_LPMLA_ENPU1_MPU_XPU4": "HAL_XPU2_ENPU_CAMERA_MPU",
+        "ANOC_IPA_MPU_XPU4": "HAL_XPU2_NOC_IPA_RA",
+        "AOC_MPU_XPU4": "HAL_XPU2_LPASS_AOC_MPU",
+        "AOPSS_MPU_XPU4": "HAL_XPU2_AOSS_AOPSS_MPU",
+        "AOSS_PERIPH_MPU_XPU4": "HAL_XPU2_AOSS_PERPH_MPU",
+        "APSS_GIC_NOC_EPSS_MPU_XPU4": "HAL_XPU2_GIC_MPU_RA",
+        "APSS_PS_APSS_XPU4": "HAL_XPU2_APSS_PS_APSS",
+        "APSS_QHS_CPUCP_PERIPH_XPU4": "HAL_XPU2_APSS_QHS_CPUCP",
+        "APSS_QHS_NSINW_XPU4": "HAL_XPU2_APSS_QHS_NSINW",
+        "APSS_QHS_PERIPH_XPU4": "HAL_XPU2_APSS_QHS_PERIPH",
+        "APSS_QHS_SRVC_NTW_XPU4": "HAL_XPU2_APSS_QHS_SRVC_NTW",
+        "APSS_QNS_NSINOC_XPU4": "HAL_XPU2_APSS_QNS_NSINOC",
+        "APSS_QSS_NSINOC_DEBUG_XPU4": "HAL_XPU2_APSS_QSS_NSINOC_DEBUG",
+        "APSS_QSS_NSINOC_MPU_XPU4": "HAL_XPU2_APSS_QSS_NSINOC_MPU",
+        "APSS_XM_CE0_XPU4": "HAL_XPU2_APSS_XM_CE0_RA",
+        "APSS_XM_CE1_XPU4": "HAL_XPU2_APSS_XM_CE1_RA",
+        "APSS_XM_CPUCP_XPU4": "HAL_XPU2_APSS_HM_APSS_XM_CPUCP_RA",
+        "APSS_XS_GIC_XPU4": "HAL_XPU2_APSS_XS_GIC",
+        "BOOT_ROM_XPU4": "HAL_XPU2_BOOT_ROM",
+        "BROADCAST_MPU_XPU4": "HAL_DC_NOC_BROADCAST_MPU",
+        "CMSR_MPU_REGS_XPU4": "HAL_XPU2_CMSR_MPU_REGS_XPU",
+        "CNOC_AOSS_MPU_XPU4": "HAL_XPU2_CNOC_AOSS_MPU",
+        "CNOC_CMN_PLL_CFG_MPU_XPU4": "HAL_XPU2_CNOC_CMN_PLL_CFG_MPU",
+        "CNOC_D2D_CONTROL_MPU_XPU4": "HAL_XPU2_CNOC_D2D_CONTROL_MPU",
+        "CNOC_DAP_MPU_XPU4": "HAL_XPU2_CNOC_DAP_MPU",
+        "CNOC_LPASS_CFG_MPU_XPU4": "HAL_XPU2_CNOC_LPASS_CFG_MPU",
+        "CNOC_NOC_CFG_MPU_XPU4": "HAL_XPU2_CNOC_NOC_CFG_MPU",
+        "CNOC_NSSNOC_MPU_XPU4": "HAL_XPU2_CNOC_NSSNOC_MPU",
+        "CNOC_PCIE_CFG_MPU_XPU4": "HAL_XPU2_CNOC_PCIE_CFG_MPU",
+        "CNOC_PROCESSOR_CFG_MPU_XPU4": "HAL_XPU2_CNOC_PROCESSOR_CFG_MPU",
+        "CNOC_QDSS_CFG_MPU_XPU4": "HAL_XPU2_CNOC_QDSS_CFG_MPU",
+        "CNOC_SDCC_CFG_MPU_XPU4": "HAL_XPU2_CNOC_SDCC_CFG_MPU",
+        "CNOC_TCU_CFG_MPU_XPU4": "HAL_XPU2_CNOC_TCU_CFG_MPU",
+        "CNOC_USBCTL_CFG_MPU_XPU4": "HAL_XPU2_CNOC_USBCTL_CFG_MPU",
+        "CNOC_USBPHY_USB2_CORE_PHY_CFG_MPU_XPU4": "HAL_XPU2_CNOC_USBPHY_USB2_CORE_PHY_CFG_MPU",
+        "CNOC_DCC_MPU_XPU4": "HAL_XPU2_CNOC_DCC_MPU",
+        "CNOC_GEMNOC_MPU_XPU4": "HAL_XPU2_CNOC_SNOC_MS_MPU",
+        "CNOC_GEMNOC_PCIE_MPU_XPU4": "HAL_XPU2_GEMNOC_PCIE_MPU",
+        "CNOC_HIGH_BW_SS_MPU_XPU4": "HAL_XPU2_CNOC_HIGH_BW_MPU",
+        "CNOC_HSCNOC_MPU_XPU4": "HAL_XPU2_CNOC_SNOC_MS_MPU",
+        "CNOC_MPU_XPU4": "HAL_XPU2_CNOC_SNOC_MPU ",
+        "CNOC_QHM_AOSS_MPU_XPU4": "HAL_XPU2_QHM_CNOC_AOSS_MPU",
+        "CNOC_SAIL_MPU_XPU4": "HAL_XPU2_CNOC_SAIL_MPU",
+        "CNOC_SOCCP_MPU_XPU4": "HAL_XPU2_SOCCP_DEBUG_MS_MPU",
+        "CNOC_SS_MPU_XPU4": "HAL_XPU2_CNOC_SNOC_MPU",
+        "CRYPTO0_CRYPTO_BAM_XPU_ER_XPU4": "HAL_XPU2_CRYPTO0_BAM",
+        "CRYPTO0_CRYPTO_BAM_XPU_RA_XPU4": "HAL_XPU2_CRYPTO0_BAM_RA",
+        "CRYPTO0_CRYPTO_KM_XPU4": "HAL_XPU2_CRYPTO0_CRYPTO_KM_APU",
+        "CRYPTO1_CRYPTO_BAM_XPU_ER_XPU4": "HAL_XPU2_CRYPTO1_BAM",
+        "CRYPTO1_CRYPTO_BAM_XPU_RA_XPU4": "HAL_XPU2_CRYPTO1_BAM_RA",
+        "CRYPTO1_CRYPTO_KM_XPU4": "HAL_XPU2_CRYPTO1_CRYPTO_KM_APU",
+        "CRYPTO2_CRYPTO_BAM_XPU_ER_XPU4": "HAL_XPU2_CRYPTO2_BAM",
+        "CRYPTO2_CRYPTO_BAM_XPU_RA_XPU4": "HAL_XPU2_CRYPTO2_BAM_RA",
+        "CRYPTO2_CRYPTO_KM_XPU4": "HAL_XPU2_CRYPTO2_CRYPTO_KM_APU",
+        "DCC_MPU_XPU4": "HAL_XPU2_CNOC_DCC_MPU",
+        "DCP_RVCP_SLV_XPU4": "HAL_XPU2_DCP_RVCP_SLV_MPU",
+        "DEBUG_APBM_MPU_XPU4": "HAL_XPU2_LPASS_DEBUG_IP_MPU",
+        "DMA_XPU4": "HAL_XPU2_DMA_APU",
+        "DPRX_0_XPU4": "HAL_XPU2_DPRX_0_APU",
+        "DPRX_1_XPU4": "HAL_XPU2_DPRX_1_APU",
+        "DSP_AHBM_MPU_XPU4": "HAL_XPU2_LPASS_DSP_AHBM_MPU",
+        "ENPU_AUDIO_MPU_XPU4": "HAL_XPU2_ENPU_AUDIO_MPU",
+        "ENPU_CAMERA_MPU_XPU4": "HAL_XPU2_ENPU_CAMERA_MPU",
+        "ENPU_SCH_MPU_XPU4": "HAL_XPU2_LPASS_ENPU_SCH_MPU",
+        "GCC_RPU_XPU4": "HAL_XPU2_GCC_RPU",
+        "GEMNOC_PCIE_MPU_XPU4": "HAL_XPU2_GEMNOC_PCIE_MPU",
+        "HPASS_QHM_AUDIO_CORE_DP0_MPU_XPU4": "HAL_XPU2_HPASS_AUDIO_DP0_MPU",
+        "HPASS_QHM_AUDIO_CORE_DP1_MPU_XPU4": "HAL_XPU2_HPASS_AUDIO_DP1_MPU",
+        "HPASS_QXM_AUDIO_CORE_QAIF_DDR_MPU_XPU4": "HAL_XPU2_HPASS_AUDIO_QXM_DDR_MPU",
+        "HPASS_QXM_AUDIO_CORE_QAIF_TCM_MPU_XPU4": "HAL_XPU2_HPASS_AUDIO_QXM_TCM_MPU",
+        "IPA_ER_XPU_CFG_XPU4": "HAL_XPU2_IPA_0_GSI_TOP",
+        "IPA_MPU_XPU4": "HAL_XPU2_NOC_IPA_RA",
+        "IPA_RA_XPU_CFG_XPU4": "HAL_XPU2_IPA_RA",
+        "IPC_XPU4": "HAL_XPU2_IPC_MPU",
+        "IPC_SOC_XPU4": "HAL_XPU2_IPC_MPU",
+        "LLCC_AND_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_LLCC_AND_BROADCAST_MPU",
+        "LLCC_AND_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_LLCC_AND_SCID_MPU",
+        "LLCC_OR_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_LLCC_OR_BROADCAST_MPU",
+        "LLCC_OR_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_LLCC_OR_SCID_MPU",
+        "LPASS_0_LPMLA_MPU_XPU4": "HAL_XPU2_LPASS_0_LPMLA_MPU",
+        "LPASS_1_LPMLA_MPU_XPU4": "HAL_XPU2_LPASS_1_LPMLA_MPU",
+        "LPASS_AUD_SB_XPU4": "HAL_XPU2_LPASS_XPU_AUD_SB",
+        "LPASS_AUD_XPU4": "HAL_XPU2_LPASS_XPU_AUD",
+        "LPASS_CDC_SEQ_XPU4": "HAL_XPU2_LPASS_VA_SEQ_MPU",
+        "LPASS_LPIAON_MPU_XPU4": "HAL_XPU2_LPASS_LPIAON_MPU",
+        "LPASS_RXTX_XPU4": "HAL_XPU2_LPASS_RXTX_MPU",
+        "LPASS_WSA_2CH_XPU4": "HAL_XPU2_LPASS_WSA2_DMA_MPU",
+        "LPASS_WSA_XPU4": "HAL_XPU2_LPASS_WSA_MPU",
+        "MACH9_0_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_BIMC_MPU0",
+        "MACH9_0_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_LLCC_SCID_MPU0",
+        "MACH9_1_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_BIMC_MPU1",
+        "MACH9_1_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_LLCC_SCID_MPU1",
+        "MACH9_2_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_BIMC_MPU2",
+        "MACH9_2_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_LLCC_SCID_MPU2",
+        "MACH9_3_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_BIMC_MPU3",
+        "MACH9_3_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_LLCC_SCID_MPU3",
+        "MACH9_GLB_AND_BCAST_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_BIMC_AND_GLB_MPU",
+        "MACH9_GLB_AND_BCAST_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_LLCC_SCID_AND_GLB_MPU",
+        "MACH9_GLB_OR_BCAST_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_BIMC_OR_GLB_MPU",
+        "MACH9_GLB_OR_BCAST_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_LLCC_SCID_OR_GLB_MPU",
+        "MDSS_0_MDSS_XPU_RA_XPU4": "HAL_XPU2_MDSS0_RA",
+        "MDSS_0_MDSS_XPU_XPU4": "HAL_XPU2_MDSS0",
+        "MDSS_1_MDSS_XPU_RA_XPU4": "HAL_XPU2_MDSS1_RA",
+        "MDSS_1_MDSS_XPU_XPU4": "HAL_XPU2_MDSS1",
+        "MDSS_XPU_XPU4": "HAL_XPU2_MDSS_XPU",
+        "MDSS_XPU_RA_XPU4": "HAL_XPU2_MDSS_RA",
+        "MM_RSCC_XPU4": "HAL_XPU2_MM_RSCC_MPU",
+        "MPU_REGS_XPU4": "HAL_XPU2_CMSR_MPU_REGS_XPU",
+        "MSS_CRYPTO_KM_XPU4": "HAL_XPU2_MSS_CRYPTO_KM_APU",
+        "MVMSS_XPU_INTCON_MVMSS_CNOC_MPU_XPU4": "HAL_XPU2_MVMSS_CNOC_MPU",
+        "NE_GCC_RPU_XPU4": "HAL_XPU2_GCC_NE_RPU",
+        "NW_GCC_RPU_XPU4": "HAL_XPU2_GCC_NW_RPU",
+        "NON_BROADCAST_MPU_XPU4": "HAL_DC_NOC_NON_BROADCAST_MPU",
+        "OCIMEM_APU_XPU4": "HAL_XPU2_IMEM_APU",
+        "OCIMEM_MPU_XPU4": "HAL_XPU2_IMEM_MPU",
+        "PCIE_DMA_0_MPU_XPU4": "HAL_XPU2_PCIE_DMA_0_MPU",
+        "PCIE_DMA_1_MPU_XPU4": "HAL_XPU2_PCIE_DMA_1_MPU",
+        "PCIE_DMA_2_MPU_XPU4": "HAL_XPU2_PCIE_DMA_2_MPU",
+        "PCIE_RSCC_XPU4": "HAL_XPU2_PCIE_RSCC_RA_MPU",
+        "PERIPH_SS_SDC1_SDCC_ICE_XPU4": "HAL_XPU2_SDC1_SDCC_ICE",
+        "PERIPH_SS_SDC1_SDCC_ICE_KM_XPU4": "HAL_XPU2_SDC1_SDCC_ICE_KM_APU",
+        "PM_AGNOC_DEBUG_APBM_MPU_XPU4": "HAL_XPU2_PM_APMB_DEBUG_MPU",
+        "PM_DEBUG_MPU_XPU4": "HAL_XPU2_PM_DEBUG_MPU",
+        "PM_DEBUG_ER_MPU_XPU4": "HAL_XPU2_PM_DEBUG_MPU",
+        "PMIC_ARB_XPU4": "HAL_XPU2_PMIC_ARB",
+        "PRBDMA_MPU_XPU4": "HAL_XPU2_PRBDMA_MPU",
+        "PS_APSS_MPU_XPU4": "HAL_XPU2_APSS_QSS_NSINOC_MPU",
+        "QDSS_DCC_DCC_XPU4": "HAL_XPU2_DCC",
+        "QHM_AOSS_MS_MPU_XPU4": "HAL_AOSS_MPU",
+        "QHM_HPASS_CRM_MPU_XPU4": "HAL_XPU2_HPASS_CRM_XPU",
+        "QHM_HPASS_DSP0_MPU_XPU4": "HAL_XPU2_HPASS_DSP0_MPU",
+        "QHM_HPASS_DSP1_MPU_XPU4": "HAL_XPU2_HPASS_DSP1_MPU",
+        "QHM_HPASS_DSP2_MPU_XPU4": "HAL_XPU2_HPASS_DSP2_MPU",
+        "QHM_HW_DSC_MPU_XPU4": "HAL_XPU2_QHM_HW_DSC_MPU_ER",
+        "QHS_BROADCAST_MPU_GLB_AND_BCAST_XPU4": "HAL_XPU2_QHS_BCAST_GLB_AND_MPU",
+        "QHS_BROADCAST_MPU_GLB_OR_BCAST_XPU4": "HAL_XPU2_QHS_BCAST_GLB_OR_MPU",
+        "QHS_CLOCK_PERIPH_MPU_XPU4": "HAL_XPU2_APSS_QHS_CLOCK_MPU",
+        "QHS_CPUCP_PERIPH_MPU_XPU4": "HAL_XPU2_APSS_QHS_CPUCP",
+        "QHS_NON_BROADCAST_MPU_GLB_AND_BCAST_XPU4": "HAL_XPU2_QHS_NON_BCAST_GLB_AND_MPU",
+        "QHS_NON_BROADCAST_MPU_GLB_OR_BCAST_XPU4": "HAL_XPU2_QHS_NON_BCAST_GLB_OR_MPU",
+        "QHS_NSINW_MPU_XPU4": "HAL_XPU2_APSS_QHS_NSINW",
+        "QHS_PERIPH_MPU_XPU4": "HAL_XPU2_APSS_QHS_PERIPH",
+        "QHS_SRVC_NTW_MPU_XPU4": "HAL_XPU2_APSS_QHS_SRVC_NTW",
+        "QM_MPU_CFG_XPU4": "HAL_XPU2_QM_MPU_CFG",
+        "QNM_APSS_NOC_MPU_XPU4": "HAL_XPU2_APSS_NOC_MPU",
+        "QNM_CNOC_ER_MPU_XPU4": "HAL_XPU2_QNM_CNOC_MPU",
+        "QNM_CPUSS_NOC_MPU_XPU4": "HAL_XPU2_CPUSS_NOC_MPU",
+        "QNM_GEMNOC_MS_MPU_XPU4": "HAL_XPU2_GEMNOC_MS_MPU",
+        "QNM_HPASS_CONFIG_NOC_MPU_XPU4": "HAL_XPU2_HPASS_COFIG_NOC_MPU",
+        "QNM_HPASS_DSP0_0_MPU_XPU4": "HAL_XPU2_HPASS_DSP0_0_MPU",
+        "QNM_HPASS_DSP0_1_MPU_XPU4": "HAL_XPU2_HPASS_DSP0_1_MPU",
+        "QNM_HPASS_DSP1_0_MPU_XPU4": "HAL_XPU2_HPASS_DSP1_0_MPU",
+        "QNM_HPASS_DSP1_1_MPU_XPU4": "HAL_XPU2_HPASS_DSP1_1_MPU",
+        "QNM_HPASS_DSP2_0_MPU_XPU4": "HAL_XPU2_HPASS_DSP2_0_MPU",
+        "QNM_HPASS_DSP2_1_MPU_XPU4": "HAL_XPU2_HPASS_DSP2_1_MPU",
+        "QPACE_MPU_XPU4": "HAL_XPU2_QPACE_MPU",
+        "QPIC_XPU4": "HAL_XPU2_QPIC_APU",
+        "QPIC_QPIC_MPU_XPU4": "HAL_XPU2_QPIC_MPU",
+        "QSPI_XPU4": "HAL_XPU2_QSPI_APU",
+        "QUPV3_0_MPU4XPU4": "HAL_XPU2_QUPV3_1_MPU",
+        "QUPV3_1_MPU4XPU4": "HAL_XPU2_QUPV3_1_MPU",
+        "QUPV3_2_MPU4XPU4": "HAL_XPU2_QUPV3_2_MPU",
+        "QUPV3_3_MPU4XPU4": "HAL_XPU2_QUPV3_3_MPU",
+        "QUPV3_4_MPU4XPU4": "HAL_XPU2_QUPV3_4_MPU",
+        "QUPV3_0_XPU4": "HAL_XPU2_BAM_BLSP0_DMA",
+        "QUPV3_1_XPU4": "HAL_XPU2_BAM_BLSP1_DMA",
+        "QUPV3_2_XPU4": "HAL_XPU2_BAM_BLSP2_DMA",
+        "QUPV3_3_XPU4": "HAL_XPU2_BAM_BLSP3_DMA",
+        "QUPV3_4_XPU4": "HAL_XPU2_BAM_BLSP4_DMA",
+        "RNG_APU_XPU4": "HAL_XPU2_PRNG_APU",
+        "RPMH_MPU_XPU4": "HAL_XPU2_AOSS_RPMH_MPU",
+        "RSC_CRM_MPU_XPU4": "HAL_XPU2_RSC_CRM_MPU",
+        "SAIL_ETH_MS_MPU_XPU4": "HAL_XPU2_ETH_MS_MPU",
+        "SAIL_R52_MS_MPU_XPU4": "HAL_XPU2_R52_MS_MPU",
+        "SDC_MPU_XPU4": "HAL_XPU2_LPASS_SDC_MPU",
+        "SE_GCC_RPU_XPU4": "HAL_XPU2_GCC_SE_RPU",
+        "SHRM_MPU_XPU4": "HAL_XPU2_DC_NOC_SHRM_MPU",
+        "SOCCP_RVCP_SLV_XPU4": "HAL_XPU2_SOCCP_CNOC_SLV_MPU",
+        "SOCCP_SOCCP_CNOC_MST_XPU4": "HAL_XPU2_SOCCP_CNOC_MST_MPU",
+        "SOCCP_SOCCP_CNOC_SLV_XPU4": "HAL_XPU2_SOCCP_CNOC_SLV_MPU",
+        "SP_CNOC_SP_SCSR_XPU4": "HAL_XPU2_SP_SCSR",
+        "SSC_MPU_XPU4": "HAL_XPU2_LPASS_CORE_SSC_MPU",
+        "SSC_MPU_1_XPU4": "HAL_XPU2_LPASS_CORE_SSC_1_MPU",
+        "SSC_QUPV3_XPU4": "HAL_XPU2_LPASS_SSC_BLSP_BAM",
+        "SSC_QUPV3_1_XPU4": "HAL_XPU2_LPASS_SSC_BLSP_1_BAM",
+        "TCSR_REGS_XPU4": "HAL_XPU2_TCSR_REGS",
+        "TITAN_A_XPU4_RT_0_XPU4": "HAL_XPU2_TITAN_RT1_MPU",
+        "TITAN_A_XPU4_RT_1_XPU4": "HAL_XPU2_TITAN_RT2_MPU",
+        "TLMM_XPU_XPU4": "HAL_XPU2_TLMM",
+        "TME_CPU_XPU4": "HAL_XPU2_TME_CNOC_MPU",
+        "TME_QFPROM_XPU4": "HAL_XPU2_TME_QFPROM_APU",
+        "TSCSS_MPU_XPU4": "HAL_XPU2_TSCSS_MPU",
+        "UFS_MEM_ICE_KM_XPU4": "HAL_XPU2_UFS_MEM_ICE_KM_APU",
+        "UFS_MEM_ICE_XPU4": "HAL_XPU2_UFS_ICE",
+        "WPSS_MPU_CFG_XPU4": "HAL_XPU2_WPSS_MS_MPU",
+        "XM_CE0_MPU_XPU4": "HAL_XPU2_APSS_XM_CE0_RA",
+        "XM_CE1_MPU_XPU4": "HAL_XPU2_APSS_XM_CE1_RA",
+        "XM_CE2_MPU_XPU4": "HAL_XPU2_APSS_XM_CE2_RA",
+        "XM_CPUCP_RA_MPU_XPU4": "HAL_XPU2_APSS_HM_APSS_XM_CPUCP_RA",
+        "XM_CPUCPS_MPU_XPU4": "HAL_XPU2_APSS_HM_APSS_XM_CPUCP_RA",
+        "XM_DAP_MS_MPU_XPU4": "HAL_XPU2_CNOC_DAP_MPU",
+        "XS_GIC_MPU_XPU4": "HAL_XPU2_APSS_XS_GIC",
+        "XPU_CFG_LPASS_XPU4": "HAL_XPU2_LPASS_CFG_MPU",
+        "LLCC_CH02_OR_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_XPU_UNSUPPORTED",
+        "LLCC_CH02_OR_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_XPU_UNSUPPORTED",
+        "LLCC_CH02_AND_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_XPU_UNSUPPORTED",
+        "LLCC_CH02_AND_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_XPU_UNSUPPORTED",
+        "LLCC_CH13_OR_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_XPU_UNSUPPORTED",
+        "LLCC_CH13_OR_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_XPU_UNSUPPORTED",
+        "LLCC_CH13_AND_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_XPU_UNSUPPORTED",
+        "LLCC_CH13_AND_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_XPU_UNSUPPORTED",
+        "DDR_SLICE_0_QHS_BROADCAST_MPU_XPU4": "HAL_XPU2_DDR_SLICE0_QHS_BROADCAST_MPU",
+        "DDR_SLICE_1_QHS_BROADCAST_MPU_XPU4": "HAL_XPU2_DDR_SLICE1_QHS_BROADCAST_MPU",
+        "DDR_SLICE_2_QHS_BROADCAST_MPU_XPU4": "HAL_XPU2_DDR_SLICE2_QHS_BROADCAST_MPU",
+        "DDR_SLICE_3_QHS_BROADCAST_MPU_XPU4": "HAL_XPU2_DDR_SLICE3_QHS_BROADCAST_MPU",
+        "DDR_SLICE_0_QHS_NON_BROADCAST_MPU_XPU4": "HAL_XPU2_DDR_SLICE0_QHS_NON_BROADCAST_MPU",
+        "DDR_SLICE_1_QHS_NON_BROADCAST_MPU_XPU4": "HAL_XPU2_DDR_SLICE1_QHS_NON_BROADCAST_MPU",
+        "DDR_SLICE_2_QHS_NON_BROADCAST_MPU_XPU4": "HAL_XPU2_DDR_SLICE2_QHS_NON_BROADCAST_MPU",
+        "DDR_SLICE_3_QHS_NON_BROADCAST_MPU_XPU4": "HAL_XPU2_DDR_SLICE3_QHS_NON_BROADCAST_MPU",
+        "DDR_SLICE_0_MACH9_0_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE0_CH0_LLCC_SCID_MPU",
+        "DDR_SLICE_1_MACH9_0_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE1_CH0_LLCC_SCID_MPU",
+        "DDR_SLICE_2_MACH9_0_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE2_CH0_LLCC_SCID_MPU",
+        "DDR_SLICE_3_MACH9_0_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE3_CH0_LLCC_SCID_MPU",
+        "DDR_SLICE_0_MACH9_0_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE0_CH0_BIMC_MPU",
+        "DDR_SLICE_1_MACH9_0_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE1_CH0_BIMC_MPU",
+        "DDR_SLICE_2_MACH9_0_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE2_CH0_BIMC_MPU",
+        "DDR_SLICE_3_MACH9_0_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE3_CH0_BIMC_MPU",
+        "DDR_SLICE_0_MACH9_1_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE0_CH1_LLCC_SCID_MPU",
+        "DDR_SLICE_1_MACH9_1_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE1_CH1_LLCC_SCID_MPU",
+        "DDR_SLICE_2_MACH9_1_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE2_CH1_LLCC_SCID_MPU",
+        "DDR_SLICE_3_MACH9_1_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE3_CH1_LLCC_SCID_MPU",
+        "DDR_SLICE_0_MACH9_1_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE0_CH1_BIMC_MPU",
+        "DDR_SLICE_1_MACH9_1_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE1_CH1_BIMC_MPU",
+        "DDR_SLICE_2_MACH9_1_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE2_CH1_BIMC_MPU",
+        "DDR_SLICE_3_MACH9_1_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE3_CH1_BIMC_MPU",
+        "DDR_SLICE_0_MACH9_2_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE0_CH2_LLCC_SCID_MPU",
+        "DDR_SLICE_1_MACH9_2_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE1_CH2_LLCC_SCID_MPU",
+        "DDR_SLICE_2_MACH9_2_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE2_CH2_LLCC_SCID_MPU",
+        "DDR_SLICE_3_MACH9_2_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE3_CH2_LLCC_SCID_MPU",
+        "DDR_SLICE_0_MACH9_2_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE0_CH2_BIMC_MPU",
+        "DDR_SLICE_1_MACH9_2_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE1_CH2_BIMC_MPU",
+        "DDR_SLICE_2_MACH9_2_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE2_CH2_BIMC_MPU",
+        "DDR_SLICE_3_MACH9_2_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE3_CH2_BIMC_MPU",
+        "DDR_SLICE_0_MACH9_3_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE0_CH3_LLCC_SCID_MPU",
+        "DDR_SLICE_1_MACH9_3_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE1_CH3_LLCC_SCID_MPU",
+        "DDR_SLICE_2_MACH9_3_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE2_CH3_LLCC_SCID_MPU",
+        "DDR_SLICE_3_MACH9_3_LLCC_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE3_CH3_LLCC_SCID_MPU",
+        "DDR_SLICE_0_MACH9_3_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE0_CH3_BIMC_MPU",
+        "DDR_SLICE_1_MACH9_3_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE1_CH3_BIMC_MPU",
+        "DDR_SLICE_2_MACH9_3_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE2_CH3_BIMC_MPU",
+        "DDR_SLICE_3_MACH9_3_LLCC_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE3_CH3_BIMC_MPU",
+        "DDR_SLICE_0_QHM_SHRM_MPU_XPU4": "HAL_XPU2_DC_NOC_SHRM_MPU",
+        "DDR_SLICE_1_QHM_SHRM_MPU_XPU4": "HAL_XPU2_DC_NOC_SHRM_1_MPU",
+        "DDR_SLICE_2_QHM_SHRM_MPU_XPU4": "HAL_XPU2_DC_NOC_SHRM_2_MPU",
+        "DDR_SLICE_3_QHM_SHRM_MPU_XPU4": "HAL_XPU2_DC_NOC_SHRM_3_MPU",
+        "DDR_SLICE_0_LLCC_AND_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE0_LLCC_AND_BCAST_LLCC_MPU",
+        "DDR_SLICE_0_LLCC_AND_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE0_LLCC_AND_BCAST_LLCC_SCID_MPU",
+        "DDR_SLICE_0_LLCC_OR_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE0_LLCC_OR_BCAST_LLCC_MPU",
+        "DDR_SLICE_0_LLCC_OR_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE0_LLCC_OR_BCAST_LLCC_SCID_MPU",
+        "DDR_SLICE_1_LLCC_AND_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE1_LLCC_AND_BCAST_LLCC_MPU",
+        "DDR_SLICE_1_LLCC_AND_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE1_LLCC_AND_BCAST_LLCC_SCID_MPU",
+        "DDR_SLICE_1_LLCC_OR_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE1_LLCC_OR_BCAST_LLCC_MPU",
+        "DDR_SLICE_1_LLCC_OR_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE1_LLCC_OR_BCAST_LLCC_SCID_MPU",
+        "DDR_SLICE_2_LLCC_AND_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE2_LLCC_AND_BCAST_LLCC_MPU",
+        "DDR_SLICE_2_LLCC_AND_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE2_LLCC_AND_BCAST_LLCC_SCID_MPU",
+        "DDR_SLICE_2_LLCC_OR_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE2_LLCC_OR_BCAST_LLCC_MPU",
+        "DDR_SLICE_2_LLCC_OR_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE2_LLCC_OR_BCAST_LLCC_SCID_MPU",
+        "DDR_SLICE_3_LLCC_AND_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE3_LLCC_AND_BCAST_LLCC_MPU",
+        "DDR_SLICE_3_LLCC_AND_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE3_LLCC_AND_BCAST_LLCC_SCID_MPU",
+        "DDR_SLICE_3_LLCC_OR_BCAST_LLCC_MPU_XPU4": "HAL_XPU2_DDR_SLICE3_LLCC_OR_BCAST_LLCC_MPU",
+        "DDR_SLICE_3_LLCC_OR_BCAST_LLCC_SCID_XPU4": "HAL_XPU2_DDR_SLICE3_LLCC_OR_BCAST_LLCC_SCID_MPU",
+        "GEMNOC_CFG_XPU4": "HAL_XPU2_GEMNOC_CFG_MPU",
+        "MACHX_LLCC_MPU_XPU4": "HAL_XPU2_MACHX_LLCC_MPU",
+        "MACHX_LLCC_SCID_XPU4": "HAL_XPU2_MACHX_LLCC_SCID_MPU",
+        "MPM2_MPM_APU_XPU4": "HAL_XPU2_MPM2_MPM_APU",
+        "QDSS_CFG_DCC_DCC_XPU4": "HAL_XPU2_QDSS_CFG_DCC_DCC",
+        "QMIP_XPU_CFG_XPU4": "HAL_XPU2_QMIP_XPU_CFG",
+        "SDC1_SDCC_ICE_XPU4": "HAL_XPU2_SDC1_SDCC_ICE",
+        "SEC_CTRL_APU_XPU4": "HAL_XPU2_SEC_CTRL_APU",
+        "TCSR_XPU4": "HAL_XPU2_TCSR_REGS",
+        "TLMM_XPU4": "HAL_XPU2_TLMM",
+        "XS_PCIE_1LANE_0_MPU_XPU4": "HAL_XPU2_XS_PCIE_1LANE_0_MPU",
+        "XS_PCIE_1LANE_1_MPU_XPU4": "HAL_XPU2_XS_PCIE_1LANE_1_MPU",
+        "XS_PCIE_2LANE_0_MPU_XPU4": "HAL_XPU2_XS_PCIE_2LANE_0_MPU",
+        "XS_PCIE_2LANE_1_MPU_XPU4": "HAL_XPU2_XS_PCIE_2LANE_1_MPU",
+        "XS_PCIE_2LANE_2_MPU_XPU4": "HAL_XPU2_XS_PCIE_2LANE_2_MPU",
+        "XPU4": "HAL_XPU2_QUPV3_5_GSI_TOP"
+    }
+}

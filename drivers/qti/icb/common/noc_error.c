@@ -26,7 +26,7 @@
 
 #define REGISTER_VALID(offs) ((offs) != REGISTER_NOT_APPLICABLE)
 
-spinlock_t isr_log_sync_lock = {0};
+extern spinlock_t isr_log_sync_lock;
 
 extern nocerr_config_info_type nocerr_config_info;
 extern nocerr_config_info_type_oem nocerr_config_info_oem;

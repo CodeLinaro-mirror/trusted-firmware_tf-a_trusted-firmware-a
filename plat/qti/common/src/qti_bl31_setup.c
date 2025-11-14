@@ -24,6 +24,10 @@
 #include <qtiseclib_interface.h>
 #include <icb_error.h>
 
+#ifdef ENABLE_XPU
+#include <qti_xpu.h>
+#endif
+
 /*
  * Placeholder variables for copying the BL32 and Bl33 arguments that have been
  * passed to BL31 from BL2.
@@ -44,6 +48,9 @@ static uint64_t g_qti_cpu_cntfrq;
  * Any other value means cold booted.
  */
 uint32_t g_qti_bl31_cold_booted;
+
+/* Lock for exclusive logging */
+spinlock_t isr_log_sync_lock = {0};
 
 /*******************************************************************************
  * Helper to extract BL31 entry point info from arg0 passed to BL31
@@ -147,6 +154,11 @@ void bl31_platform_setup(void)
 	qtiseclib_bl31_platform_setup();
 #ifdef ENABLE_ICB
 	qti_icb_error_init();
+#endif
+
+#ifdef ENABLE_XPU
+	/* Initialize Access Control (XPU) driver with platform-specific configuration */
+	ac_xpu_init();
 #endif
 
 	/* set boot state to cold boot complete. */

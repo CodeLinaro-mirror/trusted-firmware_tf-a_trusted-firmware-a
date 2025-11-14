@@ -110,6 +110,12 @@ GIC_SOURCES		:=	plat/common/plat_gicv3.c			\
 CPU_SOURCES		:=	lib/cpus/aarch64/cortex_a78.S			\
 				lib/cpus/aarch64/cortex_a55.S			\
 
+# xPU Configuration
+XPU_VERSION := v4
+
+# Include xPU driver
+include drivers/qti/accesscontrol/xpu/xpu.mk
+
 BL31_SOURCES		+=	${QTI_BL31_SOURCES}				\
 				${PSCI_SOURCES}					\
 				${GIC_SOURCES}					\

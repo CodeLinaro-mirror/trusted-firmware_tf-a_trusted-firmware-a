@@ -1,0 +1,140 @@
+{
+    "ac_enabled": true,
+    "xpu_enabled": true,
+    "sle_enabled_val": 5,
+    "use_ipcat_order": true,
+    "use_clean_names": true,
+    "xpu_rev_raw": "4.3.0",
+    "rom_version": 1,
+    "ac_entry": "0",
+    "skip_dbgar_programming": true,
+    "skip_xpu_debugar": ["OCIMEM_MPU_XPU4"],
+
+    "device_addr_info": [
+        {
+            "start": "0x00000000",
+            "end": "0x80000000"
+        }
+    ],
+
+    "interupt_info": [],
+
+    "secure_channels": {
+    },
+
+    "unmap_regions": [],
+
+    "target_vmid_cfg_arr": {},
+
+    "tcsr_config": {
+        "GCR": {
+            "addr": "0x0",
+            "Value": {
+                "CMOCESDE": false,
+                "CMOCCNRWCE": false,
+                "APNSEE": false,
+                "CFGOWNS": false
+            },
+            "Bit": {
+                "CMOCESDE": 3,
+                "CMOCCNRWCE": 2,
+                "APNSEE": 1,
+                "CFGOWNS": 0
+            }
+        },
+
+        "DCR": {
+            "addr": "0x0",
+            "SLE": false
+        },
+
+        "VIOCR": {
+            "addr": "0x0",
+            "APSVIOE_XPU": false,
+            "APSVIOE_VMIDMT": false
+        }
+    },
+
+    "xpu_protected_ms_ranges": [],
+
+    "xpu_protected_ranges": [
+        {
+            "xpuId": "HAL_XPU2_IMEM_MPU",
+            "ranges": [
+                {
+                    "start": "0x8600000",
+                    "end": "0x8620000",
+                    "comment": "IMEM region"
+                }
+            ]
+        },
+        {
+            "xpuId": "HAL_XPU2_MACHX_LLCC_MPU",
+            "ranges": [
+                {
+                    "start": "0x80000000",
+                    "end": "0x100000000",
+                    "comment": "DDR space - region 1"
+                },
+                {
+                    "start": "0x800000000",
+                    "end": "0xB80000000",
+                    "comment": "DDR space - region 2"
+                }
+            ]
+        }
+    ],
+
+    "xpu_hw_addr_mask": [
+        {
+            "xpuId": ["HAL_XPU2_BOOT_ROM"],
+            "mask": "0x003FFFFF",
+            "offset": "0x300000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_CNOC_TCU_CFG_MPU"],
+            "mask": "0x1FFFFFFF",
+            "offset": "0x15000000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_QMIP_XPU_CFG"],
+            "mask": "0x0007FFFF",
+            "offset": "0x68000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_QPIC_APU"],
+            "mask": "0x07FFFFFF",
+            "offset": "0x7980000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_SDC1_SDCC_ICE"],
+            "mask": "0x07FFFFFF",
+            "offset": "0x7808000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_TLMM"],
+            "mask": "0x01FFFFFF",
+            "offset": "0x1000000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_QUPV3_5_GSI_TOP"],
+            "mask": "0x01FFFFFF",
+            "offset": "0x1A00000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_GCC_RPU"],
+            "mask": "0xFFFFFFFF",
+            "offset": "0x1800000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_IMEM_MPU"],
+            "mask": "0xFFFFFFFF",
+            "offset": "0x8600000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_TCSR_REGS"],
+            "mask": "0xFFFFFFFF",
+            "offset": "0x01900000"
+        }
+    ]
+}

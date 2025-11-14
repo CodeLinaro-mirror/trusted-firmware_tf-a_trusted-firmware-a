@@ -1,0 +1,260 @@
+{
+    "xPU": {
+        "xPU_WA_Cutoff": {
+            "month": "TBD",
+            "day": "TBD",
+            "year": "TBD"
+        },
+        "ra_xpu_vmid_mapping": {
+        },
+
+        "dynamic_rg_overrides": {
+        },
+
+        "EE_exclusive": {
+        },
+
+        "oem_spare_fuses": [
+        ],
+
+        "er_xpu_interrupt_data": {
+            "num_regs": 2,
+            "num_per": 32,
+            "enable_regs": [
+                {
+                    "addr": "0x193A008",
+                    "mask": "0xFFFFFFFF",
+                    "comment": "Register: TCSR_XPU4_MAL_INTR_TME_IRQ_ENABLE_0_REG_0"
+                },
+                {
+                    "addr": "0x193A00C",
+                    "mask": "0x00000001",
+                    "comment": "Register: TCSR_XPU4_MAL_INTR_TME_IRQ_ENABLE_0_REG_1"
+                }
+            ],
+            "status_regs": [
+                {
+                    "addr": "0x193A000",
+                    "mask": "0xFFFFFFFF",
+                    "comment": "Register: TCSR_XPU4_MAL_INTR_TME_IRQ_STATUS_REG_0"
+                },
+                {
+                    "addr": "0x193A004",
+                    "mask": "0x00000001",
+                    "comment": "Register: TCSR_XPU4_MAL_INTR_TME_IRQ_STATUS_REG_1"
+                }
+            ],
+            "bit_mapping": [
+                {
+                    "reg": "00",
+                    "bit": "00",
+                    "clock": "",
+                    "enum": "HAL_XPU2_BOOT_ROM"
+                },
+                {
+                    "reg": "00",
+                    "bit": "01",
+                    "clock": "",
+                    "enum": "HAL_XPU2_GEMNOC_CFG_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "02",
+                    "clock": "",
+                    "enum": "HAL_XPU2_CNOC_NOC_CFG_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "03",
+                    "clock": "",
+                    "enum": "HAL_XPU2_CNOC_QDSS_CFG_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "04",
+                    "clock": "",
+                    "enum": "HAL_XPU2_CNOC_PCIE_CFG_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "05",
+                    "clock": "",
+                    "enum": "HAL_XPU2_CNOC_CMN_PLL_CFG_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "06",
+                    "clock": "",
+                    "enum": "HAL_XPU2_CNOC_USBPHY_USB2_CORE_PHY_CFG_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "07",
+                    "clock": "",
+                    "enum": "HAL_XPU2_CNOC_LPASS_CFG_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "08",
+                    "clock": "",
+                    "enum": "HAL_XPU2_CNOC_PROCESSOR_CFG_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "09",
+                    "clock": "",
+                    "enum": "HAL_XPU2_CNOC_NSSNOC_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "10",
+                    "clock": "",
+                    "enum": "HAL_XPU2_XS_PCIE_1LANE_0_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "11",
+                    "clock": "",
+                    "enum": "HAL_XPU2_XS_PCIE_1LANE_1_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "12",
+                    "clock": "",
+                    "enum": "HAL_XPU2_XS_PCIE_2LANE_0_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "13",
+                    "clock": "",
+                    "enum": "HAL_XPU2_XS_PCIE_2LANE_1_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "14",
+                    "clock": "",
+                    "enum": "HAL_XPU2_XS_PCIE_2LANE_2_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "15",
+                    "clock": "",
+                    "enum": "HAL_XPU2_CNOC_TCU_CFG_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "16",
+                    "clock": "",
+                    "enum": "HAL_XPU2_GCC_RPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "17",
+                    "clock": "",
+                    "enum": "HAL_XPU2_MPM2_MPM_APU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "18",
+                    "clock": "",
+                    "enum": "HAL_XPU2_MACHX_LLCC_SCID_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "19",
+                    "clock": "",
+                    "enum": "HAL_XPU2_MACHX_LLCC_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "20",
+                    "clock": "",
+                    "enum": "HAL_XPU2_TCSR_REGS"
+                },
+                {
+                    "reg": "00",
+                    "bit": "21",
+                    "clock": "",
+                    "enum": "HAL_XPU2_QMIP_XPU_CFG"
+                },
+                {
+                    "reg": "00",
+                    "bit": "22",
+                    "clock": "",
+                    "enum": "HAL_XPU2_CNOC_SDCC_CFG_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "23",
+                    "clock": "",
+                    "enum": "HAL_XPU2_SEC_CTRL_APU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "24",
+                    "clock": "",
+                    "enum": "HAL_XPU2_TLMM"
+                },
+                {
+                    "reg": "00",
+                    "bit": "25",
+                    "clock": "",
+                    "enum": "HAL_XPU2_CNOC_USBCTL_CFG_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "26",
+                    "clock": "",
+                    "enum": "HAL_XPU2_IMEM_APU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "27",
+                    "clock": "",
+                    "enum": "HAL_XPU2_IMEM_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "28",
+                    "clock": "",
+                    "enum": "HAL_XPU2_QDSS_CFG_DCC_DCC"
+                },
+                {
+                    "reg": "00",
+                    "bit": "29",
+                    "clock": "",
+                    "enum": "HAL_XPU2_QPIC_MPU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "30",
+                    "clock": "",
+                    "enum": "HAL_XPU2_QPIC_APU"
+                },
+                {
+                    "reg": "00",
+                    "bit": "31",
+                    "clock": "",
+                    "enum": "HAL_XPU2_QUPV3_5_GSI_TOP"
+                },
+                {
+                    "reg": "01",
+                    "bit": "00",
+                    "clock": "",
+                    "enum": "HAL_XPU2_SDC1_SDCC_ICE"
+                }
+            ]
+        },
+        "ra_xpu_interrupt_data": {
+            "num_regs": 0,
+            "num_per": 0,
+            "static_signals": {},
+            "bit_mapping": [],
+            "enable_regs": [],
+            "status_regs": []
+        }
+    },
+
+    "RULES": {},
+    "AC_ADDRS_CONSTS_INFO": {}
+}
