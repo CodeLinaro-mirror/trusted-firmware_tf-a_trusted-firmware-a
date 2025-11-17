@@ -57,6 +57,8 @@ void diag_init(void)
 
 #if DIAG_LOG
 	qti_diag_register(&qti_diag, __DIAG_REGION_START__);
+	/* Mark DIAG LOG as runtime usable */
+	console_set_scope(&qti_diag.console, qti_diag.console.flags | CONSOLE_FLAG_RUNTIME);
 #endif
 
 	/* Critical memory barrier added here */
