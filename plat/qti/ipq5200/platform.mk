@@ -16,10 +16,6 @@ SEPARATE_CODE_AND_RODATA	:=	1
 USE_COHERENT_MEM		:=	0
 WARMBOOT_ENABLE_DCACHE_EARLY	:=	1
 
-# Enable DIAG LOG Console
-DIAG_LOG			:=	1
-$(eval $(call add_define,DIAG_LOG))
-
 # Disable the PSCI platform compatibility layer
 ENABLE_PLAT_COMPAT		:=	0
 
@@ -62,7 +58,6 @@ QTI_EXTERNAL_INCLUDES	:=	-I${QTI_PLAT_PATH}/${CHIPSET}/inc			\
 
 QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_helpers.S	\
 				$(QTI_PLAT_PATH)/common/src/$(ARCH)/a53.S		\
-				$(QTI_PLAT_PATH)/common/src/aarch64/qti_diag_console.S	\
 				$(QTI_PLAT_PATH)/common/src/qti_stack_protector.c	\
 				$(QTI_PLAT_PATH)/common/src/qti_common.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_bl31_setup.c		\
@@ -72,7 +67,13 @@ QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_helpers.S	\
 				$(QTI_PLAT_PATH)/common/src/qti_pm.c			\
 				$(QTI_PLAT_PATH)/ipq-common/src/pm_ps_hold.c		\
 				$(QTI_PLAT_PATH)/qtiseclib/src/qtiseclib_cb_interface.c	\
-				$(QTI_PLAT_PATH)/common/src/qti_diag.c			\
+
+# Enable DIAG LOG Console
+DIAG_LOG			:=	1
+$(eval $(call add_define,DIAG_LOG))
+
+# Include common QTI makefile for conditional compilation
+include $(QTI_PLAT_PATH)/common/qti_common.mk
 
 PLAT_INCLUDES		:=	-Idrivers/arm/gic/common/				\
 				-Idrivers/arm/gic/v2/					\
