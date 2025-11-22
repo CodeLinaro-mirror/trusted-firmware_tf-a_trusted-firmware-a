@@ -4,11 +4,6 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
-/*
- * Changes from Qualcomm Technologies, Inc. are provided under the following license:
- * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
- * SPDX-License-Identifier: ISC
- */
 
 #include <assert.h>
 
@@ -33,7 +28,6 @@
  * BL31 from BL2.
  */
 static entry_point_info_t bl31_image_ep_info;
-static entry_point_info_t bl32_image_ep_info;
 static entry_point_info_t bl33_image_ep_info;
 
 /*
@@ -110,7 +104,7 @@ void bl31_early_platform_setup(u_register_t from_bl2,
 	 * Tell BL31 where the non-trusted software image
 	 * is located and the entry state information
 	 */
-	bl31_params_parse_helper(from_bl2, &bl32_image_ep_info, &bl33_image_ep_info);
+	bl31_params_parse_helper(from_bl2, NULL, &bl33_image_ep_info);
 
 	bl31_parse_ep_info(from_bl2);
 }
@@ -162,18 +156,19 @@ void bl31_platform_setup(void)
  ******************************************************************************/
 entry_point_info_t *bl31_plat_get_next_image_ep_info(uint32_t type)
 {
-	assert(sec_state_is_valid(type) != 0);
-
-	if (type == NON_SECURE && bl33_image_ep_info.pc) {
-		assert(bl33_image_ep_info.h.type == PARAM_EP);
-		assert(GET_SECURITY_STATE(bl33_image_ep_info.h.attr) == NON_SECURE);
+	/* QTI platform don't have BL32 implementation. */
+	assert(type == NON_SECURE);
+	assert(bl33_image_ep_info.h.type == PARAM_EP);
+	assert(bl33_image_ep_info.h.attr == NON_SECURE);
+	/*
+	 * None of the images on the platforms can have 0x0
+	 * as the entrypoint.
+	 */
+	if (bl33_image_ep_info.pc) {
 		return &bl33_image_ep_info;
-	} else if (bl32_image_ep_info.pc) { // Implicitly, type must be SECURE if sec_state_is_valid is true
-		assert(bl32_image_ep_info.h.type == PARAM_EP);
-		assert(GET_SECURITY_STATE(bl32_image_ep_info.h.attr) == SECURE);
-		return &bl32_image_ep_info;
+	} else {
+		return NULL;
 	}
-	return NULL;
 }
 
 /*******************************************************************************
