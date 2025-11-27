@@ -57,8 +57,6 @@ void diag_init(void)
 
 	*shared_imem_ptr = (uint32_t *)diag_reg;
 
-	dsb();
-
 	if (is_dload_magic_set()) {
 		if (diag_reg->magic == DIAG_MAGIC) {
 			NOTICE("DIAG LOG: DLOAD mode - disabling logging\n");
