@@ -29,6 +29,18 @@ typedef struct memprot_dst_vm_perm_info_s {
 	uint32_t ctx_size;
 } memprot_dst_vm_perm_info_t;
 
+typedef  void *(*int_svc_isr_api_t) (uint32_t intnum, void *handle, void *ctx);
+
+typedef enum{
+	DBG_ERR_FATAL_NONE,
+	DBG_ERR_FATAL_PANIC,
+	DBG_ERR_FATAL_NON_SECURE_WDT,
+	DBG_ERR_FATAL_NOC_ERROR,
+	DBG_ERR_FATAL_AC_ERROR,
+	DBG_ERR_FATAL_ASSERT,
+	DBG_ERR_FATAL_MAX
+} dbg_err_fatal_t;
+
 /*
  * QTISECLIB Published API's.
  */
@@ -103,5 +115,12 @@ void qtiseclib_psci_system_off(void);
 void qtiseclib_psci_node_suspend_finish(const uint8_t *states);
 void qtiseclib_disable_cluster_coherency(uint8_t state);
 int qtiseclib_set_cpu_ctx_buf(uintptr_t addr, uint32_t size);
+
+int int_svc_register_isr(uint32_t intnum, const char *intdesc,
+			size_t intdesc_size, int_svc_isr_api_t isr,
+			void *ctx);
+
+void dbg_err_fatal(dbg_err_fatal_t err);
+
 
 #endif /* QTISECLIB_INTERFACE_H */

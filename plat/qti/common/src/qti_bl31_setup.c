@@ -22,6 +22,7 @@
 #include <qti_uart_console.h>
 #include <qti_diag_console.h>
 #include <qtiseclib_interface.h>
+#include <icb_error.h>
 
 /*
  * Placeholder variables for copying the BL32 and Bl33 arguments that have been
@@ -144,6 +145,9 @@ void bl31_platform_setup(void)
 	plat_qti_gic_init();
 	qti_interrupt_svc_init(bl32_image_ep_info.pc != 0);
 	qtiseclib_bl31_platform_setup();
+#ifdef ENABLE_ICB
+	qti_icb_error_init();
+#endif
 
 	/* set boot state to cold boot complete. */
 	g_qti_bl31_cold_booted = 0x1;
