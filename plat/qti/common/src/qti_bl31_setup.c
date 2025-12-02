@@ -143,7 +143,14 @@ void bl31_platform_setup(void)
 	/* Initialize the GIC driver, CPU and distributor interfaces */
 	plat_qti_gic_driver_init();
 	plat_qti_gic_init();
+/*
+ * Skip EL3 interrupt handler registration when GICv2 Group 0 interrupts
+ * are not routed to EL3 (QTI_USE_GIC_DRIVER=2 && GICV2_G0_FOR_EL3=0)
+ */
+#if !defined(QTI_USE_GIC_DRIVER) || (QTI_USE_GIC_DRIVER != 2)
+	     || (GICV2_G0_FOR_EL3 != 0)
 	qti_interrupt_svc_init(bl32_image_ep_info.pc != 0);
+#endif
 	qtiseclib_bl31_platform_setup();
 #ifdef ENABLE_ICB
 	qti_icb_error_init();
