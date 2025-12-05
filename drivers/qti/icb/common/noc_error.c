@@ -11,6 +11,8 @@
 #include "string.h"
 #include <common/debug.h>
 #include <lib/spinlock.h>
+#include <plat/common/platform.h>
+#include <platform_def.h>
 
 #define NOC_OUT8(addr, data)   (*((volatile uint8_t *)(addr)) = ((uint8_t)(data)))
 #define NOC_OUT16(addr, data)  (*((volatile uint16_t *)(addr)) = ((uint16_t)(data)))
@@ -38,6 +40,16 @@ static nocerr_info_type_oem *noc_info_oem_list;
 #ifdef ENABLE_NOC_DECODE
 extern void qti_noc_error_decode(nocerr_info_type *nocerr_info);
 #endif
+
+/*
+ * IPC fault notification - raises interrupt to HLOS
+ */
+static void noc_ipc_fault(void)
+{
+	VERBOSE("NOC IPC fault - raising interrupt %d to HLOS\n",
+	     NOTIFY_KERNEL_IRQ);
+	plat_ic_set_interrupt_pending(NOTIFY_KERNEL_IRQ);
+}
 
 /*
  * qti_noc_error_platform_get_propdata() - Get platform property data
@@ -388,6 +400,7 @@ void *qti_noc_error_handle_interrupt(uint32_t intnum, void *handle, void *arg)
 	nocerr_info_type_oem *noc_info_oem = NULL;
 	bool fatal_fault_detected = false;
 	bool delay_fatal = false;
+	bool noc_timeout = false;
 
 	spin_lock(&isr_log_sync_lock);
 
@@ -456,32 +469,48 @@ void *qti_noc_error_handle_interrupt(uint32_t intnum, void *handle, void *arg)
 					noc_info->sb_base_addrs[idx],
 					noc_info->sb_hw[idx]->faultin_status0_low));
 				noc_info->syndrome.sbms[idx].FAULTINSTATUS0_LOW = val;
-				if (val != 0)
+				if (val != 0) {
+					/* Timeout detection for low register */
+					if (val & ~(noc_info_oem->obs_mask[idx].faultin_en0_low))
+						noc_timeout = true;
 					fault_detected = true;
+				}
 			}
 			if (REGISTER_VALID(noc_info->sb_hw[idx]->faultin_status0_high)) {
 				val = NOC_IN32(NOC_REG_ADDR(
 					noc_info->sb_base_addrs[idx],
 					noc_info->sb_hw[idx]->faultin_status0_high));
 				noc_info->syndrome.sbms[idx].FAULTINSTATUS0_HIGH = val;
-				if (val != 0)
+				if (val != 0) {
+					/* Timeout detection for high register */
+					if (val & ~(noc_info_oem->obs_mask[idx].faultin_en0_high))
+						noc_timeout = true;
 					fault_detected = true;
+				}
 			}
 			if (REGISTER_VALID(noc_info->sb_hw[idx]->faultin_status1_low)) {
 				val = NOC_IN32(NOC_REG_ADDR(
 					noc_info->sb_base_addrs[idx],
 					noc_info->sb_hw[idx]->faultin_status1_low));
 				noc_info->syndrome.sbms[idx].FAULTINSTATUS1_LOW = val;
-				if (val != 0)
+				if (val != 0) {
+					/* Timeout detection for status1_low */
+					if (val & ~(noc_info_oem->obs_mask[idx].faultin_en1_low))
+						noc_timeout = true;
 					fault_detected = true;
+				}
 			}
 			if (REGISTER_VALID(noc_info->sb_hw[idx]->faultin_status1_high)) {
 				val = NOC_IN32(NOC_REG_ADDR(
 					noc_info->sb_base_addrs[idx],
 					noc_info->sb_hw[idx]->faultin_status1_high));
 				noc_info->syndrome.sbms[idx].FAULTINSTATUS1_HIGH = val;
-				if (val != 0)
+				if (val != 0) {
+					/* Timeout detection for status1_high */
+					if (val & ~(noc_info_oem->obs_mask[idx].faultin_en1_high))
+						noc_timeout = true;
 					fault_detected = true;
+				}
 			}
 
 			if (fault_detected) {
@@ -663,11 +692,14 @@ void *qti_noc_error_handle_interrupt(uint32_t intnum, void *handle, void *arg)
 	if (fatal_fault_detected) {
 		ERROR("Fatal NOC error detected!\n");
 		dbg_err_fatal(DBG_ERR_FATAL_NOC_ERROR);
-	}
-
-	if (noc_info == NULL || noc_info_oem == NULL)
+	} else if (noc_timeout) {
+		ERROR("NOC timeout detected!\n");
+		dbg_err_fatal(DBG_ERR_FATAL_NOC_ERROR);
+	} else if (noc_info != NULL && noc_info_oem != NULL) {
+		noc_ipc_fault();
+	} else {
 		ERROR("NOC Invalid Interrupt Vector!\n");
-
+	}
 	spin_unlock(&isr_log_sync_lock);
 
 	return arg;
