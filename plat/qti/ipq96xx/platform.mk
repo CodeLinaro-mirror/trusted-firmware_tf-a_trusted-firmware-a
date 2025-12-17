@@ -94,6 +94,9 @@ PLAT_BL_COMMON_SOURCES	+=	${XLAT_TABLES_LIB_SRCS}					\
 #PSCI Sources.
 PSCI_SOURCES		:=	plat/common/plat_psci_common.c				\
 
+# GIC driver version used by the platform
+QTI_USE_GIC_DRIVER	:=	3
+$(eval $(call add_define,QTI_USE_GIC_DRIVER))
 # GIC-600 configuration
 GICV3_SUPPORT_GIC600	:=	1
 # Include GICv3 driver files

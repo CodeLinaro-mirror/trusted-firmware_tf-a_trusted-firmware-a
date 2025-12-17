@@ -27,6 +27,8 @@
 #include <qti_secure_io_cfg.h>
 #include <qtiseclib_interface.h>
 
+int qti_handle_sel1_routed_interrupt(uint32_t intr_num, void *handle);
+
 /*
  * SIP service - SMC function IDs for SiP Service queries
  *
@@ -42,6 +44,9 @@
  */
 #define	QTI_SIP_SVC_SECURE_IO_READ_ID		U(0x02000501)
 #define	QTI_SIP_SVC_SECURE_IO_WRITE_ID		U(0x02000502)
+
+/* Syscall to handle interrupts routed by SEL1*/
+#define QTI_SIP_SVC_EL3_INTR_DELEGATION_ID	U(0x02001D03)
 
 /*
  * Syscall's to allow Non Secure world to share buffer for
@@ -334,20 +339,17 @@ static uintptr_t qti_sip_handler(uint32_t smc_fid,
 	case QTI_SIP_SVC_CALL_COUNT_ID:
 		{
 			SMC_RET1(handle, QTI_SIP_SVC_CALL_COUNT);
-			break;
 		}
 	case QTI_SIP_SVC_UID_ID:
 		{
 			/* Return UID to the caller */
 			SMC_UUID_RET(handle, qti_sip_svc_uid);
-			break;
 		}
 	case QTI_SIP_SVC_VERSION_ID:
 		{
 			/* Return the version of current implementation */
 			SMC_RET2(handle, QTI_SIP_SVC_VERSION_MAJOR,
 				 QTI_SIP_SVC_VERSION_MINOR);
-			break;
 		}
 	case QTI_SIP_SVC_AVAILABLE_ID:
 		{
@@ -359,7 +361,6 @@ static uintptr_t qti_sip_handler(uint32_t smc_fid,
 			} else {
 				SMC_RET2(handle, QTI_SIP_SUCCESS, 0);
 			}
-			break;
 		}
 	case QTI_SIP_SVC_SECURE_IO_READ_ID:
 		{
@@ -369,7 +370,6 @@ static uintptr_t qti_sip_handler(uint32_t smc_fid,
 					 *((volatile uint32_t *)x2));
 			}
 			SMC_RET1(handle, QTI_SIP_INVALID_PARAM);
-			break;
 		}
 	case QTI_SIP_SVC_SECURE_IO_WRITE_ID:
 		{
@@ -379,7 +379,6 @@ static uintptr_t qti_sip_handler(uint32_t smc_fid,
 				SMC_RET1(handle, QTI_SIP_SUCCESS);
 			}
 			SMC_RET1(handle, QTI_SIP_INVALID_PARAM);
-			break;
 		}
 	case QTI_SIP_SVC_SET_CPU_CTX_BUF_ID:
 		{
@@ -422,6 +421,11 @@ static uintptr_t qti_sip_handler(uint32_t smc_fid,
 			break;
 		}
 #endif
+	case QTI_SIP_SVC_EL3_INTR_DELEGATION_ID:
+		{
+			SMC_RET2(handle, SMC_OK,
+				qti_handle_sel1_routed_interrupt(x1, handle));
+		}
 	default:
 		{
 			SMC_RET1(handle, QTI_SIP_NOT_SUPPORTED);

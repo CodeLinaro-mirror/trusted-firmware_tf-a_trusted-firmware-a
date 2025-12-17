@@ -29,7 +29,11 @@ PROGRAMMABLE_RESET_ADDRESS	:=	1
 
 RESET_TO_BL31			:=	0
 
-GICV2_G0_FOR_EL3		:=	1
+# GIC driver version used by the platform
+QTI_USE_GIC_DRIVER		:=	2
+$(eval $(call add_define,QTI_USE_GIC_DRIVER))
+#Route Secure interrupts to SEL1
+GICV2_G0_FOR_EL3		:=	0
 
 QTI_SDI_BUILD			:=	1
 $(eval $(call assert_boolean,QTI_SDI_BUILD))
@@ -67,6 +71,7 @@ QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_helpers.S	\
 				$(QTI_PLAT_PATH)/common/src/qti_pm.c			\
 				$(QTI_PLAT_PATH)/ipq-common/src/pm_ps_hold.c		\
 				$(QTI_PLAT_PATH)/qtiseclib/src/qtiseclib_cb_interface.c	\
+				$(QTI_PLAT_PATH)/common/src/qti_syscall.c		\
 
 # Enable DIAG LOG Console
 DIAG_LOG			:=	1
