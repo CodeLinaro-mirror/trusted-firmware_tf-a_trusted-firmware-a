@@ -180,11 +180,25 @@
 #define BL31_LIMIT				(BL31_BASE + BL31_SIZE)
 
 #define QTI_SHARED_IMEM_BASE			0x08600000
-#define QTI_SHARED_IMEM_RO_BASE			(QTI_SHARED_IMEM_BASE + 0x1000)
-#define QTI_SHARED_IMEM_RO_SIZE			0x4000
-#define QTI_SHARED_IMEM_RW_BASE			(QTI_SHARED_IMEM_RO_BASE + QTI_SHARED_IMEM_RO_SIZE)
-#define QTI_SHARED_IMEM_RW_SIZE			0x2000
+#define QTI_IMEM_RO_BASE			(QTI_SHARED_IMEM_BASE + 0x1000)
+#define QTI_IMEM_RO_SIZE			0x1000
+#define QTI_IMEM_RW_BASE			(QTI_IMEM_RO_BASE + QTI_IMEM_RO_SIZE)
+#define QTI_IMEM_RW_SIZE			0x2000
+#define QTI_IMEM_DEBUG_DATA_BASE		(QTI_IMEM_RW_BASE + QTI_IMEM_RW_SIZE)
+#define QTI_IMEM_DEBUG_DATA_SIZE		0x1000
 
+/*******************************************************************************
+ * Diag Region Defines
+ ******************************************************************************/
+#define DIAG_BASE			(QTI_IMEM_DEBUG_DATA_BASE + QTI_IMEM_DEBUG_DATA_SIZE)
+#define DIAG_LEN			0x5000
+#define DIAG_LIMIT			(DIAG_BASE + DIAG_LEN)
+#define DIAG_LOG_START_INFO		0x8600720
+#define DIAG_LOG_SIZE_INFO		0x8600724
+
+/*******************************************************************************
+ * DCC SRAM Region Defines
+ ******************************************************************************/
 #define QTI_DCC_SRAM_BASE			0x06080000
 #define QTI_DCC_SRAM_SIZE			0x9000
 
@@ -192,15 +206,6 @@
 /* PS_HOLD registers */
 /*----------------------------------------------------------------------------*/
 #define QTI_PS_HOLD_REG				0x4AB000
-
-/*******************************************************************************
- * Diag Region Defines
- ******************************************************************************/
-#define DIAG_BASE			0x08607000
-#define DIAG_LEN			0x3000
-#define DIAG_LIMIT			(DIAG_BASE + DIAG_LEN)
-#define DIAG_LOG_START_INFO		0x8600720
-#define DIAG_LOG_SIZE_INFO		0x8600724
 
 /*----------------------------------------------------------------------------*/
 /* SOC hw version register */
