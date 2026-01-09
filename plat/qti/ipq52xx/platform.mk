@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 #
 
-# Make for ipq5200 QTI platform.
+# Make for ipq52xx QTI platform.
 
 QTI_PLAT_PATH		:=	plat/qti
 CHIPSET			:=	${PLAT}
