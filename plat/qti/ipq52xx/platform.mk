@@ -116,16 +116,18 @@ BL31_SOURCES		+=	${QTI_BL31_SOURCES}				\
 
 LIB_QTI_PATH	:=	${QTI_PLAT_PATH}/qtiseclib/lib/${CHIPSET}
 
-# By default libqtisec_dbg.a used by debug variant. When this library doesn't exist,
-# debug variant will use release version (libqtisec.a) of the library.
-QTISECLIB = qtisec
-ifneq (${DEBUG}, 0)
-ifneq ("$(wildcard $(LIB_QTI_PATH)/libqtisec_dbg.a)","")
-QTISECLIB = qtisec_dbg
-else
-$(warning Release version of qtisec library used in Debug build!!..)
-endif
-endif
+# Override this on the command line to point to the qtiseclib library which
+# will be available in coreboot.org
+QTISECLIB_PATH ?=
 
-LDFLAGS += -z max-page-size=4096 -L ${LIB_QTI_PATH}
-LDLIBS += -l$(QTISECLIB)
+ifeq ($(QTISECLIB_PATH),)
+# if No lib then use stub implementation for qtiseclib interface
+$(warning QTISECLIB_PATH is not provided while building, using stub implementation. \
+		Please refer docs/plat/qti.rst for more details \
+		THIS FIRMWARE WILL NOT BOOT!)
+BL31_SOURCES	+=	plat/qti/qtiseclib/src/qtiseclib_interface_stub.c
+else
+# use library provided by QTISECLIB_PATH
+LDFLAGS += -L $(dir $(QTISECLIB_PATH))
+LDLIBS += -l$(patsubst lib%.a,%,$(notdir $(QTISECLIB_PATH)))
+endif
