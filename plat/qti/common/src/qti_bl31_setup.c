@@ -22,7 +22,9 @@
 #include <qti_uart_console.h>
 #include <qti_diag_console.h>
 #include <qtiseclib_interface.h>
+#ifdef ENABLE_ICB
 #include <icb_error.h>
+#endif
 
 #ifdef ENABLE_XPU
 #include <qti_xpu.h>
@@ -154,7 +156,7 @@ void bl31_platform_setup(void)
  * Skip EL3 interrupt handler registration when GICv2 Group 0 interrupts
  * are not routed to EL3 (QTI_USE_GIC_DRIVER=2 && GICV2_G0_FOR_EL3=0)
  */
-#if !defined(QTI_USE_GIC_DRIVER) || (QTI_USE_GIC_DRIVER != 2)
+#if !defined(QTI_USE_GIC_DRIVER) || (QTI_USE_GIC_DRIVER != 2) \
 	     || (GICV2_G0_FOR_EL3 != 0)
 	qti_interrupt_svc_init(bl32_image_ep_info.pc != 0);
 #endif
