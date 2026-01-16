@@ -3,6 +3,11 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
+/*
+ * Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ * SPDX-License-Identifier: ISC
+ */
 
 #include <platform_def.h>
 
@@ -340,6 +345,10 @@ sync_handler64:
 	 */
 	bl	prepare_el3_entry
 
+#ifdef ENABLE_LLCC_CFG
+	/* Configure SID for Secure World */
+	 bl	mon_configure_clusterthreadsid_for_secureworld
+#endif
 #if ENABLE_PAUTH
 	/* Load and program APIAKey firmware key */
 	bl	pauth_load_bl31_apiakey
@@ -536,6 +545,10 @@ func handle_interrupt_exception
 	 */
 	bl	prepare_el3_entry
 
+#ifdef ENABLE_LLCC_CFG
+	/* Configure SID for Secure World */
+	 bl	mon_configure_clusterthreadsid_for_secureworld
+#endif
 #if ENABLE_PAUTH
 	/* Load and program APIAKey firmware key */
 	bl	pauth_load_bl31_apiakey

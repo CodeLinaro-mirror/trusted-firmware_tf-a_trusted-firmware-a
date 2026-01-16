@@ -10,6 +10,10 @@
 QTI_PLAT_PATH		:=	plat/qti
 CHIPSET			:=	${PLAT}
 
+# Define platform-specific macro
+$(eval $(call add_define,ENABLE_LLCC_CFG))
+ENABLE_LLCC_CFG			:= 1
+
 # Turn On Separate code & data.
 SEPARATE_CODE_AND_RODATA	:=	1
 USE_COHERENT_MEM		:=	0
@@ -67,16 +71,22 @@ QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_kryo6_silver.S	\
 				$(QTI_PLAT_PATH)/common/src/qti_common.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_interrupt_svc.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_pm.c			\
-				$(QTI_PLAT_PATH)/ipq-common/src/pm_ps_hold.c			\
+				$(QTI_PLAT_PATH)/ipq-common/src/pm_ps_hold.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_topology.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_bl31_setup.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_gic_v3.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_syscall.c		\
 				$(QTI_PLAT_PATH)/qtiseclib/src/qtiseclib_cb_interface.c	\
+				$(QTI_PLAT_PATH)/$(CHIPSET)/src/plat_setup.c		\
 
 # Enable DIAG LOG Console
 DIAG_LOG			:=	1
 $(eval $(call add_define,DIAG_LOG))
+
+# Conditionally compile LLCC configuration sources based on ENABLE_LLCC_CFG flag
+ifeq ($(ENABLE_LLCC_CFG),1)
+QTI_BL31_SOURCES += $(QTI_PLAT_PATH)/$(CHIPSET)/$(ARCH)/plat_helpers.S
+endif
 
 # Include common QTI makefile for conditional compilation
 include $(QTI_PLAT_PATH)/common/qti_common.mk
