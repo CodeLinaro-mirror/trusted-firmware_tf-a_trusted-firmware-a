@@ -191,7 +191,7 @@
  * Diag Region Defines
  ******************************************************************************/
 #define DIAG_BASE			(QTI_IMEM_DEBUG_DATA_BASE + QTI_IMEM_DEBUG_DATA_SIZE)
-#define DIAG_LEN			0x5000
+#define DIAG_LEN			0x3000
 #define DIAG_LIMIT			(DIAG_BASE + DIAG_LEN)
 #define DIAG_LOG_START_INFO		0x8600720
 #define DIAG_LOG_SIZE_INFO		0x8600724
