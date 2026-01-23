@@ -260,5 +260,7 @@
 #define GICD_NSACR_NS_ACCESS_FULL         0xFFFFFFFF
 /*----------------------------------------------------------------------------*/
 
+#define QTISECLIB_INT_ID_XPU_VIOLATION          0x1A5
+/*----------------------------------------------------------------------------*/
 
 #endif /* PLATFORM_DEF_H */

@@ -395,6 +395,31 @@ bool ac_is_rg_profile_matched(ac_milestone milestone, uint32_t profile_flags)
 	return ac_is_profile_matched(milestone, profile_flags);
 }
 
+#ifdef DISABLE_PCIE_XPU_CLERE_NS
+/*
+ * Disable non-secure client error reporting for a specific XPU
+ *
+ * This function clears the CLERE_NS bit in the XPU's CLERE register,
+ * effectively disabling error reporting for non-secure clients and
+ * configuring the XPU to return RAZ/WI (Read-As-Zero/Write-Ignore)
+ * for violations instead of generating errors.
+ *
+ * @param xpu_id	XPU identifier to configure
+ */
+static void ac_xpu_disable_clere_ns(HAL_xpu2_XPU2Type xpu_id)
+{
+	ac_xpu4_priv_info *xpu_info = ac_xpu_get_xpu_info(xpu_id);
+
+	if (xpu_info != NULL) {
+		uint32_t reg_value;
+
+		reg_value = XPU4_IN(xpu_info->addr, CLERE);
+		reg_value &= (~HWIO_XPU4_CLERE_CLERE_NS_BMSK);
+		XPU4_OUT(xpu_info->addr, CLERE, reg_value);
+	}
+}
+#endif
+
 /*
  * Initialize Access Control (XPU) driver
  *
@@ -414,6 +439,18 @@ void ac_xpu_init(void)
 		      AC_ERR_XPU_INIT_FAILED, ac_ret);
 		return;
 	}
+
+#ifdef DISABLE_PCIE_XPU_CLERE_NS
+	/*
+	 * Disable error reporting and configure RAZ/WI for PCIe slave XPUs
+	 * This prevents violations from generating errors when PCIe devices
+	 * are accessed by non-secure masters
+	 */
+	ac_xpu_disable_clere_ns(HAL_XPU2_XS_PCIE_1LANE_0_MPU);
+	ac_xpu_disable_clere_ns(HAL_XPU2_XS_PCIE_1LANE_1_MPU);
+	ac_xpu_disable_clere_ns(HAL_XPU2_XS_PCIE_2LANE_0_MPU);
+	ac_xpu_disable_clere_ns(HAL_XPU2_XS_PCIE_2LANE_1_MPU);
+#endif
 
 	INFO("Access Control initialized successfully\n");
 

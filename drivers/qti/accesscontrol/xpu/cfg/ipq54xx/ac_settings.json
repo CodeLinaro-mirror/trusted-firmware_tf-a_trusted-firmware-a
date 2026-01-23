@@ -1,0 +1,213 @@
+{
+  "ac_enabled": true,
+  "xpu_enabled": true,
+  "sle_enabled_val": 5,
+  "use_ipcat_order": true,
+  "use_clean_names": true,
+  "xpu_rev_raw": "4.0.0",
+  "rom_version": 1,
+  "ac_entry": "0",
+  "skip_dbgar_programming": true,
+  "skip_xpu_debugar": [
+    "OCIMEM_MPU_XPU4"
+  ],
+  "device_addr_info": [
+    {
+      "start": "0x00000000",
+      "end": "0x80000000"
+    }
+  ],
+  "interupt_info": [],
+  "secure_channels": {},
+  "unmap_regions": [],
+  "target_vmid_cfg_arr": {},
+  "tcsr_config": {
+    "GCR": {
+      "addr": "0x0",
+      "Value": {
+        "CMOCESDE": false,
+        "CMOCCNRWCE": false,
+        "APNSEE": false,
+        "CFGOWNS": false
+      },
+      "Bit": {
+        "CMOCESDE": 3,
+        "CMOCCNRWCE": 2,
+        "APNSEE": 1,
+        "CFGOWNS": 0
+      }
+    },
+    "DCR": {
+      "addr": "0x0",
+      "SLE": false
+    },
+    "VIOCR": {
+      "addr": "0x0",
+      "APSVIOE_XPU": false,
+      "APSVIOE_VMIDMT": false
+    }
+  },
+  "xpu_protected_ms_ranges": [],
+  "xpu_protected_ranges": [
+    {
+      "xpuId": "HAL_XPU2_IMEM_MPU",
+      "ranges": [
+        {
+          "start": "0x8600000",
+          "end": "0x8620000",
+          "comment": "IMEM region"
+        }
+      ]
+    },
+    {
+      "xpuId": "HAL_XPU2_MACHX_LLCC_MPU",
+      "ranges": [
+        {
+          "start": "0x80000000",
+          "end": "0x100000000",
+          "comment": "DDR space - region 1"
+        },
+        {
+          "start": "0x800000000",
+          "end": "0xB80000000",
+          "comment": "DDR space - region 2"
+        }
+      ]
+    }
+  ],
+  "xpu_hw_addr_mask": [
+    {
+      "xpuId": [
+        "HAL_XPU2_BOOT_ROM"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x300000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_CNOC_APSS_CFG_MPU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0xF000000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_CNOC_CE_EDPD_MPU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x00200000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_CNOC_PMU_CFG_MPU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x0009A000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_CNOC_QDSS_CFG_MPU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x6000000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_CNOC_WCSS_SLV_MPU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0xC000000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_GEMNOC_CFG_MPU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x00800000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_IMEM_MPU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x8600000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_TLMM"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x1000000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_WCSS_XPU_CFG"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x0C000000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_MPM2_MPM_APU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x004A0000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_IMEM_APU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x50000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_PRNG_APU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x4C0000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_Q6_CFG_XPU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x8C00000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_QDSS_CFG_DCC_DCC"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x6000000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_SEC_CTRL_APU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0xA0000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_TCSR_REGS"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x01900000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_QUPV3_5_GSI_TOP"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x1A00000"
+    },
+    {
+      "xpuId": [
+        "HAL_XPU2_GCC_RPU"
+      ],
+      "mask": "0xFFFFFFFF",
+      "offset": "0x1800000"
+    }
+  ]
+}

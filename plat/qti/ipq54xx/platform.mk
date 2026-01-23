@@ -124,6 +124,21 @@ GIC_SOURCES		:=	plat/common/plat_gicv3.c			\
 
 CPU_SOURCES		:=	lib/cpus/aarch64/cortex_a55.S			\
 
+# xPU Configuration
+XPU_VERSION := v4
+# Base xPU support define
+ENABLE_XPU	:=	1
+$(eval $(call add_define,ENABLE_XPU))
+
+# Disable PCIe XPU CLERE_NS error reporting (configure RAZ/WI for PCIe slaves)
+DISABLE_PCIE_XPU_CLERE_NS := 1
+$(eval $(call add_define,DISABLE_PCIE_XPU_CLERE_NS))
+
+# Include xPU driver
+ifeq (${ENABLE_XPU},1)
+include drivers/qti/accesscontrol/xpu/xpu.mk
+endif
+
 BL31_SOURCES		+=	${QTI_BL31_SOURCES}				\
 				${PSCI_SOURCES}					\
 				${GIC_SOURCES}					\
@@ -148,3 +163,19 @@ else
 LDFLAGS += -L $(dir $(QTISECLIB_PATH))
 LDLIBS += -l$(patsubst lib%.a,%,$(notdir $(QTISECLIB_PATH)))
 endif
+
+# Enable NOC error decode for IPQ54XX
+ENABLE_NOC_DECODE := 1
+# Define feature flag to enable NOC error decode (optional, enabled by default for IPQ54XX)
+$(eval $(call add_define,ENABLE_NOC_DECODE))
+
+# Enable NOC for IPQ54XX
+ENABLE_ICB := 1
+# Define feature flag to enable ICB error handler
+$(eval $(call add_define,ENABLE_ICB))
+
+ifeq (${ENABLE_ICB},1)
+include drivers/qti/icb/common/icb.mk
+endif
+
+INIT_UNUSED_NS_EL2 := 1
