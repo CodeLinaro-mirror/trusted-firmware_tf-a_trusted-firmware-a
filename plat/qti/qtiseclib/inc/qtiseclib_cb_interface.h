@@ -36,6 +36,8 @@ unsigned int qtiseclib_cb_plat_my_cluster_pos(void);
 
 /* GIC platform wrappers */
 void qtiseclib_cb_gic_pcpu_init(void);
+void qtiseclib_cb_gic_cpuif_enable(void);
+void qtiseclib_cb_gic_cpuif_disable(void);
 void qtiseclib_cb_ic_raise_sgi(int sgi_num, u_register_t target);
 void qtiseclib_cb_set_spi_routing(unsigned int id, unsigned int irm,
 				  u_register_t target);

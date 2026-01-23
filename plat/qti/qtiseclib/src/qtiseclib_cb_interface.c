@@ -97,9 +97,19 @@ void qtiseclib_cb_gic_pcpu_init(void)
 	plat_qti_gic_pcpu_init();
 }
 
+void qtiseclib_cb_gic_cpuif_enable(void)
+{
+	plat_qti_gic_cpuif_enable();
+}
+
+void qtiseclib_cb_gic_cpuif_disable(void)
+{
+	plat_qti_gic_cpuif_disable();
+}
+
 void qtiseclib_cb_ic_raise_sgi(int sgi_num, u_register_t target)
 {
-	plat_ic_raise_el3_sgi(sgi_num, target);
+	plat_ic_raise_s_el1_sgi(sgi_num, target);
 }
 
 void qtiseclib_cb_set_spi_routing(unsigned int id, unsigned int irm,
