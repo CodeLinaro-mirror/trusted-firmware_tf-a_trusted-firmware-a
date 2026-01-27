@@ -47,8 +47,8 @@ $(eval $(call add_define,DISABLE_QTI_MEM_ASSIGN))
 override CTX_INCLUDE_AARCH32_REGS	:=	0
 WORKAROUND_CVE_2017_5715		:=      0
 DYNAMIC_WORKAROUND_CVE_2018_3639	:=      1
-# Enable stack protector.
-ENABLE_STACK_PROTECTOR := 0
+
+ENABLE_STACK_PROTECTOR := strong
 
 # Enable platform-specific linker script for IMEM region
 PLAT_EXTRA_LD_SCRIPT := 1
@@ -58,16 +58,17 @@ QTI_EXTERNAL_INCLUDES	:=	-I${QTI_PLAT_PATH}/${CHIPSET}/inc			\
 				-I${QTI_PLAT_PATH}/common/inc				\
 				-I${QTI_PLAT_PATH}/common/inc/$(ARCH)			\
 				-I${QTI_PLAT_PATH}/qtiseclib/inc			\
-				-I${QTI_PLAT_PATH}/qtiseclib/inc/${CHIPSET}			\
+				-I${QTI_PLAT_PATH}/qtiseclib/inc/${CHIPSET}		\
 
 QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_kryo6_silver.S	\
 				$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_kryo6_gold.S	\
 				$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_helpers.S	\
 				$(QTI_PLAT_PATH)/common/src/qti_stack_protector.c	\
+				$(QTI_PLAT_PATH)/${CHIPSET}/src/qti_rng.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_common.c		\
-				$(QTI_PLAT_PATH)/common/src/qti_interrupt_svc.c		\
+				$(QTI_PLAT_PATH)/common/src/qti_interrupt_svc.c	\
 				$(QTI_PLAT_PATH)/common/src/qti_pm.c			\
-				$(QTI_PLAT_PATH)/ipq-common/src/pm_ps_hold.c			\
+				$(QTI_PLAT_PATH)/ipq-common/src/pm_ps_hold.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_topology.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_bl31_setup.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_gic_v3.c		\
