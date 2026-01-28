@@ -18,6 +18,7 @@
 
 #include <qti_board_def.h>
 #include <common_def.h>
+#include <qtiseclib_defs_plat.h>
 
 /*----------------------------------------------------------------------------*/
 /* SOC_VERSION definitions */
@@ -145,18 +146,6 @@
 #define QTI_DEVICE_BASE				0x00000000UL
 #define QTI_DEVICE_SIZE				(0x80000000UL - QTI_DEVICE_BASE)
 
-#define QTI_DDR_BASE                            0x80000000UL
-#define QTI_SHARED_IMEM_BASE			0x08600000
-#define QTI_IMEM_RO_BASE			(QTI_SHARED_IMEM_BASE + 0x1000)
-#define QTI_IMEM_RO_SIZE			0x4000
-#define QTI_IMEM_RW_BASE			(QTI_IMEM_RO_BASE + QTI_IMEM_RO_SIZE)
-#define QTI_IMEM_RW_SIZE			0x2000
-#define QTI_SHARED_IMEM_DBG_STACK_SIZE		0x200
-#define QTI_SHARED_IMEM_TF_STACK_CANARY_ADDR	(QTI_SHARED_IMEM_BASE + 0x7F0)
-
-#define QTI_DCC_SRAM_BASE			0x6080000
-#define QTI_DCC_SRAM_SIZE			0x40000
-
 /*******************************************************************************
  * BL31 specific defines.
  ******************************************************************************/
@@ -164,9 +153,18 @@
  * Put BL31 at DDR as per memory map. BL31_BASE is calculated using the
  * current BL31 debug size plus a little space for growth.
  */
-#define BL31_BASE						0x8A600000
-#define BL31_SIZE						0x80000
-#define BL31_LIMIT						(BL31_BASE + BL31_SIZE)
+#define BL31_LIMIT				(BL31_BASE + BL31_SIZE)
+
+#define QTI_DDR_BASE                            0x80000000UL
+#define QTI_SHARED_IMEM_BASE			0x08600000
+#define QTI_IMEM_RO_BASE			(QTI_SHARED_IMEM_BASE + 0x1000)
+#define QTI_IMEM_RO_SIZE			0x1000
+#define QTI_IMEM_RW_BASE			(QTI_IMEM_RO_BASE + QTI_IMEM_RO_SIZE)
+#define QTI_IMEM_RW_SIZE			0x2000
+#define QTI_IMEM_DEBUG_DATA_BASE		(QTI_IMEM_RW_BASE + QTI_IMEM_RW_SIZE)
+#define QTI_IMEM_DEBUG_DATA_SIZE		0x1000
+#define QTI_SHARED_IMEM_DBG_STACK_SIZE		0x200
+#define QTI_SHARED_IMEM_TF_STACK_CANARY_ADDR	(QTI_SHARED_IMEM_BASE + 0x7F0)
 
 /*******************************************************************************
  * Diag Region Defines
@@ -174,11 +172,17 @@
 /*
  * DIAG Start is placed 8K apart from __PIL_REGION_END__
  */
-#define DIAG_BASE			0x08607000
+#define DIAG_BASE			(QTI_IMEM_DEBUG_DATA_BASE + QTI_IMEM_DEBUG_DATA_SIZE)
 #define DIAG_LEN			0x3000
-#define DIAG_LIMIT			DIAG_BASE + DIAG_LEN
+#define DIAG_LIMIT			(DIAG_BASE + DIAG_LEN)
 #define DIAG_LOG_START_INFO		0x8600720
 #define DIAG_LOG_SIZE_INFO		0x8600724
+
+/*******************************************************************************
+ * DCC SRAM Region Defines
+ ******************************************************************************/
+#define QTI_DCC_SRAM_BASE			0x6080000
+#define QTI_DCC_SRAM_SIZE			0x1000	/* 2KB actual, 4KB for MMU alignment */
 
 /*----------------------------------------------------------------------------*/
 /* SOC hw version register */
