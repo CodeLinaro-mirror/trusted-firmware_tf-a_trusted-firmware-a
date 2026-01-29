@@ -109,7 +109,12 @@ void qtiseclib_cb_gic_cpuif_disable(void)
 
 void qtiseclib_cb_ic_raise_sgi(int sgi_num, u_register_t target)
 {
-	plat_ic_raise_s_el1_sgi(sgi_num, target);
+#if !defined(QTI_USE_GIC_DRIVER) || (QTI_USE_GIC_DRIVER != 2) \
+	     || (GICV2_G0_FOR_EL3 != 0)
+		plat_ic_raise_el3_sgi(sgi_num, target);
+#else
+		plat_ic_raise_s_el1_sgi(sgi_num, target);
+#endif
 }
 
 void qtiseclib_cb_set_spi_routing(unsigned int id, unsigned int irm,
