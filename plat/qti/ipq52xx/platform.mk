@@ -44,8 +44,8 @@ DISABLE_QTI_MEM_ASSIGN := 1
 $(eval $(call assert_boolean,DISABLE_QTI_MEM_ASSIGN))
 $(eval $(call add_define,DISABLE_QTI_MEM_ASSIGN))
 
-# Enable stack protector.
-ENABLE_STACK_PROTECTOR	:=	0
+# Enable stack protector with 'strong' level protection
+ENABLE_STACK_PROTECTOR	:=	strong
 
 # Enable platform-specific linker script for IMEM region
 PLAT_EXTRA_LD_SCRIPT := 1
@@ -63,6 +63,7 @@ QTI_EXTERNAL_INCLUDES	:=	-I${QTI_PLAT_PATH}/${CHIPSET}/inc			\
 QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_helpers.S	\
 				$(QTI_PLAT_PATH)/common/src/$(ARCH)/a53.S		\
 				$(QTI_PLAT_PATH)/common/src/qti_stack_protector.c	\
+				$(QTI_PLAT_PATH)/common/src/qti_rng.c			\
 				$(QTI_PLAT_PATH)/common/src/qti_common.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_bl31_setup.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_gic_v2.c		\
