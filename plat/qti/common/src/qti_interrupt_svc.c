@@ -97,6 +97,7 @@ int qti_handle_sel1_routed_interrupt(uint32_t intr_num, void *handle)
 	switch (intr_num) {
 	case QTISECLIB_INT_ID_SEC_WDOG_BARK:
 	case QTISECLIB_INT_ID_NON_SEC_WDOG_BITE:
+	case QTISECLIB_INT_ID_XPU_VIOLATION:
 		/* Valid interrupt - invoke the ISR */
 		qtiseclib_invoke_isr(intr_num, handle);
 		return 0;

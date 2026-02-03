@@ -107,6 +107,12 @@ include drivers/arm/gic/v2/gicv2.mk
 GIC_SOURCES		:=	plat/common/plat_gicv2.c			\
 				${GICV2_SOURCES}					\
 
+# xPU Configuration
+XPU_VERSION := v4
+
+# Include xPU driver
+include drivers/qti/accesscontrol/xpu/xpu.mk
+
 # Prohibit using deprecated interfaces. We rely on this for this platform.
 ERROR_DEPRECATED	:=	1
 
