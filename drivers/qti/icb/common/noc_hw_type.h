@@ -91,7 +91,7 @@ static noc_pos_hw_type QNOC_POS_4_0 __attribute__((unused)) = {
 	.errlogclr_low = 0x10,
 };
 
-static noc_poc_hw_type QNOC_POC_1_0 = {
+static noc_poc_hw_type QNOC_POC_1_0  __attribute__((unused)) = {
 	.swid_low        = 0x00,
 	.swid_high       = 0x04,
 	.errset_low      = 0x08,

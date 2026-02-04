@@ -123,6 +123,21 @@ BL31_SOURCES		+=	${QTI_BL31_SOURCES}				\
 
 LIB_QTI_PATH	:=	${QTI_PLAT_PATH}/qtiseclib/lib/${CHIPSET}
 
+
+# Enable NOC error decode for IPQ52xx
+ENABLE_NOC_DECODE := 1
+# Define feature flag to enable NOC error decode (optional, enabled by default for IPQ5424)
+$(eval $(call add_define,ENABLE_NOC_DECODE))
+
+# Enable NOC for IPQ5424
+ENABLE_ICB := 1
+# Define feature flag to enable ICB error handler
+$(eval $(call add_define,ENABLE_ICB))
+
+ifeq (${ENABLE_ICB},1)
+include drivers/qti/icb/common/icb.mk
+endif
+
 # Override this on the command line to point to the qtiseclib library which
 # will be available in coreboot.org
 QTISECLIB_PATH ?=

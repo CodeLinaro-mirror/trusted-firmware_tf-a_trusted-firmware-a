@@ -79,6 +79,9 @@ static uint64_t qti_el3_interrupt_handler(uint32_t id, uint32_t flags,
  */
 int qti_handle_sel1_routed_interrupt(uint32_t intr_num, void *handle)
 {
+#if !defined(QTI_USE_GIC_DRIVER) || (QTI_USE_GIC_DRIVER != 2) || (GICV2_G0_FOR_EL3 != 0)
+		return 0;
+#else
 	if (handle != cm_get_context(SECURE)) {
 		WARN("Interrupt from Non-secure caller not permitted.\n");
 		return -EPERM;
@@ -99,6 +102,11 @@ int qti_handle_sel1_routed_interrupt(uint32_t intr_num, void *handle)
 	case QTISECLIB_INT_ID_NON_SEC_WDOG_BITE:
 	case QTISECLIB_INT_ID_XPU_VIOLATION:
 	case QTISECLIB_INT_ID_RESET_SGI:
+	case QTISECLIB_INT_ID_C1_NOC_ERROR:
+	case QTISECLIB_INT_ID_C2_NOC_ERROR:
+	case QTISECLIB_INT_ID_MEMNOC_ERROR:
+	case QTISECLIB_INT_ID_SNOC_ERROR:
+	case QTISECLIB_INT_ID_NSS_NOC_ERROR:
 		/* Valid interrupt - invoke the ISR */
 		qtiseclib_invoke_isr(intr_num, handle);
 		return 0;
@@ -107,6 +115,7 @@ int qti_handle_sel1_routed_interrupt(uint32_t intr_num, void *handle)
 		WARN("SEL1 routed Interrupt ID invalid: %u\n", intr_num);
 		return -EINVAL;
 	}
+#endif
 }
 
 int qti_interrupt_svc_init(bool have_sel1)

@@ -203,7 +203,7 @@ void qti_noc_error_log_obs(nocerr_info_type *noc_info)
 			NOC_IN32(NOC_REG_ADDR(noc_info->base_addr,
 					      noc_info->hw->errlog8_high));
 
-	ERROR("%x %s %x %x %x %x %x %x %x %x %x %x %x %x %x %x %x\n",
+	ERROR("(%x %s %x %x %x %x %x %x %x %x %x %x %x %x %x %x %x)\n",
 	      NOC_ERR_FATAL_SYNDROME_REG, noc_info->name,
 	      noc_info->syndrome.ERRLOG0_LOW,
 	      noc_info->syndrome.ERRLOG0_HIGH,
@@ -376,7 +376,7 @@ void qti_noc_error_log_safety(nocerr_info_type *noc_info,
 			NOC_IN32(NOC_REG_ADDR(noc_info->sfty_ctl_addrs[idx],
 					      noc_info->sfty_ctl_hw[idx]->uflta_high));
 
-	ERROR("%x %s %x %x %x %x %x\n",
+	ERROR("(%x %s %x %x %x %x %x)\n",
 	      NOC_SFTY_NAME_SYNDROME_REG, noc_info->name, idx,
 	      noc_info->syndrome.sfty_ctl[idx].CFLTA_LOW,
 	      noc_info->syndrome.sfty_ctl[idx].CFLTA_HIGH,
@@ -514,7 +514,7 @@ void *qti_noc_error_handle_interrupt(uint32_t intnum, void *handle, void *arg)
 			}
 
 			if (fault_detected) {
-				ERROR("%x %s %x %x %x %x %x\n", NOC_FAULT_NAME_SBMS,
+				ERROR("(%x %s %x %x %x %x %x)\n", NOC_FAULT_NAME_SBMS,
 				      noc_info->name, idx,
 				      noc_info->syndrome.sbms[idx].FAULTINSTATUS0_LOW,
 				      noc_info->syndrome.sbms[idx].FAULTINSTATUS0_HIGH,
@@ -541,7 +541,7 @@ void *qti_noc_error_handle_interrupt(uint32_t intnum, void *handle, void *arg)
 					NOC_IN32(NOC_REG_ADDR(noc_info->pos_base_addrs[idx],
 							      noc_info->pos_hw[idx]->errlog_high));
 
-			ERROR("%x %s %x %x %x\n", NOC_POS_NAME_SYNDROME_REG,
+			ERROR("(%x %s %x %x %x)\n", NOC_POS_NAME_SYNDROME_REG,
 			      noc_info->name, idx,
 			      noc_info->syndrome.pos[idx].ERRLOG_LOW,
 			      noc_info->syndrome.pos[idx].ERRLOG_HIGH);
@@ -599,7 +599,7 @@ void *qti_noc_error_handle_interrupt(uint32_t intnum, void *handle, void *arg)
 				noc_info->syndrome.poc[idx].ERRLOGUSER_HIGH = val;
 			}
 
-			ERROR("%x %s %x %x %x %x %x %x %x %x\n",
+			ERROR("(%x %s %x %x %x %x %x %x %x %x)\n",
 			      NOC_POC_NAME_SYNDROME_REG, noc_info->name, idx,
 			      noc_info->syndrome.poc[idx].ERRLOGSTATUS_LOW,
 			      noc_info->syndrome.poc[idx].ERRLOGMAIN_LOW,
