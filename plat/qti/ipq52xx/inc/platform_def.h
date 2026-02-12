@@ -64,7 +64,7 @@
  * Local power state for OFF/power-down. Valid for CPU and cluster power
  * domains.
  */
-#define QTI_LOCAL_STATE_DEEPOFF	0xF
+#define QTI_LOCAL_STATE_DEEPOFF	4
 
 /*
  * This macro defines the deepest retention state possible. A higher state
