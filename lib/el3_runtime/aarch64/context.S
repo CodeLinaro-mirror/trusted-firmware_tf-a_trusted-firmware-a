@@ -3,6 +3,11 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
+/*
+ * Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ * SPDX-License-Identifier: ISC
+ */
 
 #include <arch.h>
 #include <asm_macros.S>
@@ -568,6 +573,11 @@ endfunc save_and_update_ptw_el1_sys_regs
  * ------------------------------------------------------------------
  */
 func el3_exit
+#ifdef ENABLE_LLCC_CFG
+	/* Configure SID for Non-Secure World before exit from secure world */
+	bl      qti_configure_clusterthreadsid_nsworld
+#endif
+
 #if ENABLE_ASSERTIONS
 	/* el3_exit assumes SP_EL0 on entry */
 	mrs	x17, spsel
