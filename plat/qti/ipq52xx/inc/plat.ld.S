@@ -9,6 +9,7 @@
 MEMORY {
     IMEM_RO (rx): ORIGIN = QTI_IMEM_RO_BASE, LENGTH = QTI_IMEM_RO_SIZE
     IMEM_RW (rw): ORIGIN = QTI_IMEM_RW_BASE, LENGTH = QTI_IMEM_RW_SIZE
+    IMEM_DEBUG_DATA (rw!a): ORIGIN = QTI_IMEM_DEBUG_DATA_BASE, LENGTH = QTI_IMEM_DEBUG_DATA_SIZE
     DIAG (rw): ORIGIN = DIAG_BASE, LENGTH = DIAG_LEN
 }
 
@@ -34,8 +35,19 @@ SECTIONS {
     ASSERT(. <= (QTI_IMEM_RW_BASE + QTI_IMEM_RW_SIZE),
         "IMEM RW region has exceeded its limit.")
 
-    ASSERT((QTI_IMEM_RW_BASE + QTI_IMEM_RW_SIZE) <= DIAG_BASE,
-        "IMEM_RW overlaps with DIAG")
+    ASSERT((QTI_IMEM_RW_BASE + QTI_IMEM_RW_SIZE) <= QTI_IMEM_DEBUG_DATA_BASE,
+        "IMEM_RW overlaps with IMEM_DEBUG_DATA")
+
+    imem_debug_data (QTI_IMEM_DEBUG_DATA_BASE) (NOLOAD) : {
+        . = ALIGN(PAGE_SIZE);
+        KEEP(* (.imem_rw_debug_data))
+    } >IMEM_DEBUG_DATA
+
+    ASSERT(. <= (QTI_IMEM_DEBUG_DATA_BASE + QTI_IMEM_DEBUG_DATA_SIZE),
+        "IMEM DEBUG DATA region has exceeded its limit.")
+
+    ASSERT((QTI_IMEM_DEBUG_DATA_BASE + QTI_IMEM_DEBUG_DATA_SIZE) <= DIAG_BASE,
+        "IMEM_DEBUG_DATA overlaps with DIAG")
 
     /****************************************************************
     *  TZOS Diag
