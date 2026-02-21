@@ -150,6 +150,8 @@
 /* UART related constants. */
 /*----------------------------------------------------------------------------*/
 /* BASE ADDRESS OF DIFFERENT REGISTER SPACES IN HW */
+#define GENI_UART_BASE				0x01a84000
+
 #define GENI4_CFG				0x0
 #define GENI4_IMAGE_REGS			0x100
 #define GENI4_DATA				0x600

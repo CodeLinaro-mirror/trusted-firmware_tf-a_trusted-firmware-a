@@ -117,6 +117,11 @@ void bl31_early_platform_setup(u_register_t from_bl2,
 		qti_console_uart_register(&g_qti_console_uart,
 					  coreboot_serial.baseaddr);
 	}
+#elif defined(GENI_UART_BASE)
+	/* Use platform-defined UART base address when coreboot is not available */
+	static console_t g_qti_console_uart;
+
+	qti_console_uart_register(&g_qti_console_uart, GENI_UART_BASE);
 #endif
 
 #if DIAG_LOG
