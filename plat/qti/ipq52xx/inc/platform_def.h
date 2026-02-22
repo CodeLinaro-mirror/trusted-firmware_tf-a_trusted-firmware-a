@@ -146,6 +146,26 @@
 #define QTI_DEVICE_BASE				0x00000000UL
 #define QTI_DEVICE_SIZE				(0x80000000UL - QTI_DEVICE_BASE)
 
+/*----------------------------------------------------------------------------*/
+/* UART related constants. */
+/*----------------------------------------------------------------------------*/
+/* BASE ADDRESS OF DIFFERENT REGISTER SPACES IN HW */
+#define GENI_UART_BASE				0x01a84000
+
+#define GENI4_CFG				0x0
+#define GENI4_IMAGE_REGS			0x100
+#define GENI4_DATA				0x600
+
+/* COMMON STATUS/CONFIGURATION REGISTERS AND MASKS */
+#define GENI_STATUS_REG				(GENI4_CFG + 0x00000040)
+#define GENI_STATUS_M_GENI_CMD_ACTIVE_MASK	(0x1)
+#define UART_TX_TRANS_LEN_REG			(GENI4_IMAGE_REGS + 0x00000170)
+/* MASTER/TX ENGINE REGISTERS */
+#define GENI_M_CMD0_REG				(GENI4_DATA + 0x00000000)
+/* FIFO, STATUS REGISTERS AND MASKS */
+#define GENI_TX_FIFOn_REG			(GENI4_DATA + 0x00000100)
+
+#define GENI_M_CMD_TX				(0x08000000)
 /*******************************************************************************
  * BL31 specific defines.
  ******************************************************************************/
