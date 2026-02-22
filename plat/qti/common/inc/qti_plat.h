@@ -9,6 +9,7 @@
 #define QTI_PLAT_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #include <common/bl_common.h>
 #include <lib/cassert.h>
@@ -59,5 +60,23 @@ typedef struct chip_id_info {
 	uint16_t jtag_id;
 	uint16_t chipinfo_id;
 } chip_id_info_t;
+
+
+/*
+ * Platform-specific post cold init function
+ */
+void qti_post_cold_init(void);
+
+#ifdef ENABLE_LLCC_CFG
+/*
+ * LLCC configuration function declarations for QTI platforms
+ * These functions are implemented in platform-specific plat_helpers.S
+ */
+void qti_configure_clusterthreadsid_for_nsworld(bool is_reserved_cpu_core);
+void qti_configure_clusterthreadsid_for_secureworld(void);
+void qti_configure_clusterbusqos(void);
+void qti_configure_actlr_el3(void);
+void qti_configure_actlr_el2(void);
+#endif /* ENABLE_LLCC_CFG */
 
 #endif /* QTI_PLAT_H */

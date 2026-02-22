@@ -8,10 +8,13 @@
 
 #include <lib/mmio.h>
 #include <qti_plat.h>
-#include <qtiseclib_interface.h>
 #include <platform.h>
+
 /**
- * Helper function to configure Scheme ID for ARM Cores when jumping to NS world/cold init
+ * Configure LLCC scheme ID for non-secure world context switch
+ * Maps CPU cores to LLCC scheme IDs:
+ * - Cores 0-3: Scheme ID 0
+ * - Core 4: Scheme ID 1
  * @param [in] void
  * @return void.
  */
@@ -19,38 +22,26 @@
 void qti_configure_clusterthreadsid_nsworld(void)
 {
 	uint32_t cpu_num;
+	bool is_last_core;
 
 	cpu_num = ((plat_my_core_pos()) % QTISECLIB_PLAT_CORE_COUNT);
+	is_last_core = (cpu_num == (QTISECLIB_PLAT_CORE_COUNT - 1));
 
-	return mon_configure_clusterthreadsid_for_nsworld(((cpu_num == 4u) ? true : false));
+	return qti_configure_clusterthreadsid_for_nsworld(is_last_core);
 }
 #endif
 
 /**
  * Platform-specific post cold init function for ipq96xx
- * Configures MIBU and CLUSTERBUSQOS settings
+ * Configures MIBU infrastructure registers required for LLCC operation
  * @param [in] void
  * @return void.
  */
-void qtiseclib_post_cold_init(void)
+void qti_post_cold_init(void)
 {
 #ifdef ENABLE_LLCC_CFG
-	/* MIBU Configurations required for LLCC SCID Configuration */
+	/* Configure MIBU infrastructure registers for LLCC */
 	mmio_write_32(APSS_SHARED_MIBU_INFRA_SCID_ADDR, MIBU_INFRA_SCID_VALUE);
 	mmio_write_32(APSS_SHARED_MIBU_INFRA_QOS_ADDR, MIBU_INFRA_QOS_VALUE);
-
-	/* Configure CLUSTERBUSQOS_EL1 during cold/warm boot of the ARM cores */
-	mon_configure_clusterbusqos();
-
-	/*
-	 * Configure ACTLR_EL3.SMEN to 1, so that S-EL1 have write access to
-	 * several cluster control registers including CLUSTERPARTCR_EL1, which
-	 * is needed for L3 partitioning
-	 */
-	mon_configure_actlr_el3();
-
-	/* Configure ACTLR_EL2.SMEN to 1 for EL2 access control */
-	mon_configure_actlr_el2();
-
 #endif
 }

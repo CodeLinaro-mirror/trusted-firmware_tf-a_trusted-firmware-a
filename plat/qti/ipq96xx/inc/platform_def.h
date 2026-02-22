@@ -9,6 +9,7 @@
  * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: ISC
  */
+
 #ifndef PLATFORM_DEF_H
 #define PLATFORM_DEF_H
 
@@ -224,10 +225,19 @@
 /*----------------------------------------------------------------------------*/
 /* LLCC CFGS */
 /*----------------------------------------------------------------------------*/
-#define APSS_SHARED_MIBU_INFRA_SCID_ADDR  0x09680000
-#define APSS_SHARED_MIBU_INFRA_QOS_ADDR   0x09680004
+#define APSS_SHARED_MIBU_INFRA_SCID_ADDR  0x0F600458
+#define APSS_SHARED_MIBU_INFRA_QOS_ADDR   0x0F60045C
 #define MIBU_INFRA_SCID_VALUE             0x2318040
 #define MIBU_INFRA_QOS_VALUE              0x1000000
+
+/* ACTLR register bit masks for LLCC support */
+#define ACTLR_TSIDEN_BIT                  0x400    /* Thread Scheme ID Enable (bit 10) */
+#define ACTLR_SMEN_BIT                    0x800    /* Scheme Management Enable (bit 11) */
+
+/* CLUSTERBUSQOS register values */
+#define CLUSTERBUSQOS_SCID1_QOS2          0x00000020  /* Scheme ID 1: QoS=2 (bits 4-7) */
+#define CLUSTERBUSQOS_SCID2_QOS1          0x00000100  /* Scheme ID 2: QoS=1 (bits 8-11) */
 /*----------------------------------------------------------------------------*/
+
 
 #endif /* PLATFORM_DEF_H */

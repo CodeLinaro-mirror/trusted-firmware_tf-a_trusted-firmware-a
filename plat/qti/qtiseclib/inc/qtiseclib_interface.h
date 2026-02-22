@@ -121,13 +121,5 @@ int int_svc_register_isr(uint32_t intnum, const char *intdesc,
 			void *ctx);
 
 void dbg_err_fatal(dbg_err_fatal_t err);
-#ifdef ENABLE_LLCC_CFG
-void mon_configure_clusterthreadsid_for_nsworld(bool is_reserved_cpu_core);
-void mon_configure_clusterthreadsid_for_secureworld(void);
-void mon_configure_clusterbusqos(void);
-void mon_configure_actlr_el3(void);
-void mon_configure_actlr_el2(void);
-#endif
-
 
 #endif /* QTISECLIB_INTERFACE_H */

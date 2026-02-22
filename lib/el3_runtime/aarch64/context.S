@@ -575,7 +575,7 @@ endfunc save_and_update_ptw_el1_sys_regs
 func el3_exit
 #ifdef ENABLE_LLCC_CFG
 	/* Configure SID for Non-Secure World before exit from secure world */
-	bl      qti_configure_clusterthreadsid_nsworld
+	bl	qti_configure_clusterthreadsid_nsworld
 #endif
 
 #if ENABLE_ASSERTIONS

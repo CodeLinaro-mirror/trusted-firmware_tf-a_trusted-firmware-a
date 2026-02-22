@@ -77,5 +77,10 @@ func plat_reset_handler
 	/* Execuete CPUSS boot set up on every core. */
 	bl	qtiseclib_cpuss_reset_asm
 
+	/* Platform-specific per-core initialization */
+#ifdef ENABLE_LLCC_CFG
+	bl	qti_plat_per_core_init
+#endif
+
 	ret	x18
 endfunc plat_reset_handler

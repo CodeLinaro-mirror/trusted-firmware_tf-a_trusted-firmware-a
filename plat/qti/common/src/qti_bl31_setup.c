@@ -55,6 +55,18 @@ uint32_t g_qti_bl31_cold_booted;
 spinlock_t isr_log_sync_lock = {0};
 
 /*******************************************************************************
+ * Weak default implementation of platform-specific post cold init
+ * Platforms can override this function to perform platform-specific
+ * initialization after qtiseclib initialization completes
+ ******************************************************************************/
+#pragma weak qti_post_cold_init
+
+void qti_post_cold_init(void)
+{
+	/* Default implementation: no-op */
+}
+
+/*******************************************************************************
  * Helper to extract BL31 entry point info from arg0 passed to BL31
  ******************************************************************************/
 
@@ -161,6 +173,10 @@ void bl31_platform_setup(void)
 	qti_interrupt_svc_init(bl32_image_ep_info.pc != 0);
 #endif
 	qtiseclib_bl31_platform_setup();
+
+	/* Platform-specific post cold init */
+	qti_post_cold_init();
+
 #ifdef ENABLE_ICB
 	qti_icb_error_init();
 #endif

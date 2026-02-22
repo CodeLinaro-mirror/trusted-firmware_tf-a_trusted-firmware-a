@@ -347,7 +347,7 @@ sync_handler64:
 
 #ifdef ENABLE_LLCC_CFG
 	/* Configure SID for Secure World */
-	 bl	mon_configure_clusterthreadsid_for_secureworld
+	 bl	qti_configure_clusterthreadsid_for_secureworld
 #endif
 #if ENABLE_PAUTH
 	/* Load and program APIAKey firmware key */
@@ -547,7 +547,7 @@ func handle_interrupt_exception
 
 #ifdef ENABLE_LLCC_CFG
 	/* Configure SID for Secure World */
-	 bl	mon_configure_clusterthreadsid_for_secureworld
+	 bl	qti_configure_clusterthreadsid_for_secureworld
 #endif
 #if ENABLE_PAUTH
 	/* Load and program APIAKey firmware key */
