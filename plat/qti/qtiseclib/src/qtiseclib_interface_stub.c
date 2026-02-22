@@ -70,6 +70,16 @@ void qtiseclib_kryo6_silver_reset_asm(void)
 }
 
 /*
+ * Execute CPU (Cortex-A53) specific reset handler / system initialization.
+ * This takes care of executing required CPU errata's.
+ *
+ * Clobbers: x0 - x16
+ */
+void a53_aarch64_sysini(void)
+{
+}
+
+/*
  * C Api's
  */
 void qtiseclib_bl31_platform_setup(void)

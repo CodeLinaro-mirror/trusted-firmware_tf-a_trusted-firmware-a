@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: ISC
-*/
+ */
 #ifndef QTI_MAP_CHIPINFO_H
 #define QTI_MAP_CHIPINFO_H
 

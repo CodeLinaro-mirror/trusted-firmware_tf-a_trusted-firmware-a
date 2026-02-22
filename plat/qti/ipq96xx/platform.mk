@@ -49,7 +49,9 @@ DISABLE_QTI_MEM_ASSIGN := 1
 $(eval $(call assert_boolean,DISABLE_QTI_MEM_ASSIGN))
 $(eval $(call add_define,DISABLE_QTI_MEM_ASSIGN))
 
-#disable CTX_INCLUDE_AARCH32_REGS to support ipq96xx gold cores
+# AArch32 register context configuration for IPQ96xx
+# Default: 0 for 64-bit kernel/U-Boot (includes A78 gold cores)
+# Set to 1 or remove override for 32-bit kernel/U-Boot (A55 silver cores only)
 override CTX_INCLUDE_AARCH32_REGS	:=	0
 WORKAROUND_CVE_2017_5715		:=      0
 DYNAMIC_WORKAROUND_CVE_2018_3639	:=      1
@@ -72,7 +74,7 @@ QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_kryo6_silver.S	\
 				$(QTI_PLAT_PATH)/common/src/qti_stack_protector.c	\
 				$(QTI_PLAT_PATH)/${CHIPSET}/src/qti_rng.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_common.c		\
-				$(QTI_PLAT_PATH)/common/src/qti_interrupt_svc.c	\
+				$(QTI_PLAT_PATH)/common/src/qti_interrupt_svc.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_pm.c			\
 				$(QTI_PLAT_PATH)/ipq-common/src/pm_ps_hold.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_topology.c		\
@@ -100,9 +102,9 @@ PLAT_INCLUDES		+=	${QTI_EXTERNAL_INCLUDES}
 
 include lib/xlat_tables_v2/xlat_tables.mk
 PLAT_BL_COMMON_SOURCES	+=	${XLAT_TABLES_LIB_SRCS}					\
-				plat/common/aarch64/crash_console_helpers.S    \
-				common/desc_image_load.c			\
-				lib/bl_aux_params/bl_aux_params.c		\
+				plat/common/aarch64/crash_console_helpers.S		\
+				common/desc_image_load.c				\
+				lib/bl_aux_params/bl_aux_params.c			\
 
 #PSCI Sources.
 PSCI_SOURCES		:=	plat/common/plat_psci_common.c				\
@@ -170,5 +172,3 @@ $(eval $(call add_define,ENABLE_ICB))
 ifeq (${ENABLE_ICB},1)
 include drivers/qti/icb/common/icb.mk
 endif
-
-INIT_UNUSED_NS_EL2 := 1

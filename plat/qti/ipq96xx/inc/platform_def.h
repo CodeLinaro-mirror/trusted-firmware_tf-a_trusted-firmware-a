@@ -16,9 +16,9 @@
 /* Enable the dynamic translation tables library. */
 #define PLAT_XLAT_TABLES_DYNAMIC	1
 
-#include <common_def.h>
 
 #include <qti_board_def.h>
+#include <common_def.h>
 #include <qtiseclib_defs_plat.h>
 
 /*----------------------------------------------------------------------------*/

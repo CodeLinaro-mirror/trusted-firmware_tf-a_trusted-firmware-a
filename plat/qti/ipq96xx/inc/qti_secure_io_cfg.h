@@ -8,6 +8,7 @@
  * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: ISC
  */
+
 #ifndef QTI_SECURE_IO_CFG_H
 #define QTI_SECURE_IO_CFG_H
 

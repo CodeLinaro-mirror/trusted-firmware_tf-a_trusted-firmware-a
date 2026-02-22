@@ -9,7 +9,6 @@
 
 QTI_PLAT_PATH		:=	plat/qti
 CHIPSET			:=	${PLAT}
-SOC			:=	$(patsubst ipq%,%,${PLAT})
 
 # Turn On Separate code & data.
 SEPARATE_CODE_AND_RODATA	:=	1
@@ -50,9 +49,6 @@ ENABLE_STACK_PROTECTOR	:=	strong
 # Enable platform-specific linker script for IMEM region
 PLAT_EXTRA_LD_SCRIPT := 1
 $(eval $(call add_define,PLAT_EXTRA_LD_SCRIPT))
-
-QTI_5200_PLATFORM	:=	1
-$(eval $(call add_define,QTI_5200_PLATFORM))
 
 QTI_EXTERNAL_INCLUDES	:=	-I${QTI_PLAT_PATH}/${CHIPSET}/inc			\
 				-I${QTI_PLAT_PATH}/common/inc				\
@@ -106,7 +102,7 @@ TIMER_SOURCES		:=	drivers/delay_timer/generic_delay_timer.c	\
 include drivers/arm/gic/v2/gicv2.mk
 #GIC sources.
 GIC_SOURCES		:=	plat/common/plat_gicv2.c			\
-				${GICV2_SOURCES}					\
+				${GICV2_SOURCES}				\
 
 # xPU Configuration
 XPU_VERSION := v4

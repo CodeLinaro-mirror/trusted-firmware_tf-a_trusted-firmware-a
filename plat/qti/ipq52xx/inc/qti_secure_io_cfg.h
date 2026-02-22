@@ -9,8 +9,8 @@
  * SPDX-License-Identifier: ISC
  */
 
-#ifndef __QTI_SECURE_IO_CFG_H__
-#define __QTI_SECURE_IO_CFG_H__
+#ifndef QTI_SECURE_IO_CFG_H
+#define QTI_SECURE_IO_CFG_H
 
 #include <stdint.h>
 
@@ -27,5 +27,5 @@ static const uintptr_t qti_secure_io_allowed_regs[] = {
 	TCSR_BOOT_INFO
 };
 
-#endif /* __QTI_SECURE_IO_CFG_H__ */
+#endif /* QTI_SECURE_IO_CFG_H */
 
