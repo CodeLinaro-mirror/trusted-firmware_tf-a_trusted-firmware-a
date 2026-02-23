@@ -573,11 +573,6 @@ endfunc save_and_update_ptw_el1_sys_regs
  * ------------------------------------------------------------------
  */
 func el3_exit
-#ifdef ENABLE_LLCC_CFG
-	/* Configure SID for Non-Secure World before exit from secure world */
-	bl	qti_configure_clusterthreadsid_nsworld
-#endif
-
 #if ENABLE_ASSERTIONS
 	/* el3_exit assumes SP_EL0 on entry */
 	mrs	x17, spsel
@@ -594,6 +589,17 @@ func el3_exit
 	mov	x17, sp
 	msr	spsel, #MODE_SP_ELX
 	str	x17, [sp, #CTX_EL3STATE_OFFSET + CTX_RUNTIME_SP]
+
+#ifdef ENABLE_LLCC_CFG
+	/* Configure CLUSTERTHREADSID for Non-Secure world on exit */
+	/* Read SCR_EL3 from context to determine target world */
+	ldr	x17, [sp, #CTX_EL3STATE_OFFSET + CTX_SCR_EL3]
+	tst	x17, #SCR_NS_BIT
+	b.eq	sid_configured
+	/* Exiting to Non-Secure world - configure NS SID */
+	bl	qti_configure_clusterthreadsid_nsworld
+sid_configured:
+#endif
 
 	/* ----------------------------------------------------------
 	 * Restore CPTR_EL3.

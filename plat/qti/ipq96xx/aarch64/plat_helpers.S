@@ -11,12 +11,26 @@
  * Platform-specific per-core initialization for LLCC support
  * Configures ACTLR_EL3, ACTLR_EL2 on all cores
  * Called during both cold and warm boot on each core
- * Uses x7 (caller-saved register) - safe for all contexts
+ *
+ * CRITICAL:
+ * This function is called BEFORE plat_set_my_stack() in plat_reset_handler.
+ * At this stage, no EL3 stack is available and SP is not yet initialized.
+ *
+ * Stack-based operations (stp/ldp) are NOT SAFE here.
+ * The return address must be preserved across BL calls using a general-
+ * purpose register.
+ *
+ * x19 is used intentionally for early-boot only. This is safe because:
+ *  - execution is single-entry, non-reentrant
+ *  - no ABI-preserving caller exists at this stage
+ *  - control returns directly to early EL3 assembly
+ *
+ * Do NOT convert this to stack-based save/restore.
  *--------------------------------------------------------------------*/
 .global qti_plat_per_core_init
 .type qti_plat_per_core_init, %function
 func qti_plat_per_core_init
-	mov	x7, x30
+	mov	x19, x30
 
 	/* Configure ACTLR_EL3 - SMEN and TSIDEN bits */
 	bl	qti_configure_actlr_el3
@@ -24,7 +38,7 @@ func qti_plat_per_core_init
 	/* Configure ACTLR_EL2 - TSIDEN bit */
 	bl	qti_configure_actlr_el2
 
-	ret	x7
+	ret	x19
 endfunc qti_plat_per_core_init
 
 /*--------------------------------------------------------------------

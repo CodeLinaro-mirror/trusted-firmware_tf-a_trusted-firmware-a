@@ -344,14 +344,13 @@ sync_handler64:
 	 * Also save PMCR_EL0 and  set the PSTATE to a known state.
 	 */
 	bl	prepare_el3_entry
-
-#ifdef ENABLE_LLCC_CFG
-	/* Configure SID for Secure World */
-	 bl	qti_configure_clusterthreadsid_for_secureworld
-#endif
 #if ENABLE_PAUTH
 	/* Load and program APIAKey firmware key */
 	bl	pauth_load_bl31_apiakey
+#endif
+
+#ifdef ENABLE_LLCC_CFG
+	bl	qti_configure_clusterthreadsid_for_secureworld
 #endif
 
 	/*
@@ -544,14 +543,13 @@ func handle_interrupt_exception
 	 * Also save PMCR_EL0 and  set the PSTATE to a known state.
 	 */
 	bl	prepare_el3_entry
-
-#ifdef ENABLE_LLCC_CFG
-	/* Configure SID for Secure World */
-	 bl	qti_configure_clusterthreadsid_for_secureworld
-#endif
 #if ENABLE_PAUTH
 	/* Load and program APIAKey firmware key */
 	bl	pauth_load_bl31_apiakey
+#endif
+
+#ifdef ENABLE_LLCC_CFG
+	bl	qti_configure_clusterthreadsid_for_secureworld
 #endif
 
 	/* Save the EL3 system registers needed to return from this exception */
