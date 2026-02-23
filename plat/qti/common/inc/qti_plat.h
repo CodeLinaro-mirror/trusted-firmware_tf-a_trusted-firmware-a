@@ -72,6 +72,7 @@ void qti_post_cold_init(void);
  * LLCC configuration function declarations for QTI platforms
  * These functions are implemented in platform-specific plat_helpers.S
  */
+void qti_plat_per_core_init(void);
 void qti_configure_clusterthreadsid_for_nsworld(bool is_reserved_cpu_core);
 void qti_configure_clusterthreadsid_for_secureworld(void);
 void qti_configure_clusterbusqos(void);

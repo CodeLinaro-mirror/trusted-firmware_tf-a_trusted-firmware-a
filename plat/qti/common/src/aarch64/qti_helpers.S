@@ -74,11 +74,11 @@ func plat_reset_handler
 
 	/* pass cold boot status. */
 	ldr	w0, g_qti_bl31_cold_booted
-	/* Execuete CPUSS boot set up on every core. */
+	/* Execute CPUSS boot set up on every core. */
 	bl	qtiseclib_cpuss_reset_asm
 
-	/* Platform-specific per-core initialization */
 #ifdef ENABLE_LLCC_CFG
+	/* Configure ACTLR_EL3 and ACTLR_EL2 on all cores */
 	bl	qti_plat_per_core_init
 #endif
 
