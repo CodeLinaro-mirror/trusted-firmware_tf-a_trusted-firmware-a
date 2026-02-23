@@ -33,14 +33,19 @@ void qti_configure_clusterthreadsid_nsworld(void)
 
 /**
  * Platform-specific post cold init function for ipq96xx
- * Configures MIBU infrastructure registers required for LLCC operation
+ * Configures CLUSTERBUSQOS and MIBU infrastructure registers
+ * Called only on core 0 during cold boot
+ * Note: ACTLR_EL3/EL2 configured in plat_reset_handler on all cores
  * @param [in] void
  * @return void.
  */
 void qti_post_cold_init(void)
 {
 #ifdef ENABLE_LLCC_CFG
-	/* Configure MIBU infrastructure registers for LLCC */
+	/* Configure CLUSTERBUSQOS_EL1 once on boot core */
+	qti_configure_clusterbusqos();
+
+	/* Configure MIBU infrastructure registers */
 	mmio_write_32(APSS_SHARED_MIBU_INFRA_SCID_ADDR, MIBU_INFRA_SCID_VALUE);
 	mmio_write_32(APSS_SHARED_MIBU_INFRA_QOS_ADDR, MIBU_INFRA_QOS_VALUE);
 #endif
