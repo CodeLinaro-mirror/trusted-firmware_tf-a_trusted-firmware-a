@@ -96,4 +96,28 @@
 	(GIC_HIGHEST_NS_PRIORITY << 16)	|	\
 	(GIC_HIGHEST_NS_PRIORITY << 24))
 
+#ifndef __ASSEMBLER__
+
+#include <stdint.h>
+
+/*******************************************************************************
+ * GIC Distributor function prototypes for accessing entire registers.
+ * Note: These functions are for accessing the GIC registers corresponding to
+ * multiple interrupt IDs. The number of interrupt IDs depends on the register.
+ ******************************************************************************/
+
+/*
+ * Accessor to read the GIC Distributor NSACR corresponding to the interrupt
+ * `id`, 16 interrupt IDs at a time.
+ */
+unsigned int gicd_read_nsacr(uintptr_t base, unsigned int id);
+
+/*
+ * Accessor to write the GIC Distributor NSACR corresponding to the interrupt
+ * `id`, 16 interrupt IDs at a time.
+ */
+void gicd_write_nsacr(uintptr_t base, unsigned int id, unsigned int val);
+
+#endif /* __ASSEMBLER__ */
+
 #endif /* GIC_COMMON_H */

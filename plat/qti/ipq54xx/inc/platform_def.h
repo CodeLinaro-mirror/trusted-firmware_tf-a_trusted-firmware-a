@@ -241,5 +241,24 @@
 #define CLUSTERBUSQOS_SCID2_QOS1          0x00000100  /* Scheme ID 2: QoS=1 (bits 8-11) */
 /*----------------------------------------------------------------------------*/
 
+/*----------------------------------------------------------------------------*/
+/* PCIe MSI Interrupt Configuration */
+/*----------------------------------------------------------------------------*/
+/*
+ * PCIe MSI interrupt range
+ * These interrupts must be accessible from Non-Secure world for PCIe MSI
+ * functionality. The GICD NSACR registers are configured to grant NS access.
+ */
+#define PCIE_MSI_INT_BASE         672
+#define PCIE_MSI_INT_END          799
+#define PCIE_MSI_INT_COUNT        (PCIE_MSI_INT_END - PCIE_MSI_INT_BASE + 1)
+
+/* Number of NSACR registers needed (each register controls 16 interrupts) */
+#define PCIE_MSI_NSACR_COUNT      ((PCIE_MSI_INT_COUNT + 15) / 16)
+
+/* NSACR value: 0xFFFFFFFF grants full NS access to all 16 interrupts per register */
+#define GICD_NSACR_NS_ACCESS_FULL         0xFFFFFFFF
+/*----------------------------------------------------------------------------*/
+
 
 #endif /* PLATFORM_DEF_H */
