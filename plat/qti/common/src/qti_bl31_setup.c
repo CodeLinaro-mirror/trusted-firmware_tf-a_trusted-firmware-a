@@ -22,11 +22,11 @@
 #include <qti_uart_console.h>
 #include <qti_diag_console.h>
 #include <qtiseclib_interface.h>
-#ifdef ENABLE_ICB
+#if ENABLE_ICB
 #include <icb_error.h>
 #endif
 
-#ifdef ENABLE_XPU
+#if ENABLE_XPU
 #include <qti_xpu.h>
 #endif
 
@@ -182,11 +182,11 @@ void bl31_platform_setup(void)
 	/* Platform-specific post cold init */
 	qti_post_cold_init();
 
-#ifdef ENABLE_ICB
+#if ENABLE_ICB
 	qti_icb_error_init();
 #endif
 
-#ifdef ENABLE_XPU
+#if ENABLE_XPU
 	/* Initialize Access Control (XPU) driver with platform-specific configuration */
 	ac_xpu_init();
 #endif

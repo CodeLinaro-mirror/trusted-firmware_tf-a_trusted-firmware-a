@@ -37,7 +37,7 @@ static nocerr_propdata_type_oem *nocerr_propdata_oem;
 static nocerr_info_type *noc_info_list;
 static nocerr_info_type_oem *noc_info_oem_list;
 
-#ifdef ENABLE_NOC_DECODE
+#if ENABLE_NOC_DECODE
 extern void qti_noc_error_decode(nocerr_info_type *nocerr_info);
 #endif
 
@@ -610,7 +610,7 @@ void *qti_noc_error_handle_interrupt(uint32_t intnum, void *handle, void *arg)
 			      noc_info->syndrome.poc[idx].ERRLOGUSER_HIGH);
 		}
 
-#ifdef ENABLE_NOC_DECODE
+#if ENABLE_NOC_DECODE
 		qti_noc_error_decode(noc_info);
 #endif
 

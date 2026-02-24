@@ -132,8 +132,14 @@ CPU_SOURCES		:=	lib/cpus/aarch64/cortex_a78.S			\
 # xPU Configuration
 XPU_VERSION := v4
 
+# Base xPU support define
+ENABLE_XPU	:=	1
+$(eval $(call add_define,ENABLE_XPU))
+
 # Include xPU driver
+ifeq (${ENABLE_XPU},1)
 include drivers/qti/accesscontrol/xpu/xpu.mk
+endif
 
 BL31_SOURCES		+=	${QTI_BL31_SOURCES}				\
 				${PSCI_SOURCES}					\

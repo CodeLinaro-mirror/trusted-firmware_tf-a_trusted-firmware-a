@@ -108,8 +108,14 @@ GIC_SOURCES		:=	plat/common/plat_gicv2.c			\
 # xPU Configuration
 XPU_VERSION := v4
 
+# Base xPU support define
+ENABLE_XPU	:=	0
+$(eval $(call add_define,ENABLE_XPU))
+
 # Include xPU driver
+ifeq (${ENABLE_XPU},1)
 include drivers/qti/accesscontrol/xpu/xpu.mk
+endif
 
 # Prohibit using deprecated interfaces. We rely on this for this platform.
 ERROR_DEPRECATED	:=	1

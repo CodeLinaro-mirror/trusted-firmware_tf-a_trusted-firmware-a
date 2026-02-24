@@ -47,9 +47,6 @@ BL31_SOURCES += ${XPU_ALL_SOURCES}
 # Add xPU includes
 PLAT_INCLUDES += ${XPU_INCLUDES}
 
-# Base xPU support define
-$(eval $(call add_define,ENABLE_XPU))
-
 # Check for XPU_DISABLE flag
 ifeq ($(XPU_DISABLE),1)
     $(eval $(call add_define,XPU_DISABLE))
