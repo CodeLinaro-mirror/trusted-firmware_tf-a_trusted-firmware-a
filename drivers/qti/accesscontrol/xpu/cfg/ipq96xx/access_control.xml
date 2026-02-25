@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!-- Generated Mon December 15 02:23:26 2025 UTC -->
+<!-- Generated Wed February 25 08:00:41 2026 UTC -->
 
-<!-- Checksum: 8fad8dd37cb9128a1a0e09078fa6d600 -->
+<!-- Checksum: c12c8e20f2536418cc9341ae428d90e3 -->
 <AccessControl>
    <Version>0.1</Version>
    <MPU fqname="JUHU.BOOT_ROM.BOOT_ROM_MPUQ12_4_CL32L12M31_LE.XPU4" name="BOOT_ROM_XPU4">
@@ -204,13 +204,13 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <Global confirmed="false" profile="UMRPERM" value="HYP">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>Uniphy, CMN_BLOCK, MDIO, etc.</SecurityRationale>
-         </Global>
          <Global confirmed="false" profile="CFGOWNER" value="AP">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
+         </Global>
+         <Global confirmed="false" profile="UMRPERM" value="HYP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Uniphy, CMN_BLOCK, MDIO, etc.</SecurityRationale>
          </Global>
          <PolicyParameters/>
       </SWConfig>
@@ -1196,13 +1196,13 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <Global confirmed="false" profile="CFGOWNER" value="AP">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
-         </Global>
          <Global confirmed="false" profile="UMRPERM" value="HYP">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>APSS, NSP Processor region opened to AP-NS. Secure registers within APSS are already protected using Secure Bit at H/W Level and APSS Transactions doesn't go via this xPU.</SecurityRationale>
+         </Global>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
          <PolicyParameters/>
       </SWConfig>
@@ -1324,7 +1324,7 @@
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
-         <Global confirmed="false" profile="UMRPERM" value="HYP">
+         <Global confirmed="false" profile="UMRPERM" value="ALL_ROT">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>QDSS Space</SecurityRationale>
          </Global>
@@ -1414,13 +1414,13 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <Global confirmed="false" profile="CFGOWNER" value="AP">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
-         </Global>
          <Global confirmed="false" profile="UMRPERM" value="HYP">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>SDCC/eMMC Region</SecurityRationale>
+         </Global>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
          <PolicyParameters/>
       </SWConfig>
@@ -1508,13 +1508,13 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <Global confirmed="false" profile="CFGOWNER" value="AP">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
-         </Global>
          <Global confirmed="false" profile="UMRPERM" value="HYP">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>HLOS/HYP sMMU S1/S2 configuration requires access. Secure registers within sMMU are already protected using Secure Bit at H/W Level and APSS Transactions doesn't go via this xPU.</SecurityRationale>
+         </Global>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
          <PolicyParameters>
             <Parameter name="XPU_INPUT_ADDRESS_BUS_MASK" value="0x1FFFFFFF"/>
@@ -1605,13 +1605,13 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <Global confirmed="false" profile="UMRPERM" value="HYP">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>USB Space</SecurityRationale>
-         </Global>
          <Global confirmed="false" profile="CFGOWNER" value="AP">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
+         </Global>
+         <Global confirmed="false" profile="UMRPERM" value="HYP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>USB Space</SecurityRationale>
          </Global>
          <PolicyParameters/>
       </SWConfig>
@@ -1833,40 +1833,40 @@
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <RGn confirmed="false" index="0" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="0" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GPLL_ENA_VOTE</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1801000" start="0x1800000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="1" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="1" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1802000" start="0x1801000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="2" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="2" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1803000" start="0x1802000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="3" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="3" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1804000" start="0x1803000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="4" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="4" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
@@ -1881,25 +1881,25 @@
                <Range end="0x1806000" start="0x1805000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="6" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="6" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1807000" start="0x1806000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="7" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="7" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1808000" start="0x1807000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="8" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="8" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GP - GPIO Clocks</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1809000" start="0x1808000"/>
@@ -1913,48 +1913,48 @@
                <Range end="0x180a000" start="0x1809000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="10" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="10" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x180b000" start="0x180a000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="11" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="11" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x180c000" start="0x180b000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="12" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="12" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>TZ Vote</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x180d000" start="0x180c000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="13" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="13" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x180e000" start="0x180d000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="14" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="14" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>IMEM</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x180f000" start="0x180e000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="15" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="15" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
@@ -1969,25 +1969,25 @@
                <Range end="0x1811000" start="0x1810000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="17" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="17" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>DDR BCR</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1812000" start="0x1811000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="18" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="18" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>TIC</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1813000" start="0x1812000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="19" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="19" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>BOOT ROM clocks</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1814000" start="0x1813000"/>
@@ -2009,33 +2009,35 @@
                <Range end="0x1816000" start="0x1815000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="22" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="22" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1817000" start="0x1816000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="23" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="23" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1818000" start="0x1817000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="24" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="24" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1819000" start="0x1818000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="25" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="25" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GEMNOC clocks required would be init by XBL SC as part of DDR Init. NSS NOC required by NSS Team also would be init by XBL SC as part of init itself since this RG is protected to AP-S. This was confirmed by NSS VI/HW folks that if this clock is init during boot up, then its sufficient.
+
+AC Policy leveraged from Marina.</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x181a000" start="0x1819000"/>
@@ -2049,24 +2051,24 @@
                <Range end="0x181b000" start="0x181a000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="27" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="27" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x181c000" start="0x181b000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="28" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="28" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x181d000" start="0x181c000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="29" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="29" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
@@ -2090,120 +2092,120 @@
                <Range end="0x1820000" start="0x181f000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="32" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="32" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1821000" start="0x1820000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="33" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="33" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1822000" start="0x1821000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="34" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="34" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1823000" start="0x1822000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="35" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="35" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1824000" start="0x1823000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="36" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="36" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>APSS clocks, HLOS depends on boot loaders</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1825000" start="0x1824000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="37" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="37" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1826000" start="0x1825000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="38" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="38" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1827000" start="0x1826000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="39" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="39" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1828000" start="0x1827000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="40" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="40" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1829000" start="0x1828000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="41" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="41" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x182a000" start="0x1829000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="42" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="42" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x182b000" start="0x182a000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="43" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="43" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x182c000" start="0x182b000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="44" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="44" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x182d000" start="0x182c000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="45" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="45" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x182e000" start="0x182d000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="46" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="46" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
@@ -2218,88 +2220,88 @@
                <Range end="0x1830000" start="0x182f000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="48" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="48" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1831000" start="0x1830000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="49" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="49" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1832000" start="0x1831000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="50" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="50" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1833000" start="0x1832000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="51" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="51" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1834000" start="0x1833000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="52" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="52" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1835000" start="0x1834000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="53" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="53" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>DCC</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1836000" start="0x1835000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="54" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="54" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>SPDM</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1837000" start="0x1836000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="55" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="55" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>MPM</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1838000" start="0x1837000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="56" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="56" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>VOLTAGE</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1839000" start="0x1838000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="57" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="57" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>RBCPR</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x183a000" start="0x1839000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="58" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="58" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
@@ -2314,97 +2316,97 @@
                <Range end="0x183c000" start="0x183b000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="60" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="60" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x183d000" start="0x183c000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="61" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="61" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>TCSR Clocks</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x183e000" start="0x183d000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="62" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="62" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>TLMM clocks</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x183f000" start="0x183e000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="63" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="63" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1840000" start="0x183f000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="64" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="64" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RST_CTL</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1841000" start="0x1840000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="65" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="65" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RST_CTL</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1842000" start="0x1841000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="66" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="66" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RST_CTL</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1843000" start="0x1842000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="67" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="67" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RST_CTL</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1844000" start="0x1843000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="68" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="68" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RST_CTL</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1845000" start="0x1844000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="69" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="69" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RST_CTL</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1846000" start="0x1845000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="70" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="70" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RST_CTL</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1847000" start="0x1846000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="71" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="71" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RST_CTL</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1848000" start="0x1847000"/>
@@ -2418,9 +2420,9 @@
                <Range end="0x1849000" start="0x1848000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="73" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="73" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RST_CTL</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x184a000" start="0x1849000"/>
@@ -2858,41 +2860,41 @@
                <Range end="0x1880000" start="0x187f000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="128" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="128" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RPU Clocks</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1881000" start="0x1880000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="129" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="129" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RPU Clocks</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1882000" start="0x1881000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="130" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="130" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RPU Clocks</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1883000" start="0x1882000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="131" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="131" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RPU Clocks</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1884000" start="0x1883000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="132" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="132" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>GCC_RPU Clocks</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1885000" start="0x1884000"/>
@@ -3438,9 +3440,9 @@
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
-         <Global confirmed="false" profile="" value="ALL_ROT">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <Global confirmed="false" profile="UMRPERM" value="ALL_ROT">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>By default, for all GCC Regs we would have access to ALL_ROT for all masters. Note: UMR is applicable only for MPUs</SecurityRationale>
          </Global>
          <PolicyParameters>
             <Parameter name="XPU_INPUT_ADDRESS_BUS_MASK" value="0xFFFFFFFF"/>
@@ -3511,44 +3513,44 @@
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <PRTn confirmed="false" end="0x4001000" index="0" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x4000000" wdomains="TME_ROM" wvmids="">
+         <PRTn confirmed="false" end="0x4000000" index="0" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x2000000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>DDR PHY Reg</SecurityRationale>
+            <XPU_RGn_FLAGS enabled="true" static="true"/>
+         </PRTn>
+         <PRTn confirmed="false" end="0x4001000" index="1" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x4000000" wdomains="TME_ROM" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>SCID 0 - activation/de-activation ctrl registers</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="0x4072000" index="1" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x4071000" wdomains="TME_ROM" wvmids="">
+         <PRTn confirmed="false" end="0x4072000" index="2" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x4071000" wdomains="TME_ROM" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>LLCC FEAC Reg Space</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="0x40b2000" index="2" locks="TZ" order="0" profile="" rdomains="TME_ROM,TZ" rvmids="" start="0x40b0000" wdomains="TME_ROM,TZ" wvmids="">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>LLCC SCID xPU</SecurityRationale>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
          <PRTn confirmed="false" end="0x40b2000" index="3" locks="TZ" order="0" profile="" rdomains="TME_ROM,TZ" rvmids="" start="0x40b0000" wdomains="TME_ROM,TZ" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>LLCC SCID xPU</SecurityRationale>
+            <SecurityRationale>LLCC SCID MPU</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="4" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x4140000" index="4" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x4100000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>LLCC LCP Region</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="5" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x42d9000" index="5" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x42d0000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>DDR CSR Region</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="6" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x430c000" index="6" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x430a000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>REFCTL/REFGEN/SBM Registers</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="7" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x430f000" index="7" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x430e000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>SBM Fault registers</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
          <PRTn confirmed="false" end="" index="8" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
@@ -3671,11 +3673,18 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <Global confirmed="false" profile="" value="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <Global confirmed="false" profile="UMRPERM" value="ALL_ROT">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>UMR Region open to all masters</SecurityRationale>
          </Global>
-         <PolicyParameters/>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
+         </Global>
+         <PolicyParameters>
+            <Parameter name="XPU_INPUT_ADDRESS_BUS_MASK" value="0x7FFFFFF"/>
+            <Parameter name="XPU_INPUT_ADDRESS_BUS_OFFSET" value="0x2000000"/>
+         </PolicyParameters>
       </SWConfig>
    </MPU>
    <MPU fqname="JUHU.GEMNOC_WRAPPER.MACHX_MACHX.MACHX_LLCC.MACHX_LLCC_MPU_MPU.XPU4" name="MACHX_LLCC_MPU_XPU4">
@@ -4236,13 +4245,13 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="false"/>
          </PRTn>
-         <Global confirmed="false" profile="CFGOWNER" value="AP">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
-         </Global>
          <Global confirmed="false" profile="UMRPERM" value="ALL_ROT">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>Entire DDR region other than AP-S region would be open to all masters.</SecurityRationale>
+         </Global>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
          <PolicyParameters/>
       </SWConfig>
@@ -4360,13 +4369,13 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <Global confirmed="false" profile="UMRPERM" value="HYP">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>All UMR SCIDs open to HYP (HLOS)</SecurityRationale>
-         </Global>
          <Global confirmed="false" profile="CFGOWNER" value="AP">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
+         </Global>
+         <Global confirmed="false" profile="UMRPERM" value="HYP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>All UMR SCIDs open to HYP (HLOS)</SecurityRationale>
          </Global>
          <PolicyParameters/>
       </SWConfig>
@@ -4434,107 +4443,110 @@
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <RGn confirmed="false" index="0" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="0" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>MPM MPM ARM registers. Controls sleep mode. (1) SPMI register, Configure the PMIC power rail. (2) SPMI register, Configure the PMIC PXO and CXO. (3) MPM power controller registers (4) Interrupt control/status/wakeup clock select (5) Debug register (6) Screan deboundence (7) Warm boot configure (8) Global counter control(clock,incr data,frac)/latch (9) HW ID register</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4a0fff" start="0x4a0000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="1" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="1" locks="TZ" order="0" profile="" rdomains="TME_ROM,TZ" rvmids="" wdomains="TME_ROM,TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>global_ctl_cntr All the control registers in Global Counter. Initially configured by boot.</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4a1fff" start="0x4a1000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="2" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="2" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="ALL_ROT" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>global_rd_cntr RO registers in Global Counter. Global counter read exposed to all subsystems. The value is already propagated to subsystems so read does not reveal additional information. Read by everyone is used for debugging purpose.</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4a2fff" start="0x4a2000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="3" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="3" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="ALL_ROT" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Sleep_cntr Sleep timer registers. Slow clock counter exposed (mainly for GPS and BT, but could be used for debug globally). Global counter may lose accuracy when it goes to sleep , this counter will never lose time.</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4a3fff" start="0x4a3000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="4" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="4" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="ALL_ROT" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Qtmr_ac Qtimer Access Control Registers. System wakeup timer configuration</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4a4fff" start="0x4a4000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="5" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="5" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="ALL_ROT" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Qtmr_v1 Qtimer Frame View1 Registers. System wakeup timer</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4a5fff" start="0x4a5000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="6" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="6" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>TSYNC CTL Register</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4a6fff" start="0x4a6000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="7" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="7" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Temp_Sensor TSENS SROT registers. In the current implementation, AP needs to control the sensor polling rate. March 2014 update: CR 634772 change write permission to no access. The rationale for this change is that we want to lock down the TSENS SROT register configuration and thus secure the min/max critical thresholds that prevent the chip temperature from exceeding the silicon junction temp (Tj) limits. Also open read to ALL.</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4a8fff" start="0x4a8000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="8" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="8" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Temp_Sensor_tm TSENS Thermal Mitigation Client Registers. AP needs to set limits in these registers. Every thermal client should be able to read thermal sensors. Now only AP reads it but would like to open it up to other subsystems. March 2014 update: open read to ALL.</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4a9fff" start="0x4a9000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="9" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="9" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>MPM_SSCAON_CFG registers</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4ab00f" start="0x4ab008"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="10" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="10" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Pshold + DDR Phy freeze reg.</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4ab007" start="0x4ab000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="11" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="11" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>MPM2_RSC</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4aefff" start="0x4ae000"/>
             </AddressRange>
          </RGn>
-         <Global confirmed="false" profile="" value="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
-         <PolicyParameters/>
+         <PolicyParameters>
+            <Parameter name="XPU_INPUT_ADDRESS_BUS_MASK" value="0x007FFFFF"/>
+            <Parameter name="XPU_INPUT_ADDRESS_BUS_OFFSET" value="0x004A0000"/>
+         </PolicyParameters>
       </SWConfig>
    </APU>
    <APU fqname="JUHU.OCIMEM_WRAPPER_CSR.OCIMEM_APU_WRAPPER.OCIMEM_APU_APU.XPU4" name="OCIMEM_APU_XPU4">
@@ -4600,27 +4612,30 @@
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <RGn confirmed="false" index="0" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="0" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>OCIMEM CFG Space</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x500fc" start="0x50000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="1" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="1" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x50200" start="0x50100"/>
             </AddressRange>
          </RGn>
-         <Global confirmed="false" profile="" value="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
-         <PolicyParameters/>
+         <PolicyParameters>
+            <Parameter name="XPU_INPUT_ADDRESS_BUS_MASK" value="0x0007FFFF"/>
+            <Parameter name="XPU_INPUT_ADDRESS_BUS_OFFSET" value="0x00050000"/>
+         </PolicyParameters>
       </SWConfig>
    </APU>
    <MPU fqname="JUHU.OCIMEM_WRAPPER_CSR.OCIMEM_MPU_WRAPPER.OCIMEM_MPU_MPU.XPU4" name="OCIMEM_MPU_XPU4">
@@ -4736,39 +4751,39 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="0x8601000" index="10" locks="" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x8600000" wdomains="ALL_ROT" wvmids="">
+         <PRTn confirmed="false" end="0x8601000" index="10" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x8600000" wdomains="ALL_ROT" wvmids="">
             <SecurityRationalePoC>snlakshm</SecurityRationalePoC>
             <SecurityRationale>Shared IMEM for all SS</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="0x861f000" index="11" locks="" order="0" profile="" rdomains="TZ" rvmids="" start="0x8601000" wdomains="TZ" wvmids="">
+         <PRTn confirmed="false" end="0x8604000" index="11" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x8601000" wdomains="TZ" wvmids="">
             <SecurityRationalePoC>snlakshm</SecurityRationalePoC>
-            <SecurityRationale>SDI/DDR DSF/TZ Reserved for Log/OEM Secure use-cases</SecurityRationale>
+            <SecurityRationale>IMEM reservation for RW (Never exec), RO (Exec) Region</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="12" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x8605000" index="12" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x8604000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>IMEM Reservation for DEBUG DATA</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="13" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x8608000" index="13" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x8605000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>TF-A DIAG Log</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="14" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x860e000" index="14" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x8608000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>OPTEE DIAG Log</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="15" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x860f000" index="15" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x860e000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>OEM Reserved for secure use-cases</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="16" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x861f000" index="16" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x860f000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>DDR DSF/U-Boot SPL usage of OCIMEM</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
          <PRTn confirmed="false" end="" index="17" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
@@ -4853,153 +4868,153 @@
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <RGn confirmed="false" index="0" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="0" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>32 KB is used by TZ.</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x60807ff" start="0x6080000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="1" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="1" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x6080fff" start="0x6080800"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="2" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="2" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x60817ff" start="0x6081000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="3" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="3" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x6081fff" start="0x6081800"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="4" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="4" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x60827ff" start="0x6082000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="5" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="5" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x6082fff" start="0x6082800"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="6" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="6" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x60837ff" start="0x6083000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="7" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="7" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x6083fff" start="0x6083800"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="8" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="8" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x60847ff" start="0x6084000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="9" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="9" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x6084fff" start="0x6084800"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="10" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="10" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x60857ff" start="0x6085000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="11" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="11" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x6085fff" start="0x6085800"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="12" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="12" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x60867ff" start="0x6086000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="13" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="13" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x6086fff" start="0x6086800"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="14" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="14" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x60877ff" start="0x6087000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="15" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="15" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x6087fff" start="0x6087800"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="16" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="16" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>4 KB opened for HLOS use-cases such as tenure probe, debug, etc.</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x60887ff" start="0x6088000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="17" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="17" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x6088fff" start="0x6088800"/>
             </AddressRange>
          </RGn>
-         <Global confirmed="false" profile="" value="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
          <PolicyParameters/>
       </SWConfig>
@@ -5209,13 +5224,13 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <Global confirmed="false" profile="CFGOWNER" value="AP">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
-         </Global>
          <Global confirmed="false" profile="UMRPERM" value="HYP">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>This xPU is for protecting the external nand device. Range can vary depending on the nand device used. Giving full access to AP-NS. No secure use case as such on QPIC. </SecurityRationale>
+         </Global>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
          <PolicyParameters/>
       </SWConfig>
@@ -5471,9 +5486,9 @@
                <Range end="0x799ffff" start="0x799f000"/>
             </AddressRange>
          </RGn>
-         <Global confirmed="false" profile="" value="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
          <PolicyParameters>
             <Parameter name="XPU_INPUT_ADDRESS_BUS_MASK" value="0x7FFFFFF"/>
@@ -5574,9 +5589,9 @@
             <XPU_RGn_FLAGS enabled="false" static="true"/>
             <AddressRange/>
          </RGn>
-         <Global confirmed="false" profile="" value="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
          <PolicyParameters>
             <Parameter name="XPU_INPUT_ADDRESS_BUS_MASK" value="0x7FFFFFF"/>
@@ -5647,8 +5662,8 @@
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <RGn confirmed="false" index="0" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="0" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
@@ -5672,9 +5687,9 @@
                <Range end="0xa62c7" start="0xa62c0"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="1" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="1" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Boot ROM patch(fuse address), APP_PROC_CFG(reserved), SPDM_DYN_SECURE_MODE(internal register and fuse)</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0xa06b7" start="0xa05c0"/>
@@ -5683,17 +5698,17 @@
                <Range end="0xa608b" start="0xa6088"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="2" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="2" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Reserved (In Previous Gen Chipsets, MSS_PROC_CFG)</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0xa6077" start="0xa6074"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="3" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="3" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>&quot;Reserved ( In Previous Gen Chipsets owned by APPS, Antirollback 3, will allow read by ALL in V2 through VMIDCLROE Add shadow registers for Antirollback 3, in same RG)&quot;</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0xa005f" start="0xa0058"/>
@@ -5701,8 +5716,8 @@
                <Range end="0xa60c7" start="0xa60c0"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="4" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="4" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
@@ -5712,54 +5727,56 @@
                <Range end="0xa607b" start="0xa6078"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="5" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="5" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>OEM_COFING#2 are allocated for SAFE_SWITCH, newly allocate 32bits for Marina(WIFI_BOARD_ID, WIFI_COUNTRY_CODE, Multi-RoT activation and revocation). 
+
+AC Policy config leveraged from Marina for Juhu.</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0xa06c7" start="0xa06c0"/>
                <Range end="0xa46c7" start="0xa46c0"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="6" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="6" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>OEM spare region 31</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0xa06cf" start="0xa06c8"/>
                <Range end="0xa46cf" start="0xa46c8"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="7" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="7" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Reserved (In Previous Gen Chipsets,OEM_MRC)</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0xa0077" start="0xa0070"/>
                <Range end="0xa4077" start="0xa4070"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="8" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="8" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Reserved (In Previous Gen Chipsets, UIE#0 Key region)</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0xa06e7" start="0xa06d0"/>
                <Range end="0xa46e7" start="0xa46d0"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="9" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="9" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Reserved (In Previous Gen Chipsets, UIE#1 Key region)</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0xa06ff" start="0xa06e8"/>
                <Range end="0xa46ff" start="0xa46e8"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="10" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="10" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>QFPROM BLOW TIMER and QFPROM ACCEL(AP can not write when fuse blown)</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0xa203f" start="0xa203c"/>
@@ -5782,18 +5799,18 @@
                <Range end="0xa62a7" start="0xa6230"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="13" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="13" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Unused reserved SOFTSKU Registers</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0xa62af" start="0xa62a8"/>
                <Range end="0xa62bb" start="0xa62b4"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="14" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <RGn confirmed="false" index="14" locks="TME_ROM" order="0" profile="" rdomains="ALL_ROT" rvmids="" wdomains="TME_ROM" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Unused reserved SOFTSKU Registers</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0xa62b3" start="0xa62b0"/>
@@ -5804,7 +5821,10 @@
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
-         <PolicyParameters/>
+         <PolicyParameters>
+            <Parameter name="XPU_INPUT_ADDRESS_BUS_MASK" value="0xFFFFFFFF"/>
+            <Parameter name="XPU_INPUT_ADDRESS_BUS_OFFSET" value="0xA0000"/>
+         </PolicyParameters>
       </SWConfig>
    </APU>
    <MPU fqname="JUHU.TCSR_WRAPPER.TCSR_MPUQ12_40_CL32L12M31_LE.XPU4" name="TCSR_XPU4">
@@ -5970,34 +5990,34 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="20" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x193a000" index="20" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x1938000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Leveraged from Marina AC Policy</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="21" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x193b000" index="21" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x193a000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Leveraged from Marina AC Policy</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="22" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x193e000" index="22" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x193d000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Leveraged from Marina AC Policy</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="23" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x1948000" index="23" locks="TME_ROM,TZ" order="0" profile="" rdomains="TME_ROM,TZ" rvmids="" start="0x1947000" wdomains="TME_ROM,TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Leveraged from Marina AC Policy</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="24" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x195d000" index="24" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x195c000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Leveraged from Marina AC Policy</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="25" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x1968000" index="25" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x1967000" wdomains="ALL_ROT" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>Reset Reason and TME RAM_DUMP Status/Address Registers</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
          <PRTn confirmed="false" end="" index="26" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
@@ -6345,280 +6365,280 @@
                <Range end="0x1a17fff" start="0x1a14000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="5" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="5" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a1bfff" start="0x1a18000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="6" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="6" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a1ffff" start="0x1a1c000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="7" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="7" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a23fff" start="0x1a20000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="8" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="8" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a27fff" start="0x1a24000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="9" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="9" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a2bfff" start="0x1a28000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="10" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="10" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a2ffff" start="0x1a2c000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="11" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="11" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a33fff" start="0x1a30000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="12" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="12" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a37fff" start="0x1a34000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="13" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="13" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a3bfff" start="0x1a38000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="14" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="14" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a3ffff" start="0x1a3c000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="15" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="15" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1ac0fff" start="0x1ac0000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="16" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="16" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1ac1fff" start="0x1ac1000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="17" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="17" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a80fff" start="0x1a80000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="18" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="18" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a81fff" start="0x1a81000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="19" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="19" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a82fff" start="0x1a82000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="20" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="20" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a84fff" start="0x1a84000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="21" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="21" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a85fff" start="0x1a85000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="22" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="22" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a86fff" start="0x1a86000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="23" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="23" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a88fff" start="0x1a88000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="24" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="24" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a89fff" start="0x1a89000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="25" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="25" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a8afff" start="0x1a8a000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="26" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="26" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a8cfff" start="0x1a8c000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="27" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="27" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a8dfff" start="0x1a8d000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="28" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="28" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a8efff" start="0x1a8e000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="29" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="29" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a90fff" start="0x1a90000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="30" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="30" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a91fff" start="0x1a91000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="31" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="31" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a92fff" start="0x1a92000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="32" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="32" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a94fff" start="0x1a94000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="33" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="33" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a95fff" start="0x1a95000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="34" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="34" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a96fff" start="0x1a96000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="35" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="35" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a98fff" start="0x1a98000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="36" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="36" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a99fff" start="0x1a99000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="37" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="37" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a9afff" start="0x1a9a000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="38" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="38" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x1a9cfff" start="0x1a9c000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="39" locks="" order="0" profile="" rdomains="" rvmids="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <RGn confirmed="false" index="39" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
@@ -6687,9 +6707,9 @@
             <XPU_RGn_FLAGS enabled="false" static="true"/>
             <AddressRange/>
          </RGn>
-         <Global confirmed="false" profile="" value="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
          <PolicyParameters>
             <Parameter name="XPU_INPUT_ADDRESS_BUS_MASK" value="0x1FFFFFF"/>
@@ -6810,13 +6830,13 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <Global confirmed="false" profile="CFGOWNER" value="AP">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
-         </Global>
          <Global confirmed="false" profile="UMRPERM" value="HYP">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>PCIE Region</SecurityRationale>
+         </Global>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
          <PolicyParameters/>
       </SWConfig>
@@ -6934,13 +6954,13 @@
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <Global confirmed="false" profile="CFGOWNER" value="AP">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
-         </Global>
          <Global confirmed="false" profile="UMRPERM" value="HYP">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>PCIE Region</SecurityRationale>
+         </Global>
+         <Global confirmed="false" profile="CFGOWNER" value="AP">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>CFG_OWNER would be TZ for all xPUs</SecurityRationale>
          </Global>
          <PolicyParameters/>
       </SWConfig>
