@@ -80,1160 +80,1160 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg gcc_rpu_xpu4[] = {
 	{
 		.rg_num        = 0,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 1,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 2,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 3,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 4,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 5,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 6,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 7,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 8,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 9,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 10,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 11,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 12,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 13,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 14,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 15,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 17,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 18,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 19,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 20,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 21,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 22,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 23,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 24,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 25,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 27,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 28,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 29,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 32,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 33,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 34,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 35,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 36,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 37,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 38,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 39,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 40,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 41,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 42,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 43,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 44,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 45,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 46,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 48,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 49,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 50,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 51,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 52,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 53,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 54,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 55,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 56,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 57,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 58,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 60,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 61,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 62,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 63,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 64,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 65,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 66,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 67,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 68,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 69,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 70,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 71,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 73,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 74,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 75,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 76,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 77,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 78,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 79,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 80,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 81,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 82,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 83,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 84,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 85,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 86,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 87,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 88,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 89,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 90,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 91,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 92,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 93,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 94,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 95,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 96,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 97,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 98,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 99,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 100,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 101,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 102,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 103,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 104,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 105,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 106,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 107,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 108,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 109,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 110,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 111,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 112,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 113,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 114,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 115,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 116,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 117,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 118,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 119,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 120,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 121,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 122,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 123,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 124,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 125,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 126,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 127,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 128,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 129,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 130,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 131,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 132,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 133,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 134,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 135,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 136,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 137,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 138,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 139,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 140,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 141,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 142,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 143,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 144,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 145,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 146,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 147,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 148,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 149,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 150,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 151,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 152,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 153,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 154,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 155,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 156,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 157,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 158,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 159,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 160,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 161,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 162,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 163,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 164,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 165,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 166,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 167,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 168,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 169,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 170,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 171,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 172,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 173,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 174,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 175,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 176,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 177,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 178,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 179,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 180,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 181,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 182,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 183,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 184,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 185,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 186,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 187,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 188,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 189,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 190,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 191,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 192,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 193,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 194,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 195,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 196,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 197,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 198,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 	{
 		.rg_num        = 199,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_NONE,
+		.write_qads    = AC_DOMAIN_NONE
 	},
 };
 
@@ -1241,6 +1241,14 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg gcc_rpu_xpu4[] = {
 __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg gemnoc_cfg_xpu4[] = {
 	{
 		.rg_num        = 0,
+		.start        = 0x02000000,
+		.end          = 0x04000000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 1,
 		.start        = 0x04000000,
 		.end          = 0x04001000,
 		.profile_flags = AC_PROFILE_DEFAULT,
@@ -1248,20 +1256,12 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg gemnoc_cfg_xpu4[] = 
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
-		.rg_num        = 1,
+		.rg_num        = 2,
 		.start        = 0x04071000,
 		.end          = 0x04072000,
 		.profile_flags = AC_PROFILE_DEFAULT,
 		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
-	},
-	{
-		.rg_num        = 2,
-		.start        = 0x040b0000,
-		.end          = 0x040b2000,
-		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_APPS_SEC_BIT,
-		.write_qads    = AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 3,
@@ -1270,6 +1270,38 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg gemnoc_cfg_xpu4[] = 
 		.profile_flags = AC_PROFILE_DEFAULT,
 		.read_qads     = AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_APPS_SEC_BIT,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 4,
+		.start        = 0x04100000,
+		.end          = 0x04140000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 5,
+		.start        = 0x042d0000,
+		.end          = 0x042d9000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 6,
+		.start        = 0x0430a000,
+		.end          = 0x0430c000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 7,
+		.start        = 0x0430e000,
+		.end          = 0x0430f000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 };
 
@@ -1318,73 +1350,73 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg mpm2_mpm_apu_xpu4[] 
 	{
 		.rg_num        = 0,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 1,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 2,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT
 	},
 	{
 		.rg_num        = 3,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT
 	},
 	{
 		.rg_num        = 4,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT
 	},
 	{
 		.rg_num        = 5,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT
 	},
 	{
 		.rg_num        = 6,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 7,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 8,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 9,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 10,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 11,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 };
@@ -1394,14 +1426,14 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg ocimem_apu_xpu4[] = 
 	{
 		.rg_num        = 0,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 1,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 };
 
@@ -1418,30 +1450,46 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg ocimem_mpu_xpu4[] = 
 	{
 		.rg_num        = 11,
 		.start        = 0x08601000,
-		.end          = 0x08607000,
+		.end          = 0x08604000,
 		.profile_flags = AC_PROFILE_DEFAULT,
 		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 12,
-		.start        = 0x08607000,
-		.end          = 0x0860A000,
+		.start        = 0x08604000,
+		.end          = 0x08605000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 13,
-		.start        = 0x0860A000,
-		.end          = 0x0860D000,
+		.start        = 0x08605000,
+		.end          = 0x08608000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 14,
-		.start        = 0x0860D000,
+		.start        = 0x08608000,
+		.end          = 0x0860e000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 15,
+		.start        = 0x0860e000,
+		.end          = 0x0860f000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 16,
+		.start        = 0x0860f000,
 		.end          = 0x0861f000,
 		.profile_flags = AC_PROFILE_DEFAULT,
 		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
@@ -1454,98 +1502,98 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg qdss_cfg_dcc_dcc_xpu
 	{
 		.rg_num        = 0,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 1,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 2,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 3,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 4,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 5,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 6,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 7,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 8,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 9,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 10,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 11,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 12,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 13,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 14,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 15,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 16,
@@ -1730,80 +1778,132 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg sec_ctrl_apu_xpu4[] 
 	{
 		.rg_num        = 0,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 1,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 2,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 3,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 4,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 5,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 6,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 7,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 8,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 9,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 10,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 13,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 14,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT
+	},
+};
+
+/* TCSR_XPU4 */
+__section(".ac_static_cfg_data.xpu") static const ac_mpu_rg tcsr_xpu4[] = {
+	{
+		.rg_num        = 20,
+		.start        = 0x01938000,
+		.end          = 0x0193a000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 21,
+		.start        = 0x0193a000,
+		.end          = 0x0193b000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 22,
+		.start        = 0x0193d000,
+		.end          = 0x0193e000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 23,
+		.start        = 0x01947000,
+		.end          = 0x01948000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 24,
+		.start        = 0x0195c000,
+		.end          = 0x0195d000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 25,
+		.start        = 0x01967000,
+		.end          = 0x01968000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT
 	},
 };
 
@@ -2143,7 +2243,7 @@ const ac_xpu_cfg g_ac_xpu_cfg[] = {
 		.nrg          = 0,
 		.rg           = {NULL},
 		.cfg_owner     = QAD_APPS,
-		.umr_perm      = AC_DOMAIN_AP_NS_BIT,
+		.umr_perm      = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.rg_ignored    = NULL,
 	},
 	{	/* CNOC_SDCC_CFG_MPU_XPU4 */
@@ -2198,7 +2298,7 @@ const ac_xpu_cfg g_ac_xpu_cfg[] = {
 		.nrg          = ARRAY_SIZE(gcc_rpu_xpu4),
 		.rg           = {gcc_rpu_xpu4},
 		.cfg_owner     = QAD_APPS,
-		.umr_perm      = AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_APPS_SEC_BIT,
+		.umr_perm      = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.rg_ignored    = NULL,
 	},
 	{	/* GEMNOC_CFG_XPU4 */
@@ -2209,7 +2309,7 @@ const ac_xpu_cfg g_ac_xpu_cfg[] = {
 		.nrg          = ARRAY_SIZE(gemnoc_cfg_xpu4),
 		.rg           = {gemnoc_cfg_xpu4},
 		.cfg_owner     = QAD_APPS,
-		.umr_perm      = AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_APPS_SEC_BIT,
+		.umr_perm      = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.rg_ignored    = NULL,
 	},
 	{	/* MACHX_LLCC_MPU_XPU4 */
@@ -2338,8 +2438,8 @@ const ac_xpu_cfg g_ac_xpu_cfg[] = {
 		.profile_flags = AC_PROFILE_DEFAULT,
 		.xpu_id        = HAL_XPU2_TCSR_REGS,
 		.status       = XPU_ENABLED,
-		.nrg          = 0,
-		.rg           = {NULL},
+		.nrg          = ARRAY_SIZE(tcsr_xpu4),
+		.rg           = {tcsr_xpu4},
 		.cfg_owner     = QAD_APPS,
 		.umr_perm      = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
 		.rg_ignored    = NULL,
@@ -2424,4 +2524,4 @@ const ac_xpu_cfg g_ac_xpu_cfg[] = {
 };
 const uint32_t g_ac_xpu_cfg_count = ARRAY_SIZE(g_ac_xpu_cfg);
 
-/*MD5:268a32511c0eae1c5287b8dd94bd0b4f*/
+/*MD5:0775c5fed3905ec144fbeb067bb4ed2b*/
