@@ -15,7 +15,7 @@
 #define QTISECLIB_PLAT_CLUSTER_COUNT			PLAT_CLUSTER_COUNT
 #define QTISECLIB_PLAT_CORE_COUNT			PLATFORM_CORE_COUNT
 
-#define BL31_BASE					0x8A600000
+#define BL31_BASE					0x87D00000
 #define BL31_SIZE					0x00080000
 
 /* Chipset specific secure interrupt number/ID defs. */
