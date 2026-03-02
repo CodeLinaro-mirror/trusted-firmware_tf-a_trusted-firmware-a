@@ -149,7 +149,11 @@ static const interrupt_prop_t qti_interrupt_props[] = {
 		       INTR_GROUP0,
 		       GIC_INTR_CFG_LEVEL),
 #endif
-
+#ifdef QTISECLIB_INT_ID_TME_IPC
+	INTR_PROP_DESC(QTISECLIB_INT_ID_TME_IPC, GIC_HIGHEST_SEC_PRIORITY,
+		       INTR_GROUP1S,
+		       GIC_INTR_CFG_EDGE),
+#endif
 };
 
 const gicv3_driver_data_t qti_gic_data = {

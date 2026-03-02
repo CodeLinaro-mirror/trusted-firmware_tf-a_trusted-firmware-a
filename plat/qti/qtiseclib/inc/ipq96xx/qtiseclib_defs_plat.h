@@ -34,4 +34,7 @@
 //xPU Interrupt
 #define QTISECLIB_INT_ID_XPU_VIOLATION			(0x1A5)
 
+//TME-L IPC Interrupt
+#define QTISECLIB_INT_ID_TME_IPC			(0x9A)
+
 #endif /* __QTISECLIB_DEFS_PLAT_H__ */
