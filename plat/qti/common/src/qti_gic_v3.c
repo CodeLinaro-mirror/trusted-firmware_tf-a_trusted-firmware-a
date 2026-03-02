@@ -31,7 +31,7 @@ static const interrupt_prop_t qti_interrupt_props[] = {
 #endif
 #ifdef QTISECLIB_INT_ID_SEC_WDOG_BARK
 	INTR_PROP_DESC(QTISECLIB_INT_ID_SEC_WDOG_BARK, GIC_HIGHEST_SEC_PRIORITY,
-		       INTR_GROUP0,
+		       INTR_GROUP1S,
 		       GIC_INTR_CFG_EDGE),
 #endif
 #ifdef QTISECLIB_INT_ID_NON_SEC_WDOG_BITE
