@@ -34,6 +34,8 @@ $(eval $(call add_define,QTI_USE_GIC_DRIVER))
 #Route Secure interrupts to SEL1
 GICV2_G0_FOR_EL3		:=	0
 
+INIT_UNUSED_NS_EL2		:=	1
+
 QTI_SDI_BUILD			:=	1
 $(eval $(call assert_boolean,QTI_SDI_BUILD))
 $(eval $(call add_define,QTI_SDI_BUILD))
