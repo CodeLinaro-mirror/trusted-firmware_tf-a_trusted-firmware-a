@@ -156,15 +156,16 @@ nocerr_info_type_oem nocerr_cfgdata_oem[] = {
 
 uint32_t clock_reg_vals[] = {
 	[0] = 0x1, /* Enable GEMNOC_XO_DBG refgen timeout unit reference clock */
-	[1] = 0x1, /* Enable SNOC_XO_DBG refgen timeout unit reference clock */
-	[2] = 0x1, /* Enable ANOC0_AXI clock */
-	[3] = 0x1, /* Enable ANOC_XO_DBG refgen timeout unit reference clock */
-	[4] = 0x1, /* Enable PCNOC_XO_DBG refgen timeout unit reference clock */
-	[5] = 0x1, /* Enable DDRSS_AHB clock */
-	[6] = 0x1, /* Enable DDRSS_ATB clock */
-	[7] = 0x1, /* Enable NSSCFG clock */
-	[8] = 0x1, /* Enable NSSNOC_TIMEOUT_REF clock */
-	[9] = 0x1, /* Enable TURING_AHBS_CBCR clock */
+	[1] = 0x1, /* Enable GEMNOC_ANOC_PCIE clock */
+	[2] = 0x1, /* Enable SNOC_XO_DBG refgen timeout unit reference clock */
+	[3] = 0x1, /* Enable ANOC0_AXI clock */
+	[4] = 0x1, /* Enable ANOC_XO_DBG refgen timeout unit reference clock */
+	[5] = 0x1, /* Enable PCNOC_XO_DBG refgen timeout unit reference clock */
+	[6] = 0x1, /* Enable DDRSS_AHB clock */
+	[7] = 0x1, /* Enable DDRSS_ATB clock */
+	[8] = 0x1, /* Enable NSSCFG clock */
+	[9] = 0x1, /* Enable NSSNOC_TIMEOUT_REF clock */
+	[10] = 0x1, /* Enable TURING_AHBS_CBCR clock */
 };
 
 nocerr_config_info_type_oem nocerr_config_info_oem = {

@@ -164,6 +164,7 @@ static nocerr_info_type nocerr_cfgdata[] = {
 
 static void *clock_reg_addrs[] = {
 	(void *)HWIO_ADDR(GCC_GEMNOC_XO_DBG_CBCR),
+	(void *)HWIO_ADDR(GCC_GEMNOC_ANOC_PCIE_CBCR),
 	(void *)HWIO_ADDR(GCC_SNOC_XO_DBG_CBCR),
 	(void *)HWIO_ADDR(GCC_ANOC0_AXI_CBCR),
 	(void *)HWIO_ADDR(GCC_ANOC_XO_DBG_CBCR),

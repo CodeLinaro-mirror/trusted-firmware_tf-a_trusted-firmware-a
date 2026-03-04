@@ -154,6 +154,7 @@
 
 /* GCC Clock Control macros */
 #define HWIO_GCC_GEMNOC_XO_DBG_CBCR_ADDR                      (GCC_CLK_CTL_REG_REG_BASE + 0x19040)
+#define HWIO_GCC_GEMNOC_ANOC_PCIE_CBCR_ADDR                   (GCC_CLK_CTL_REG_REG_BASE + 0x19078)
 #define HWIO_GCC_SNOC_XO_DBG_CBCR_ADDR                        (GCC_CLK_CTL_REG_REG_BASE + 0x2e0a0)
 #define HWIO_GCC_ANOC0_AXI_CBCR_ADDR                          (GCC_CLK_CTL_REG_REG_BASE + 0x2e0b4)
 #define HWIO_GCC_ANOC_XO_DBG_CBCR_ADDR                        (GCC_CLK_CTL_REG_REG_BASE + 0x2e0a4)
