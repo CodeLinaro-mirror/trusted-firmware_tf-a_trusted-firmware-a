@@ -78,6 +78,7 @@ void qti_configure_clusterthreadsid_for_secureworld(void);
 void qti_configure_clusterbusqos(void);
 void qti_configure_actlr_el3(void);
 void qti_configure_actlr_el2(void);
+int qti_configure_cluster_partition_control(uint32_t func_id);
 #endif /* ENABLE_LLCC_CFG */
 
 #endif /* QTI_PLAT_H */

@@ -44,6 +44,7 @@ int qti_handle_sel1_routed_interrupt(uint32_t intr_num, void *handle);
  */
 #define	QTI_SIP_SVC_SECURE_IO_READ_ID		U(0x02000501)
 #define	QTI_SIP_SVC_SECURE_IO_WRITE_ID		U(0x02000502)
+#define	QTI_SIP_SVC_SECURE_IO_CFG_SYS_REG_ID	U(0x02000503)
 
 /* Syscall to handle interrupts routed by SEL1*/
 #define QTI_SIP_SVC_EL3_INTR_DELEGATION_ID	U(0x02001D03)
@@ -62,6 +63,7 @@ int qti_handle_sel1_routed_interrupt(uint32_t intr_num, void *handle);
 
 #define	QTI_SIP_SVC_SECURE_IO_READ_PARAM_ID	U(0x1)
 #define	QTI_SIP_SVC_SECURE_IO_WRITE_PARAM_ID	U(0x2)
+#define	QTI_SIP_SVC_SECURE_IO_CFG_SYS_REG_PARAM_ID	U(0x3)
 #define	QTI_SIP_SVC_SET_CPU_CTX_BUF_PARAM_ID	U(0x22)
 #define	QTI_SIP_SVC_MEM_ASSIGN_PARAM_ID		U(0x1117)
 
@@ -101,6 +103,43 @@ static bool qti_is_secure_io_access_allowed(u_register_t addr)
 	return false;
 }
 
+#ifdef ENABLE_LLCC_CFG
+/* Function ID List for Secure System Register Access */
+typedef enum {
+	SECURE_SYS_REG_MIN = 0,
+	SECURE_SYS_REG_CLUSTPART_CONTROL_REG,
+	SECURE_SYS_REG_MAX
+} secure_sys_reg_access_func_id;
+
+/*
+ * Secure system register configuration handler
+ * Handles configuration of secure system registers based on function ID
+ */
+static int secure_cfg_sys_reg(uint32_t func_id, uint32_t param1, uint32_t param2)
+{
+	int ret = QTI_SIP_SUCCESS;
+
+	switch (func_id) {
+	case SECURE_SYS_REG_CLUSTPART_CONTROL_REG:
+		/* Configure cluster partition control register
+		 * param1 contains the L3 cache partition size function ID
+		 */
+		ret = qti_configure_cluster_partition_control(param1);
+		if (ret != 0) {
+			ERROR("Failed to configure cluster partition control: %d\n", ret);
+			ret = QTI_SIP_INVALID_PARAM;
+		}
+		break;
+	default:
+		ERROR("Unsupported secure sys reg function ID: 0x%x\n", func_id);
+		ret = QTI_SIP_NOT_SUPPORTED;
+		break;
+	}
+
+	return ret;
+}
+#endif /* ENABLE_LLCC_CFG */
+
 static bool qti_check_syscall_availability(u_register_t smc_fid)
 {
 	switch (smc_fid) {
@@ -110,6 +149,9 @@ static bool qti_check_syscall_availability(u_register_t smc_fid)
 	case QTI_SIP_SVC_AVAILABLE_ID:
 	case QTI_SIP_SVC_SECURE_IO_READ_ID:
 	case QTI_SIP_SVC_SECURE_IO_WRITE_ID:
+#ifdef ENABLE_LLCC_CFG
+	case QTI_SIP_SVC_SECURE_IO_CFG_SYS_REG_ID:
+#endif
 	case QTI_SIP_SVC_SET_CPU_CTX_BUF_ID:
 #ifndef DISABLE_QTI_MEM_ASSIGN
 	case QTI_SIP_SVC_MEM_ASSIGN_ID:
@@ -380,6 +422,23 @@ static uintptr_t qti_sip_handler(uint32_t smc_fid,
 			}
 			SMC_RET1(handle, QTI_SIP_INVALID_PARAM);
 		}
+#ifdef ENABLE_LLCC_CFG
+	case QTI_SIP_SVC_SECURE_IO_CFG_SYS_REG_ID:
+		{
+			if (x1 != QTI_SIP_SVC_SECURE_IO_CFG_SYS_REG_PARAM_ID) {
+				SMC_RET1(handle, QTI_SIP_INVALID_PARAM);
+			}
+
+			/* Call secure system register configuration handler
+			 * x2 = function ID
+			 * x3 = param1
+			 * x4 = param2
+			 */
+			int ret = secure_cfg_sys_reg((uint32_t)x2, (uint32_t)x3, (uint32_t)x4);
+
+			SMC_RET1(handle, ret);
+		}
+#endif /* ENABLE_LLCC_CFG */
 	case QTI_SIP_SVC_SET_CPU_CTX_BUF_ID:
 		{
 			if (x1 != QTI_SIP_SVC_SET_CPU_CTX_BUF_PARAM_ID) {

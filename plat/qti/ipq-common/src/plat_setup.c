@@ -20,6 +20,52 @@
  * @return void.
  */
 #ifdef ENABLE_LLCC_CFG
+typedef enum {
+	CLUSTPART_CONTROL_L3_DEFAULT = 0,
+	CLUSTPART_CONTROL_L3_25_PERCENT = 1,
+	CLUSTPART_CONTROL_L3_50_PERCENT = 2,
+	CLUSTPART_CONTROL_L3_75_PERCENT = 3,
+} cluster_part_control_func_id;
+
+/*
+ * Configure CLUSTERPARTCR_EL1 register for LLCC cluster partitioning
+ * @func_id: L3 cache partition size (0=default, 1=25%, 2=50%, 3=75%)
+ * Return: 0 on success, -1 on invalid function ID
+ */
+int qti_configure_cluster_partition_control(uint32_t func_id)
+{
+	uint64_t value = 0;
+
+	switch (func_id) {
+	case CLUSTPART_CONTROL_L3_DEFAULT:
+		value = 0x0;
+		break;
+	case CLUSTPART_CONTROL_L3_25_PERCENT:
+		value = 0x2D;
+		break;
+	case CLUSTPART_CONTROL_L3_50_PERCENT:
+		value = 0x69;
+		break;
+	case CLUSTPART_CONTROL_L3_75_PERCENT:
+		value = 0xE1;
+		break;
+	default:
+		return -1;
+	}
+
+	/* Write to CLUSTERPARTCR_EL1 (S3_0_C15_C4_3) */
+	__asm__ volatile(
+		"msr S3_0_C15_C4_3, %0\n"
+		"dsb sy\n"
+		"isb\n"
+		:
+		: "r"(value)
+		: "memory"
+	);
+
+	return 0;
+}
+
 void qti_configure_clusterthreadsid_nsworld(void)
 {
 	uint32_t cpu_num;
