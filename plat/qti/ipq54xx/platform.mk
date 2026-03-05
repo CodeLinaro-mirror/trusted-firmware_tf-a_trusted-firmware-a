@@ -76,11 +76,11 @@ QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_kryo6_silver.S	\
 				$(QTI_PLAT_PATH)/common/src/qti_gic_v3.c		\
 				$(QTI_PLAT_PATH)/common/src/qti_syscall.c		\
 				$(QTI_PLAT_PATH)/qtiseclib/src/qtiseclib_cb_interface.c	\
-				$(QTI_PLAT_PATH)/$(CHIPSET)/src/plat_setup.c		\
+				$(QTI_PLAT_PATH)/ipq-common/src/plat_setup.c		\
 
 # Conditionally include LLCC-specific assembly file
 ifeq (${ENABLE_LLCC_CFG},1)
-QTI_BL31_SOURCES	+=	$(QTI_PLAT_PATH)/$(CHIPSET)/$(ARCH)/plat_helpers.S
+QTI_BL31_SOURCES	+=	$(QTI_PLAT_PATH)/ipq-common/$(ARCH)/plat_helpers.S
 endif
 
 # Enable DIAG LOG Console

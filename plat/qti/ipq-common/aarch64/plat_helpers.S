@@ -27,9 +27,9 @@
  *
  * Do NOT convert this to stack-based save/restore.
  *--------------------------------------------------------------------*/
-.global qti_plat_per_core_init
-.type qti_plat_per_core_init, %function
-func qti_plat_per_core_init
+.global qti_plat_per_core_llcc_init
+.type qti_plat_per_core_llcc_init, %function
+func qti_plat_per_core_llcc_init
 	mov	x19, x30
 
 	/* Configure ACTLR_EL3 - SMEN and TSIDEN bits */
@@ -39,7 +39,7 @@ func qti_plat_per_core_init
 	bl	qti_configure_actlr_el2
 
 	ret	x19
-endfunc qti_plat_per_core_init
+endfunc qti_plat_per_core_llcc_init
 
 /*--------------------------------------------------------------------
  * Configure ACTLR_EL3 for LLCC support
@@ -87,7 +87,7 @@ endfunc qti_configure_clusterbusqos
 
 /*--------------------------------------------------------------------
  * Configure CLUSTERTHREADSID_EL1 for non-secure world
- * Regular cores (0-3) use scheme ID 0, reserved core (4) uses ID 1
+ * Regular cores use scheme ID 0, reserved core(last core) uses ID 1
  *--------------------------------------------------------------------*/
 .global qti_configure_clusterthreadsid_for_nsworld
 .type qti_configure_clusterthreadsid_for_nsworld, %function

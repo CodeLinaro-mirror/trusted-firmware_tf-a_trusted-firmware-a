@@ -14,8 +14,8 @@
 /**
  * Configure LLCC scheme ID for non-secure world context switch
  * Maps CPU cores to LLCC scheme IDs:
- * - Cores 0-3: Scheme ID 0
- * - Core 4: Scheme ID 1
+ * - Regular cores: Scheme ID 0
+ * - Last core (reserved): Scheme ID 1
  * @param [in] void
  * @return void.
  */
@@ -28,12 +28,12 @@ void qti_configure_clusterthreadsid_nsworld(void)
 	cpu_num = ((plat_my_core_pos()) % QTISECLIB_PLAT_CORE_COUNT);
 	is_last_core = (cpu_num == (QTISECLIB_PLAT_CORE_COUNT - 1));
 
-	return qti_configure_clusterthreadsid_for_nsworld(is_last_core);
+	qti_configure_clusterthreadsid_for_nsworld(is_last_core);
 }
 #endif
 
 /**
- * Platform-specific post cold init function for ipq96xx
+ * Platform-specific post cold init function for IPQ platforms
  * Configures CLUSTERBUSQOS and MIBU infrastructure registers
  * Also configures GICD NSACR registers for MSI interrupt handling
  * Called only on core 0 during cold boot
@@ -58,7 +58,7 @@ void qti_post_cold_init(void)
 	 * Configure GICD NSACR registers to allow NS world access to MSI interrupts.
 	 *
 	 * Security Rationale:
-	 * - Interrupt IDs 800-959 are dedicated to PCIe MSI handling
+	 * - Interrupt IDs in the PCIe MSI range are dedicated to PCIe MSI handling
 	 * - These interrupts MUST be accessible from NS world for PCIe device drivers
 	 * - MSI interrupts are edge-triggered and do not pose security risk when NS-accessible
 	 * - No secure services use these interrupt IDs

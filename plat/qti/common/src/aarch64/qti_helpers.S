@@ -79,7 +79,7 @@ func plat_reset_handler
 
 #ifdef ENABLE_LLCC_CFG
 	/* Configure ACTLR_EL3 and ACTLR_EL2 on all cores */
-	bl	qti_plat_per_core_init
+	bl	qti_plat_per_core_llcc_init
 #endif
 
 	ret	x18
