@@ -40,7 +40,10 @@ PROGRAMMABLE_RESET_ADDRESS	:=	1
 
 RESET_TO_BL31			:=	0
 
-QTI_SDI_BUILD := 1
+INIT_UNUSED_NS_EL2		:=	1
+
+QTI_SDI_BUILD			:=	1
+
 $(eval $(call assert_boolean,QTI_SDI_BUILD))
 $(eval $(call add_define,QTI_SDI_BUILD))
 
