@@ -136,7 +136,7 @@ CPU_SOURCES		:=	lib/cpus/aarch64/cortex_a78.S			\
 XPU_VERSION := v4
 
 # Base xPU support define
-ENABLE_XPU	:=	1
+ENABLE_XPU	:=	0
 $(eval $(call add_define,ENABLE_XPU))
 
 # Include xPU driver
