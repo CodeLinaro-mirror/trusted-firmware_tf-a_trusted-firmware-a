@@ -150,7 +150,8 @@
 /* UART related constants. */
 /*----------------------------------------------------------------------------*/
 /* BASE ADDRESS OF DIFFERENT REGISTER SPACES IN HW */
-#define GENI_UART_BASE				0x01a84000
+/* GENI Serial Engine 6 (SE6) - ASIC platform */
+#define GENI_UART_BASE				0x01A98000
 
 #define GENI4_CFG				0x0
 #define GENI4_IMAGE_REGS			0x100
