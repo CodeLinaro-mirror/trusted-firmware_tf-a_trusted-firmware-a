@@ -43,7 +43,8 @@ endfunc qti_plat_per_core_llcc_init
 
 /*--------------------------------------------------------------------
  * Configure ACTLR_EL3 for LLCC support
- * Sets SMEN and TSIDEN bits to enable cluster control register access
+ * Sets SMEN, TSIDEN, and CLUSTERPMUEN bits to enable cluster control
+ * register access
  *--------------------------------------------------------------------*/
 .global qti_configure_actlr_el3
 .type qti_configure_actlr_el3, %function
@@ -51,6 +52,7 @@ func qti_configure_actlr_el3
 	mrs	x6, ACTLR_EL3
 	orr	x6, x6, #ACTLR_TSIDEN_BIT
 	orr	x6, x6, #ACTLR_SMEN_BIT
+	orr	x6, x6, #ACTLR_CLUSTERPMUEN_BIT
 	msr	ACTLR_EL3, x6
 	isb
 	ret
@@ -58,13 +60,15 @@ endfunc qti_configure_actlr_el3
 
 /*--------------------------------------------------------------------
  * Configure ACTLR_EL2 for LLCC support
- * Sets TSIDEN bit to enable thread scheme ID register access
+ * Sets TSIDEN and CLUSTERPMUEN bits to enable thread scheme ID
+ * register access
  *--------------------------------------------------------------------*/
 .global qti_configure_actlr_el2
 .type qti_configure_actlr_el2, %function
 func qti_configure_actlr_el2
 	mrs	x6, ACTLR_EL2
 	orr	x6, x6, #ACTLR_TSIDEN_BIT
+	orr	x6, x6, #ACTLR_CLUSTERPMUEN_BIT
 	msr	ACTLR_EL2, x6
 	isb
 	ret

@@ -234,8 +234,9 @@
 #define MIBU_INFRA_QOS_VALUE              0x1000000
 
 /* ACTLR register bit masks for LLCC support */
-#define ACTLR_TSIDEN_BIT                  0x400    /* Thread Scheme ID Enable (bit 10) */
-#define ACTLR_SMEN_BIT                    0x800    /* Scheme Management Enable (bit 11) */
+#define ACTLR_TSIDEN_BIT		0x400	/* bit 10 */
+#define ACTLR_SMEN_BIT			0x800	/* bit 11 */
+#define ACTLR_CLUSTERPMUEN_BIT		0x1000	/* bit 12 */
 
 /* CLUSTERBUSQOS register values */
 #define CLUSTERBUSQOS_SCID1_QOS2          0x00000020  /* Scheme ID 1: QoS=2 (bits 4-7) */
