@@ -38,14 +38,11 @@ const uint32_t g_ac_xpu_protected_ranges_ms_count = ARRAY_SIZE(g_ac_xpu_protecte
 const ac_xpu_hw_addr_mask_offset g_ac_xpu_hw_addr_mask_offset[] = {
 	{HAL_XPU2_BOOT_ROM,         0x003FFFFF, 0x300000  },
 	{HAL_XPU2_CNOC_TCU_CFG_MPU, 0x1FFFFFFF, 0x15000000},
-	{HAL_XPU2_QMIP_XPU_CFG,     0x0007FFFF, 0x68000   },
-	{HAL_XPU2_QPIC_APU,         0x07FFFFFF, 0x7980000 },
-	{HAL_XPU2_SDC1_SDCC_ICE,    0x07FFFFFF, 0x7808000 },
-	{HAL_XPU2_TLMM,             0x01FFFFFF, 0x1000000 },
-	{HAL_XPU2_QUPV3_5_GSI_TOP,  0x01FFFFFF, 0x1A00000 },
-	{HAL_XPU2_GCC_RPU,          0xFFFFFFFF, 0x1800000 },
+	{HAL_XPU2_QMIP_XPU_CFG,     0x7FFFF   , 0x68000   },
+	{HAL_XPU2_TLMM,             0x1FFFFFF , 0x1000000 },
 	{HAL_XPU2_IMEM_MPU,         0xFFFFFFFF, 0x8600000 },
 	{HAL_XPU2_TCSR_REGS,        0xFFFFFFFF, 0x01900000},
+	{HAL_XPU2_GEMNOC_CFG_MPU,   0x7FFFFFF , 0x2000000 },
 };
 const uint32_t g_ac_xpu_hw_addr_mask_offset_count = ARRAY_SIZE(g_ac_xpu_hw_addr_mask_offset);
 
@@ -154,4 +151,4 @@ const HAL_xpu2_XPU2Type g_xpu_enum_count = HAL_XPU2_COUNT;
 const bool g_was_supported = true;
 
 
-/*MD5:90e239039b060027c3335e88aee2bd5e*/
+/*MD5:c5ae84d02e2282361636eee12cdcb85f*/
