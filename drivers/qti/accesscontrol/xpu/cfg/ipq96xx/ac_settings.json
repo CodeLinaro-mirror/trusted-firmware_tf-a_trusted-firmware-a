@@ -98,33 +98,13 @@
         },
         {
             "xpuId": ["HAL_XPU2_QMIP_XPU_CFG"],
-            "mask": "0x0007FFFF",
+            "mask": "0x7FFFF",
             "offset": "0x68000"
         },
         {
-            "xpuId": ["HAL_XPU2_QPIC_APU"],
-            "mask": "0x07FFFFFF",
-            "offset": "0x7980000"
-        },
-        {
-            "xpuId": ["HAL_XPU2_SDC1_SDCC_ICE"],
-            "mask": "0x07FFFFFF",
-            "offset": "0x7808000"
-        },
-        {
             "xpuId": ["HAL_XPU2_TLMM"],
-            "mask": "0x01FFFFFF",
+            "mask": "0x1FFFFFF",
             "offset": "0x1000000"
-        },
-        {
-            "xpuId": ["HAL_XPU2_QUPV3_5_GSI_TOP"],
-            "mask": "0x01FFFFFF",
-            "offset": "0x1A00000"
-        },
-        {
-            "xpuId": ["HAL_XPU2_GCC_RPU"],
-            "mask": "0xFFFFFFFF",
-            "offset": "0x1800000"
         },
         {
             "xpuId": ["HAL_XPU2_IMEM_MPU"],
@@ -135,6 +115,11 @@
             "xpuId": ["HAL_XPU2_TCSR_REGS"],
             "mask": "0xFFFFFFFF",
             "offset": "0x01900000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_GEMNOC_CFG_MPU"],
+            "mask": "0x7FFFFFF",
+            "offset": "0x2000000"
         }
     ]
 }
