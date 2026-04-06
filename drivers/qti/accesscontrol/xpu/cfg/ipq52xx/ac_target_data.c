@@ -23,6 +23,15 @@ const uint32_t g_ac_xpu_dbgars[] = {
 };
 const uint32_t g_ac_xpu_dbgars_count = ARRAY_SIZE(g_ac_xpu_dbgars);
 
+static uint32_t s_shadow_read_perm_MEMNOC_SCH_MPU[6];
+static uint32_t s_shadow_write_perm_MEMNOC_SCH_MPU[6];
+static const ac_xpu_dynamic_rgs s_ac_xpu_dynamic_rgs_MEMNOC_SCH_MPU = {
+	.rg_start = 10,
+	.rg_count = 6,
+	.shadow_read_perm = s_shadow_read_perm_MEMNOC_SCH_MPU,
+	.shadow_write_perm = s_shadow_write_perm_MEMNOC_SCH_MPU,
+};
+
 ac_xpu4_priv_info g_ac_xpu_infos[] = {
 	{
 		.soc_addr = 0x003fe000,
@@ -150,7 +159,7 @@ ac_xpu4_priv_info g_ac_xpu_infos[] = {
 		.xpu_id = HAL_XPU2_MEMNOC_SCH_MPU,
 		.idr = {0},
 		.rev = 0,
-		.dyn_rgs = NULL,
+		.dyn_rgs = &s_ac_xpu_dynamic_rgs_MEMNOC_SCH_MPU,
 	},
 	{
 		.soc_addr = 0x004ac000,
@@ -219,7 +228,7 @@ ac_xpu4_priv_info g_ac_xpu_infos[] = {
 	{
 		.soc_addr = 0x00026000,
 		.addr = 0x00026000,
-		.xpu_id = HAL_XPU2_CNOC_SDCC_CFG_MPU,
+		.xpu_id = HAL_XPU2_SDCC_XPU_CFG,
 		.idr = {0},
 		.rev = 0,
 		.dyn_rgs = NULL,
@@ -267,4 +276,4 @@ ac_xpu4_priv_info g_ac_xpu_infos[] = {
 };
 const uint32_t g_ac_xpu_infos_count = ARRAY_SIZE(g_ac_xpu_infos);
 
-/*MD5:b3b02c5945bf39eaf679224448426b0c*/
+/*MD5:9cb73b5c88c0d3a8875461ef162b125f*/

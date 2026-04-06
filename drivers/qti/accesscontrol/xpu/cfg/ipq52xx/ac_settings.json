@@ -100,6 +100,41 @@
             "xpuId": ["HAL_XPU2_TCSR_REGS"],
             "mask": "0xFFFFFFFF",
             "offset": "0x01900000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_BOOT_ROM"],
+            "mask": "0x3FFFFF",
+            "offset": "0x300000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_CNOC_APSS_MPU"],
+            "mask": "0xFFFFFFF",
+            "offset": "0xB000000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_CNOC_PON_MAC_MPU"],
+            "mask": "0x01FFFFFF",
+            "offset": "0x01C80000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_MEMNOC_CFG_MPU"],
+            "mask": "0xFFFFFF",
+            "offset": "0xA80000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_MEMNOC_SCH_MPU"],
+            "mask": "0xFFFFFFFF",
+            "offset": "0x80000000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_IMEM_MPU"],
+            "mask": "0xFFFFFFFF",
+            "offset": "0x8600000"
+        },
+        {
+            "xpuId": ["HAL_XPU2_TLMM"],
+            "mask": "0x1FFFFFF",
+            "offset": "0x1000000"
         }
     ]
 }

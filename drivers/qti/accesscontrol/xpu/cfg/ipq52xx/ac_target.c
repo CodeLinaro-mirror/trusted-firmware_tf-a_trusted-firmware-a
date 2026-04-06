@@ -16,6 +16,18 @@
 const uint32_t g_ac_enabled = true;
 
 const ac_xpu_protected_range g_ac_xpu_protected_ranges[] = {
+	{
+		// DDR space - region 1
+		.start = 0x80000000,
+		.end   = 0x100000000,
+		.xpu_id = HAL_XPU2_MEMNOC_SCH_MPU,
+	},
+	{
+		// DDR space - region 2
+		.start = 0x800000000,
+		.end   = 0x880000000,
+		.xpu_id = HAL_XPU2_MEMNOC_SCH_MPU,
+	},
 };
 const uint32_t g_ac_xpu_protected_ranges_count = ARRAY_SIZE(g_ac_xpu_protected_ranges);
 
@@ -23,15 +35,14 @@ const ACXpuProtectedRangeMS g_ac_xpu_protected_ranges_ms[] = {
 };
 const uint32_t g_ac_xpu_protected_ranges_ms_count = ARRAY_SIZE(g_ac_xpu_protected_ranges_ms);
 
-/*
- * FIXME_IPQ52xx : Need to re-generate this file after incremental policy updates
- *		   for some of the xPUs.
- */
-
 const ac_xpu_hw_addr_mask_offset g_ac_xpu_hw_addr_mask_offset[] = {
-	{HAL_XPU2_SEC_CTRL_APU,0xFFFFFFFF, 0xA0000 },
-	{HAL_XPU2_GCC_RPU,   0xFFFFFFFF, 0x1800000 },
-	{HAL_XPU2_TCSR_REGS, 0xFFFFFFFF, 0x01900000},
+	{HAL_XPU2_BOOT_ROM,         0x3FFFFF  , 0x300000  },
+	{HAL_XPU2_CNOC_APSS_MPU,    0xFFFFFFF , 0xB000000 },
+	{HAL_XPU2_CNOC_PON_MAC_MPU, 0x01FFFFFF, 0x01C80000},
+	{HAL_XPU2_MEMNOC_CFG_MPU,   0xFFFFFF  , 0xA80000  },
+	{HAL_XPU2_MEMNOC_SCH_MPU,   0xFFFFFFFF, 0x80000000},
+	{HAL_XPU2_IMEM_MPU,         0xFFFFFFFF, 0x8600000 },
+	{HAL_XPU2_TLMM,             0x1FFFFFF , 0x1000000 },
 };
 const uint32_t g_ac_xpu_hw_addr_mask_offset_count = ARRAY_SIZE(g_ac_xpu_hw_addr_mask_offset);
 
@@ -140,4 +151,4 @@ const HAL_xpu2_XPU2Type g_xpu_enum_count = HAL_XPU2_COUNT;
 const bool g_was_supported = true;
 
 
-/*MD5:19c0e842f32737711857be2ea4cc9835*/
+/*MD5:88b287ae4e5148fdfc217717afa7cd66*/
