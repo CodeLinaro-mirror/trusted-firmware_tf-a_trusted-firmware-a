@@ -40,14 +40,14 @@
 #define AC_DOMAIN_RESERVED_10_BIT	(1U << 10)
 #define AC_DOMAIN_RESERVED_11_BIT	(1U << 11)
 
-#define AC_DOMAIN_ALL_ROT_BITS	AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_DEBUG_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+#define AC_DOMAIN_ALL_ROT_BITS	AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_DEBUG_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
 
 /* CNOC_NOC_CFG_MPU_XPU4 */
 __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg cnoc_noc_cfg_mpu_xpu4[] = {
 	{
 		.rg_num        = 0,
-		.start        = 0x00000000,
-		.end          = 0x00001000,
+		.start        = 0x00500000,
+		.end          = 0x00501000,
 		.profile_flags = AC_PROFILE_DEFAULT,
 		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
@@ -2527,4 +2527,4 @@ const ac_xpu_cfg g_ac_xpu_cfg[] = {
 };
 const uint32_t g_ac_xpu_cfg_count = ARRAY_SIZE(g_ac_xpu_cfg);
 
-/*MD5:0775c5fed3905ec144fbeb067bb4ed2b*/
+/*MD5:74ea00a8bfb42f0c6313df791db8d586*/

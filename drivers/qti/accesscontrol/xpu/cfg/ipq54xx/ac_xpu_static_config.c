@@ -39,6 +39,9 @@
 #define AC_DOMAIN_RESERVED_9_BIT	(1U << 9)
 #define AC_DOMAIN_RESERVED_10_BIT	(1U << 10)
 #define AC_DOMAIN_RESERVED_11_BIT	(1U << 11)
+
+#define AC_DOMAIN_ALL_ROT_BITS	AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_DEBUG_BIT | AC_DOMAIN_MSA_BIT
+
 /* BOOT_ROM_XPU4 */
 __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg boot_rom_xpu4[] = {
 	{
@@ -1040,259 +1043,259 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg gcc_rpu_xpu4[] = {
 	{
 		.rg_num        = 0,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 1,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_MSA_BIT
 	},
 	{
 		.rg_num        = 2,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_MSA_BIT
 	},
 	{
 		.rg_num        = 3,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_MSA_BIT
 	},
 	{
 		.rg_num        = 4,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 5,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 6,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 8,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 9,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 10,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 11,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 12,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 13,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 14,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 17,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 18,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 19,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 23,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 25,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 28,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 32,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 33,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 34,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 36,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 39,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 40,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 41,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 42,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 43,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 44,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 45,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 46,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 48,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 49,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 50,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 51,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 52,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 53,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 54,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 55,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 56,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 57,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 58,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
@@ -1304,73 +1307,73 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg gcc_rpu_xpu4[] = {
 	{
 		.rg_num        = 61,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 62,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 63,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 64,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 65,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 66,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 67,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 68,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 69,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 70,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 71,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
 		.rg_num        = 73,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 };
@@ -1382,7 +1385,7 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg gemnoc_cfg_xpu4[] = 
 		.start        = 0x00800000,
 		.end          = 0x00801000,
 		.profile_flags = AC_PROFILE_xBL_SC_EXIT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{//need to remove
@@ -1390,15 +1393,15 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg gemnoc_cfg_xpu4[] = 
 		.start        = 0x00830000,
 		.end          = 0x00834000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 2,
 		.start        = 0x00841000,
 		.end          = 0x00842000,
 		.profile_flags = AC_PROFILE_xBL_SC_EXIT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
@@ -1450,8 +1453,8 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg llcc_llcc_mpu_xpu4[]
 		.start        = 0x00000000,
 		.end          = 0x00000000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 1,
@@ -1478,8 +1481,8 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg llcc_llcc_scid_xpu4[
 		.start        = 0x00000000,
 		.end          = 0x00000000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 1,
@@ -1514,7 +1517,7 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg tlmm_xpu4[] = {
 		.start        = 0x01000000,
 		.end          = 0x01400000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_MSA_BIT
 	},
 };
@@ -1620,43 +1623,43 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg mpm2_mpm_apu_xpu4[] 
 	{
 		.rg_num        = 2,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 3,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 4,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 5,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 6,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 7,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 8,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
@@ -1696,8 +1699,8 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg ocimem_mpu_xpu4[] = 
 		.start        = 0x08600000,
 		.end          = 0x08601000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 1,
@@ -1712,7 +1715,7 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg ocimem_mpu_xpu4[] = 
 		.start        = 0x08604000,
 		.end          = 0x08605000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
@@ -1720,7 +1723,7 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg ocimem_mpu_xpu4[] = 
 		.start        = 0x08605000,
 		.end          = 0x08608000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
@@ -1728,7 +1731,7 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg ocimem_mpu_xpu4[] = 
 		.start        = 0x08608000,
 		.end          = 0x0860e000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT | AC_DOMAIN_RESERVED_7_BIT | AC_DOMAIN_RESERVED_8_BIT | AC_DOMAIN_RESERVED_9_BIT | AC_DOMAIN_RESERVED_10_BIT | AC_DOMAIN_RESERVED_11_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
@@ -1754,8 +1757,8 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg prng_rng_apu_xpu4[] 
 	{
 		.rg_num        = 0,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 1,
@@ -1766,86 +1769,86 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg prng_rng_apu_xpu4[] 
 	{
 		.rg_num        = 2,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 3,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 4,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 5,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 6,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 7,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 8,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 9,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 10,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 11,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 12,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 13,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 14,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 15,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 };
 
@@ -2150,67 +2153,67 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg sec_ctrl_apu_xpu4[] 
 	{
 		.rg_num        = 0,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 1,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 2,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 3,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 4,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 5,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 6,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 7,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 8,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 9,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 	{
 		.rg_num        = 10,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
 		.write_qads    = AC_DOMAIN_TME_ROM_BIT
 	},
 };
@@ -2310,14 +2313,14 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg tcsr_xpu4[] = {
 	{
 		.rg_num        = 28,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 	{
 		.rg_num        = 29,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT | AC_DOMAIN_AP_NS_BIT | AC_DOMAIN_TME_ROM_BIT | AC_DOMAIN_TME_FW_BIT | AC_DOMAIN_AP_QC_BL_BIT | AC_DOMAIN_MSA_BIT | AC_DOMAIN_PRIME_BIT
+		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
+		.write_qads    = AC_DOMAIN_ALL_ROT_BITS
 	},
 };
 

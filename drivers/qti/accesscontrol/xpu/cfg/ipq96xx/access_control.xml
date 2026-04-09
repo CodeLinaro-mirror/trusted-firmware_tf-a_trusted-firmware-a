@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
-<!-- Generated Wed February 25 08:00:41 2026 UTC -->
+<!-- Generated Thu April 09 10:33:30 2026 UTC -->
 
-<!-- Checksum: c12c8e20f2536418cc9341ae428d90e3 -->
+<!-- Checksum: 11f59571cc97d4a1cc23f5801304a7ab -->
 <AccessControl>
-   <Version>0.1</Version>
+   <Version>0.2</Version>
    <MPU fqname="JUHU.BOOT_ROM.BOOT_ROM_MPUQ12_4_CL32L12M31_LE.XPU4" name="BOOT_ROM_XPU4">
       <HWConfig>
          <HWDesignParameters>
@@ -372,9 +372,9 @@
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <PRTn confirmed="false" end="0x1000" index="0" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x0" wdomains="TZ" wvmids="">
+         <PRTn confirmed="false" end="0x501000" index="0" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x500000" wdomains="TZ" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>PCNOC Error log register space. Relative address for PCNOC alone in this xPU.</SecurityRationale>
+            <SecurityRationale>PCNOC Error log register space.</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
          <PRTn confirmed="false" end="0x581000" index="1" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x580000" wdomains="TZ" wvmids="">

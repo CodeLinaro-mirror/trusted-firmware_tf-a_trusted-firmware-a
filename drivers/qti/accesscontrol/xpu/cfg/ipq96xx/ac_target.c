@@ -151,4 +151,4 @@ const HAL_xpu2_XPU2Type g_xpu_enum_count = HAL_XPU2_COUNT;
 const bool g_was_supported = true;
 
 
-/*MD5:c5ae84d02e2282361636eee12cdcb85f*/
+/*MD5:760a0ea04f2fce40c28dbb422bc337f9*/
