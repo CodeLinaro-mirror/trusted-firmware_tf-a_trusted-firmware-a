@@ -111,7 +111,7 @@ GIC_SOURCES		:=	plat/common/plat_gicv2.c			\
 XPU_VERSION := v4
 
 # Base xPU support define
-ENABLE_XPU	:=	1
+ENABLE_XPU	:=	0
 $(eval $(call add_define,ENABLE_XPU))
 
 # Include xPU driver
