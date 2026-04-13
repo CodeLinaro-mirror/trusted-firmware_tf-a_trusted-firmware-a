@@ -118,8 +118,8 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg cnoc_gephy_mpu_xpu4[
 		.start        = 0x01400000,
 		.end          = 0x01600000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_NONE,
-		.write_qads    = AC_DOMAIN_NONE
+		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 };
 
@@ -250,8 +250,8 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg cnoc_pon_mac_mpu_xpu
 		.start        = 0x01c80000,
 		.end          = 0x01d00000,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_NONE,
-		.write_qads    = AC_DOMAIN_NONE
+		.read_qads     = AC_DOMAIN_AP_NS_BIT,
+		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 };
 
@@ -1713,4 +1713,4 @@ const ac_xpu_cfg g_ac_xpu_cfg[] = {
 };
 const uint32_t g_ac_xpu_cfg_count = ARRAY_SIZE(g_ac_xpu_cfg);
 
-/*MD5:dcc468a42a855128a9612b2f5721565f*/
+/*MD5:72a34d06d3a8402ed13851b014ac531b*/
