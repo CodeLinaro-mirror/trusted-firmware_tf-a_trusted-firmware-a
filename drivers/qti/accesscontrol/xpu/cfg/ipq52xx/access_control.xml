@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!-- Generated Tue April 07 09:01:55 2026 UTC -->
+<!-- Generated Mon April 13 12:45:41 2026 UTC -->
 
-<!-- Checksum: e773bced69081d51de84659e6c99e568 -->
+<!-- Checksum: b1f4d9b8d77179ebcb7e272b09274ac9 -->
 <AccessControl>
    <Version>0.1</Version>
    <MPU fqname="HERMOSA.BOOT_ROM.BOOT_ROM_MPUQ7_4_CL32L12M31_LE.XPU4" name="BOOT_ROM_XPU4">
@@ -249,7 +249,7 @@ Permission Leveraged from Miami.</SecurityRationale>
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <PRTn confirmed="false" end="0x1600000" index="0" locks="" order="0" profile="" rdomains="" rvmids="AP" start="0x1400000" wdomains="" wvmids="AP">
+         <PRTn confirmed="false" end="0x1600000" index="0" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" start="0x1400000" wdomains="HYP" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
@@ -1121,7 +1121,7 @@ Permission Leveraged from Miami.</SecurityRationale>
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <PRTn confirmed="false" end="0x1d00000" index="0" locks="" order="0" profile="" rdomains="" rvmids="AP" start="0x1c80000" wdomains="" wvmids="AP">
+         <PRTn confirmed="false" end="0x1d00000" index="0" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" start="0x1c80000" wdomains="HYP" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
@@ -4484,258 +4484,6 @@ Add shadow registers for Antirollback 3, in same RG)&quot;</SecurityRationale>
          </PolicyParameters>
       </SWConfig>
    </APU>
-   <MPU fqname="HERMOSA.SNOC_WRAPPER.SNOC_PCIE_1LANE_MST_MPU_MPUQ7_16_CL36L12M35.XPU4" name="SNOC_PCIE_1LANE_MST_MPU_XPU4">
-      <HWConfig>
-         <HWDesignParameters>
-            <Parameter name="FF_MODULE" value="SNOC_PCIE_1LANE_MST_MPU_XPU4"/>
-            <Parameter name="FF_ADDRESS" value="0x005e2000"/>
-            <Parameter name="XPU4_REV:MAJOR" value="4"/>
-            <Parameter name="XPU4_REV:MINOR" value="0"/>
-            <Parameter name="XPU4_REV:STEP" value="0"/>
-            <Parameter name="FF_SPRE_MODNAME" value="SNOC_PCIE_1LANE_MST_MPU_XPU4"/>
-            <Parameter name="BLK_MAX_ADDRESS" value="5119"/>
-            <Parameter name="BURST_LEN_CALC" value="0"/>
-            <Parameter name="CLIENTREQ_HALT_ACK_HW_EN" value="0"/>
-            <Parameter name="CLIENT_ADDR_LSB" value="12"/>
-            <Parameter name="CLIENT_ADDR_MSB" value="35"/>
-            <Parameter name="CLIENT_ADDR_WIDTH" value="36"/>
-            <Parameter name="CONFIG_ADDR_WIDTH" value="32"/>
-            <Parameter name="NUM_QAD" value="7"/>
-            <Parameter name="NUM_RES_GRP" value="16"/>
-            <Parameter name="USE_LEGACY_INTF" value="0"/>
-            <Parameter name="XPU4_APU_RPU_ECO_EN" value="0"/>
-            <Parameter name="XPU_CLIENT_PIPELINE_EN" value="0"/>
-            <Parameter name="XPU_TYPE" value="0"/>
-            <Parameter name="XPU4_IDR0:nRG" value="15"/>
-            <Parameter name="XPU4_IDR0:BLED" value="0"/>
-            <Parameter name="XPU4_IDR0:CLIENT_HALTREQACK_EN" value="0"/>
-            <Parameter name="XPU4_IDR0:CLIENT_PIPELINE_EN" value="0"/>
-            <Parameter name="XPU4_IDR0:XPU_TYPE" value="0"/>
-            <Parameter name="XPU4_IDR1:CLIENT_ADDR_WIDTH" value="35"/>
-            <Parameter name="XPU4_IDR1:CONFIG_ADDR_WIDTH" value="32"/>
-            <Parameter name="XPU4_IDR1:ADDR_MSB" value="35"/>
-            <Parameter name="XPU4_IDR1:ADDR_LSB" value="12"/>
-            <Parameter name="XPU4_IDR2:useLegacyIntf" value="0"/>
-            <Parameter name="XPU4_IDR2:nQAD" value="7"/>
-         </HWDesignParameters>
-         <HWIntegrationParameters>
-            <Parameter name="InputMSB" value="35"/>
-         </HWIntegrationParameters>
-      </HWConfig>
-      <SWConfig>
-         <PRTn confirmed="false" end="" index="0" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="1" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="2" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="3" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="4" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="5" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="6" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="7" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="8" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="9" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="10" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="11" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="12" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="13" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="14" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="15" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <Global confirmed="false" profile="" value="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-         </Global>
-         <PolicyParameters/>
-      </SWConfig>
-   </MPU>
-   <MPU fqname="HERMOSA.SNOC_WRAPPER.SNOC_PCIE_2LANE_MST_MPU_MPUQ7_16_CL36L12M35.XPU4" name="SNOC_PCIE_2LANE_MST_MPU_XPU4">
-      <HWConfig>
-         <HWDesignParameters>
-            <Parameter name="FF_MODULE" value="SNOC_PCIE_2LANE_MST_MPU_XPU4"/>
-            <Parameter name="FF_ADDRESS" value="0x005e0000"/>
-            <Parameter name="XPU4_REV:MAJOR" value="4"/>
-            <Parameter name="XPU4_REV:MINOR" value="0"/>
-            <Parameter name="XPU4_REV:STEP" value="0"/>
-            <Parameter name="FF_SPRE_MODNAME" value="SNOC_PCIE_2LANE_MST_MPU_XPU4"/>
-            <Parameter name="BLK_MAX_ADDRESS" value="5119"/>
-            <Parameter name="BURST_LEN_CALC" value="0"/>
-            <Parameter name="CLIENTREQ_HALT_ACK_HW_EN" value="0"/>
-            <Parameter name="CLIENT_ADDR_LSB" value="12"/>
-            <Parameter name="CLIENT_ADDR_MSB" value="35"/>
-            <Parameter name="CLIENT_ADDR_WIDTH" value="36"/>
-            <Parameter name="CONFIG_ADDR_WIDTH" value="32"/>
-            <Parameter name="NUM_QAD" value="7"/>
-            <Parameter name="NUM_RES_GRP" value="16"/>
-            <Parameter name="USE_LEGACY_INTF" value="0"/>
-            <Parameter name="XPU4_APU_RPU_ECO_EN" value="0"/>
-            <Parameter name="XPU_CLIENT_PIPELINE_EN" value="0"/>
-            <Parameter name="XPU_TYPE" value="0"/>
-            <Parameter name="XPU4_IDR0:nRG" value="15"/>
-            <Parameter name="XPU4_IDR0:BLED" value="0"/>
-            <Parameter name="XPU4_IDR0:CLIENT_HALTREQACK_EN" value="0"/>
-            <Parameter name="XPU4_IDR0:CLIENT_PIPELINE_EN" value="0"/>
-            <Parameter name="XPU4_IDR0:XPU_TYPE" value="0"/>
-            <Parameter name="XPU4_IDR1:CLIENT_ADDR_WIDTH" value="35"/>
-            <Parameter name="XPU4_IDR1:CONFIG_ADDR_WIDTH" value="32"/>
-            <Parameter name="XPU4_IDR1:ADDR_MSB" value="35"/>
-            <Parameter name="XPU4_IDR1:ADDR_LSB" value="12"/>
-            <Parameter name="XPU4_IDR2:useLegacyIntf" value="0"/>
-            <Parameter name="XPU4_IDR2:nQAD" value="7"/>
-         </HWDesignParameters>
-         <HWIntegrationParameters>
-            <Parameter name="InputMSB" value="35"/>
-         </HWIntegrationParameters>
-      </HWConfig>
-      <SWConfig>
-         <PRTn confirmed="false" end="" index="0" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="1" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="2" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="3" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="4" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="5" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="6" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="7" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="8" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="9" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="10" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="11" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="12" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="13" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="14" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="15" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <Global confirmed="false" profile="" value="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
-         </Global>
-         <PolicyParameters/>
-      </SWConfig>
-   </MPU>
    <APU fqname="HERMOSA.CORE_TOP_CSR.TCSR_APUQ7_30_CL36_LE.XPU4" name="TCSR_XPU4">
       <HWConfig>
          <HWDesignParameters>
