@@ -59,6 +59,12 @@
 
 #pragma weak qti_system_off
 #pragma weak qti_system_reset
+#pragma weak qti_system_reset2
+
+/* Forward declarations for weak symbols */
+__dead2 void qti_system_off(void);
+__dead2 void qti_system_reset(void);
+int qti_system_reset2(int is_vendor, int reset_type, u_register_t cookie);
 
 /* cpu power control happens to be same across all CPUs */
 DEFINE_RENAME_SYSREG_RW_FUNCS(cpu_pwrctrl_val, S3_0_C15_C2_7)
@@ -288,6 +294,7 @@ const plat_psci_ops_t plat_qti_psci_pm_ops = {
 	.pwr_domain_pwr_down_wfi = qti_domain_power_down_wfi,
 	.system_off = qti_system_off,
 	.system_reset = qti_system_reset,
+	.system_reset2 = qti_system_reset2,
 	.get_node_hw_state = NULL,
 	.translate_power_state_by_mpidr = NULL,
 	.get_sys_suspend_power_state = qti_get_sys_suspend_power_state,

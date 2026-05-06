@@ -130,6 +130,11 @@ void qtiseclib_psci_system_reset(void)
 {
 }
 
+int qtiseclib_psci_system_reset2(int is_vendor, int reset_type, u_register_t cookie)
+{
+	return 0;
+}
+
 void qtiseclib_psci_system_off(void)
 {
 }

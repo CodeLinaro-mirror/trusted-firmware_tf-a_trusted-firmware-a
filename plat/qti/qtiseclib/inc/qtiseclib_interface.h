@@ -119,6 +119,7 @@ void qtiseclib_psci_cpu_standby(uint8_t pwr_state);
 void qtiseclib_psci_node_power_off(const uint8_t *states);
 void qtiseclib_psci_node_suspend(const uint8_t *states);
 void qtiseclib_psci_system_reset(void);
+int qtiseclib_psci_system_reset2(int is_vendor, int reset_type, u_register_t cookie);
 void qtiseclib_psci_system_off(void);
 void qtiseclib_psci_node_suspend_finish(const uint8_t *states);
 void qtiseclib_disable_cluster_coherency(uint8_t state);
