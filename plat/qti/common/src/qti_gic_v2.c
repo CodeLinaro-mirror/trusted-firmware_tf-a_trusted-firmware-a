@@ -57,7 +57,7 @@ const gicv2_driver_data_t qti_gic_data = {
 
 void gic_set_spi_routing(unsigned int id, unsigned int irm, u_register_t target)
 {
-	return;
+	gicv2_set_spi_routing(id, (int)target);
 }
 
 void plat_qti_gic_driver_init(void)
@@ -76,11 +76,21 @@ void plat_qti_gic_driver_init(void)
  *****************************************************************************/
 void plat_qti_gic_init(void)
 {
+	unsigned int i;
 
 	gicv2_distif_init();
 	gicv2_pcpu_distif_init();
 	gicv2_set_pe_target_mask(plat_my_core_pos());
 	gicv2_cpuif_enable();
+
+	/* Route secure spi interrupt to ANY. */
+	for (i = 0; i < ARRAY_SIZE(qti_interrupt_props); i++) {
+		unsigned int int_id = qti_interrupt_props[i].intr_num;
+
+		if (plat_ic_is_spi(int_id)) {
+			gicv2_set_spi_routing(int_id, -1);
+		}
+	}
 }
 
 /******************************************************************************
