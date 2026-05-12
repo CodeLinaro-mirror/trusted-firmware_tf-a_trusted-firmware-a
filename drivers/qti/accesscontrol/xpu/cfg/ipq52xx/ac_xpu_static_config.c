@@ -220,21 +220,29 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg cnoc_pcie_usbphy_cfg
 	{
 		.rg_num        = 0,
 		.start        = 0x00078000,
-		.end          = 0x00080000,
+		.end          = 0x0007a000,
 		.profile_flags = AC_PROFILE_DEFAULT,
 		.read_qads     = AC_DOMAIN_AP_NS_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
 		.rg_num        = 1,
-		.start        = 0x00080000,
+		.start        = 0x0007a000,
+		.end          = 0x0007b000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+	{
+		.rg_num        = 2,
+		.start        = 0x0007b000,
 		.end          = 0x00088000,
 		.profile_flags = AC_PROFILE_DEFAULT,
 		.read_qads     = AC_DOMAIN_AP_NS_BIT,
 		.write_qads    = AC_DOMAIN_AP_NS_BIT
 	},
 	{
-		.rg_num        = 2,
+		.rg_num        = 3,
 		.start        = 0x000f0000,
 		.end          = 0x000f8000,
 		.profile_flags = AC_PROFILE_DEFAULT,
@@ -1104,8 +1112,8 @@ __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg qrng_rng_apu_xpu4[] 
 	{
 		.rg_num        = 15,
 		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_AP_NS_BIT,
-		.write_qads    = AC_DOMAIN_AP_NS_BIT
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 };
 
@@ -1713,4 +1721,4 @@ const ac_xpu_cfg g_ac_xpu_cfg[] = {
 };
 const uint32_t g_ac_xpu_cfg_count = ARRAY_SIZE(g_ac_xpu_cfg);
 
-/*MD5:72a34d06d3a8402ed13851b014ac531b*/
+/*MD5:ce5bd8d0aef154aaac9a7e5e63bd0510*/

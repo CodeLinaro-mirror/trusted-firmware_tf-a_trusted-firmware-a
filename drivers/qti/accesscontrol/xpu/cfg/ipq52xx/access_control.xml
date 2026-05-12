@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
-<!-- Generated Mon April 13 12:45:41 2026 UTC -->
+<!-- Generated Tue May 12 10:04:54 2026 UTC -->
 
-<!-- Checksum: b1f4d9b8d77179ebcb7e272b09274ac9 -->
+<!-- Checksum: e40fe772aac2e234849e62b4c8843853 -->
 <AccessControl>
-   <Version>0.1</Version>
+   <Version>0.3</Version>
    <MPU fqname="HERMOSA.BOOT_ROM.BOOT_ROM_MPUQ7_4_CL32L12M31_LE.XPU4" name="BOOT_ROM_XPU4">
       <HWConfig>
          <HWDesignParameters>
@@ -1055,24 +1055,24 @@ Permission Leveraged from Miami.</SecurityRationale>
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <PRTn confirmed="false" end="0x80000" index="0" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" start="0x78000" wdomains="HYP" wvmids="">
+         <PRTn confirmed="false" end="0x7a000" index="0" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" start="0x78000" wdomains="HYP" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>USBPHY</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="0x88000" index="1" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" start="0x80000" wdomains="HYP" wvmids="">
+         <PRTn confirmed="false" end="0x7b000" index="1" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x7a000" wdomains="TZ" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>PCIE_g3x1</SecurityRationale>
+            <SecurityRationale>EUD_EUD_EN2 access protected and HLOS will access this via Secure IO SCM</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="0xf8000" index="2" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" start="0xf0000" wdomains="HYP" wvmids="">
+         <PRTn confirmed="false" end="0x88000" index="2" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" start="0x7b000" wdomains="HYP" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>USBPHY, PCIE_g3x1</SecurityRationale>
+            <XPU_RGn_FLAGS enabled="true" static="true"/>
+         </PRTn>
+         <PRTn confirmed="false" end="0xf8000" index="3" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" start="0xf0000" wdomains="HYP" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>PCIE_g3x2</SecurityRationale>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="" index="3" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
          <Global confirmed="false" profile="" value="">
@@ -4126,9 +4126,9 @@ We had to do this since UMR is not available in xPUv4.0.</SecurityRationale>
                <Range end="0x4cefff" start="0x4ce000"/>
             </AddressRange>
          </RGn>
-         <RGn confirmed="false" index="15" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" wdomains="HYP" wvmids="">
+         <RGn confirmed="false" index="15" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" wdomains="TZ" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale/>
+            <SecurityRationale>RSVD Region</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
             <AddressRange>
                <Range end="0x4cffff" start="0x4cf000"/>
