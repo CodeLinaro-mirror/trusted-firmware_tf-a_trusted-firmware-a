@@ -78,6 +78,18 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg cnoc_noc_cfg_mpu_xpu
 	},
 };
 
+/* CNOC_USBPHY_USB2_CORE_PHY_CFG_MPU_XPU4 */
+__section(".ac_static_cfg_data.xpu") static const ac_mpu_rg cnoc_usbphy_usb2_core_phy_cfg_mpu_xpu4[] = {
+	{
+		.rg_num        = 0,
+		.start        = 0x0007a000,
+		.end          = 0x0007b000,
+		.profile_flags = AC_PROFILE_DEFAULT,
+		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
+		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
+	},
+};
+
 /* GCC_RPU_XPU4 */
 __section(".ac_static_cfg_data.xpu") static const ac_rpu_rg gcc_rpu_xpu4[] = {
 	{
@@ -2287,8 +2299,8 @@ const ac_xpu_cfg g_ac_xpu_cfg[] = {
 		.profile_flags = AC_PROFILE_DEFAULT,
 		.xpu_id        = HAL_XPU2_CNOC_USBPHY_USB2_CORE_PHY_CFG_MPU,
 		.status       = XPU_ENABLED,
-		.nrg          = 0,
-		.rg           = {NULL},
+		.nrg          = ARRAY_SIZE(cnoc_usbphy_usb2_core_phy_cfg_mpu_xpu4),
+		.rg           = {cnoc_usbphy_usb2_core_phy_cfg_mpu_xpu4},
 		.cfg_owner     = QAD_APPS,
 		.umr_perm      = AC_DOMAIN_AP_NS_BIT,
 		.rg_ignored    = NULL,
@@ -2527,4 +2539,4 @@ const ac_xpu_cfg g_ac_xpu_cfg[] = {
 };
 const uint32_t g_ac_xpu_cfg_count = ARRAY_SIZE(g_ac_xpu_cfg);
 
-/*MD5:74ea00a8bfb42f0c6313df791db8d586*/
+/*MD5:fa20bbea28b562f1ee5668ff40cbef33*/

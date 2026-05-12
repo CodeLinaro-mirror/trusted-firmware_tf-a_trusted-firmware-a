@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
-<!-- Generated Thu April 09 10:33:30 2026 UTC -->
+<!-- Generated Tue May 12 12:07:19 2026 UTC -->
 
-<!-- Checksum: 11f59571cc97d4a1cc23f5801304a7ab -->
+<!-- Checksum: d69c926a7ceaa919b6d42175f9923a0e -->
 <AccessControl>
-   <Version>0.2</Version>
+   <Version>0.3</Version>
    <MPU fqname="JUHU.BOOT_ROM.BOOT_ROM_MPUQ12_4_CL32L12M31_LE.XPU4" name="BOOT_ROM_XPU4">
       <HWConfig>
          <HWDesignParameters>
@@ -1679,9 +1679,9 @@
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <PRTn confirmed="false" end="" index="0" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
-            <SecurityRationale/>
+         <PRTn confirmed="false" end="0x7b000" index="0" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x7a000" wdomains="TZ" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
+            <SecurityRationale>EUD_EUD_EN2 reg access protected. HLOS will access this using secure IO SCM</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
          <PRTn confirmed="false" end="" index="1" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
