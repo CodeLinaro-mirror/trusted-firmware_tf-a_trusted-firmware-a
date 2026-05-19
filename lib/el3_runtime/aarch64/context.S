@@ -591,18 +591,14 @@ func el3_exit
 	str	x17, [sp, #CTX_EL3STATE_OFFSET + CTX_RUNTIME_SP]
 
 #ifdef ENABLE_LLCC_CFG
-	/*
-	 * Configure CLUSTERTHREADSID when exiting to AArch64 Non-Secure world.
-	 */
+	/* Configure CLUSTERTHREADSID for Non-Secure world on exit */
+	/* Read SCR_EL3 from context to determine target world */
 	ldr	x17, [sp, #CTX_EL3STATE_OFFSET + CTX_SCR_EL3]
 	tst	x17, #SCR_NS_BIT
-	b.eq	skip_clusterthreadsid_exit_cfg
-
-	tst	x17, #SCR_RW_BIT
-	b.eq	skip_clusterthreadsid_exit_cfg
-
+	b.eq	sid_configured
+	/* Exiting to Non-Secure world - configure NS SID */
 	bl	qti_configure_clusterthreadsid_nsworld
-skip_clusterthreadsid_exit_cfg:
+sid_configured:
 #endif
 
 	/* ----------------------------------------------------------

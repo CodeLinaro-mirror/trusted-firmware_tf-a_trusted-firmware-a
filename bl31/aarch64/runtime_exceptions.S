@@ -350,15 +350,7 @@ sync_handler64:
 #endif
 
 #ifdef ENABLE_LLCC_CFG
-	/*
-	 * Configure CLUSTERTHREADSID when entering from AArch64.
-	 */
-	ldr	x17, [sp, #CTX_EL3STATE_OFFSET + CTX_SCR_EL3]
-	tst	x17, #SCR_RW_BIT
-	b.eq	skip_clusterthreadsid_cfg
-
 	bl	qti_configure_clusterthreadsid_for_secureworld
-skip_clusterthreadsid_cfg:
 #endif
 
 	/*
@@ -557,15 +549,7 @@ func handle_interrupt_exception
 #endif
 
 #ifdef ENABLE_LLCC_CFG
-	/*
-	 * Configure CLUSTERTHREADSID when entering from AArch64.
-	 */
-	ldr	x17, [sp, #CTX_EL3STATE_OFFSET + CTX_SCR_EL3]
-	tst	x17, #SCR_RW_BIT
-	b.eq	skip_clusterthreadsid_irq_cfg
-
 	bl	qti_configure_clusterthreadsid_for_secureworld
-skip_clusterthreadsid_irq_cfg:
 #endif
 
 	/* Save the EL3 system registers needed to return from this exception */
