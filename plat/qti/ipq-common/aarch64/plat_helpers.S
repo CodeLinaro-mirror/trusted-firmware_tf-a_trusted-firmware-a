@@ -90,23 +90,26 @@ func qti_configure_clusterbusqos
 endfunc qti_configure_clusterbusqos
 
 /*--------------------------------------------------------------------
- * Configure CLUSTERTHREADSID_EL1 for non-secure world
- * Regular cores use scheme ID 0, reserved core(last core) uses ID 1
+ * Configure CLUSTERTHREADSID_EL1 for non-secure world.
+ * Determines core position from MPIDR_EL1 internally.
+ * Regular cores use scheme ID 0, last core uses scheme ID 1.
+ * Clobbers: x6, x7 only. Safe to call with any SP (no stack usage).
  *--------------------------------------------------------------------*/
 .global qti_configure_clusterthreadsid_for_nsworld
 .type qti_configure_clusterthreadsid_for_nsworld, %function
 func qti_configure_clusterthreadsid_for_nsworld
-	cmp	x0, 0x1
-	beq	configure_reserved_core_scid
-
-	mov	x6, xzr
-	msr	s3_0_c15_c4_0, x6
+	mrs	x7, mpidr_el1
+	and	x7, x7, #MPIDR_CPU_MASK
+	mov	x6, #(PLATFORM_CORE_COUNT - 1)
+	cmp	x7, x6
+	b.eq	1f
+	/* Regular core: scheme ID 0 */
+	msr	s3_0_c15_c4_0, xzr
 	isb
 	ret
-
-configure_reserved_core_scid:
-	mov	x6, xzr
-	orr	x6, x6, #0x1
+1:
+	/* Last core: scheme ID 1 */
+	mov	x6, #0x1
 	msr	s3_0_c15_c4_0, x6
 	isb
 	ret

@@ -591,13 +591,13 @@ func el3_exit
 	str	x17, [sp, #CTX_EL3STATE_OFFSET + CTX_RUNTIME_SP]
 
 #ifdef ENABLE_LLCC_CFG
-	/* Configure CLUSTERTHREADSID for Non-Secure world on exit */
-	/* Read SCR_EL3 from context to determine target world */
+	/* Configure CLUSTERTHREADSID for Non-Secure world on exit.
+	 * Uses pure assembly function (no C stack usage) - safe with SP=SP_EL3.
+	 */
 	ldr	x17, [sp, #CTX_EL3STATE_OFFSET + CTX_SCR_EL3]
 	tst	x17, #SCR_NS_BIT
 	b.eq	sid_configured
-	/* Exiting to Non-Secure world - configure NS SID */
-	bl	qti_configure_clusterthreadsid_nsworld
+	bl	qti_configure_clusterthreadsid_for_nsworld
 sid_configured:
 #endif
 

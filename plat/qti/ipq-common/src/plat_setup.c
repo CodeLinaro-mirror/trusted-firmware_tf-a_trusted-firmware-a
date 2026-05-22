@@ -66,16 +66,6 @@ int qti_configure_cluster_partition_control(uint32_t func_id)
 	return 0;
 }
 
-void qti_configure_clusterthreadsid_nsworld(void)
-{
-	uint32_t cpu_num;
-	bool is_last_core;
-
-	cpu_num = ((plat_my_core_pos()) % QTISECLIB_PLAT_CORE_COUNT);
-	is_last_core = (cpu_num == (QTISECLIB_PLAT_CORE_COUNT - 1));
-
-	qti_configure_clusterthreadsid_for_nsworld(is_last_core);
-}
 #endif
 
 /**
