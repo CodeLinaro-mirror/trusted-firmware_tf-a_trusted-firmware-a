@@ -78,6 +78,20 @@ QTI_BL31_SOURCES	:=	$(QTI_PLAT_PATH)/common/src/$(ARCH)/qti_helpers.S	\
 DIAG_LOG			:=	1
 $(eval $(call add_define,DIAG_LOG))
 
+# Enable the Performance Measurement Framework (PMF) and Runtime
+# Instrumentation. Both are set explicitly here because the top-level Makefile
+# derives ENABLE_PMF from ENABLE_RUNTIME_INSTRUMENTATION before this platform
+# makefile is included, so setting only one flag would not propagate.
+ENABLE_RUNTIME_INSTRUMENTATION	:=	1
+ENABLE_PMF			:=	1
+
+# bl31.mk adds pmf_main.c and the vendor EL3 service (which calls
+# pmf_smc_handler), but the PMF SMC handler itself lives in pmf_smc.c, which
+# each platform is expected to add. Without it BL31 fails to link.
+ifeq (${ENABLE_PMF}, 1)
+BL31_SOURCES		+=	lib/pmf/pmf_smc.c
+endif
+
 # Include common QTI makefile for conditional compilation
 include $(QTI_PLAT_PATH)/common/qti_common.mk
 
