@@ -678,14 +678,14 @@ static uint64_t checksum_calc(uint64_t *buffer, size_t size)
 	return sum;
 }
 /*
- * Boot Manifest v0.5 structure illustration, with two DRAM banks,
+ * Boot Manifest v0.6 structure illustration, with two DRAM banks,
  * a single console and one device memory with two PCIe device
  * non-coherent address ranges.
  *
  * +--------------------------------------------------+
  * | offset |        field       |      comment       |
  * +--------+--------------------+--------------------+
- * |   0    |       version      |     0x00000005     |
+ * |   0    |       version      |     0x00000006     |
  * +--------+--------------------+--------------------+
  * |   4    |       padding      |     0x00000000     |
  * +--------+--------------------+--------------------+
@@ -762,32 +762,46 @@ static uint64_t checksum_calc(uint64_t *buffer, size_t size)
  * |   280  |     smmu_base      |                    |              |
  * +--------+--------------------+      smmus[0]      |              |
  * |   288  |     smmu_r_base    |                    |              |
+ * +--------+--------------------+                    |              |
+ * |   296  |      irq_cfg       |                    |              |
+ * +--------+--------------------+                    |              |
+ * |   298  | cmdq_sync_irq_wired|                    |              |
+ * +--------+--------------------+                    |              |
+ * |   300  |  gerror_intr_num   |                    |              |
+ * +--------+--------------------+                    |              |
+ * |   302  |  eventq_intr_num   |                    |              |
+ * +--------+--------------------+                    |              |
+ * |   304  |   priq_intr_num    |                    |              |
+ * +--------+--------------------+                    |              |
+ * |   306  |cmdq_sync_intr_num  |                    |              |
+ * +--------+--------------------+                    |              |
+ * |   308  |      padding       |                    |              |
  * +--------+--------------------+--------------------+<-------------+
- * |   296  |     ecam_base      |                    |
+ * |   312  |     ecam_base      |                    |
  * +--------+--------------------+                    |
- * |   304  |      segment       |                    |
+ * |   320  |      segment       |                    |
  * +--------+--------------------+                    |
- * |   305  |      padding       |   root_complex[0]  +--+
+ * |   321  |      padding       |   root_complex[0]  +--+
  * +--------+--------------------+                    |  |
- * |   308  |   num_root_ports   |                    |  |
+ * |   324  |   num_root_ports   |                    |  |
  * +--------+--------------------+                    |  |
- * |   312  |     root_ports     |                    |  |
+ * |   328  |     root_ports     |                    |  |
  * +--------+--------------------+--------------------+<-+
- * |   320  |    root_port_id    |                    |
+ * |   336  |    root_port_id    |                    |
  * +--------+--------------------+                    |
- * |   322  |      padding       |                    |
+ * |   338  |      padding       |                    |
  * +--------+--------------------+   root_ports[0]    +--+
- * |   324  |  num_bdf_mappings  |                    |  |
+ * |   340  |  num_bdf_mappings  |                    |  |
  * +--------+--------------------+                    |  |
- * |   328  |    bdf_mappings    |                    |  |
+ * |   344  |    bdf_mappings    |                    |  |
  * +--------+--------------------+--------------------+<-+
- * |   336  |    mapping_base    |                    |
+ * |   352  |    mapping_base    |                    |
  * +--------+--------------------+                    |
- * |   338  |    mapping_top     |                    |
+ * |   354  |    mapping_top     |                    |
  * +--------+--------------------+   bdf_mappings[0]  |
- * |   340  |    mapping_off     |                    |
+ * |   356  |    mapping_off     |                    |
  * +--------+--------------------+                    |
- * |   342  |     smmu_idx       |                    |
+ * |   358  |     smmu_idx       |                    |
  * +--------+--------------------+--------------------+
  */
 int plat_rmmd_load_manifest(struct rmm_manifest *manifest)
@@ -978,6 +992,10 @@ int plat_rmmd_load_manifest(struct rmm_manifest *manifest)
 	/* Calculate the checksum of the plat_smmu structure */
 	checksum = num_smmus + (uint64_t)smmu_ptr;
 
+	/* Zero out SMMU info structures */
+	(void)memset((void *)smmu_ptr, 0,
+			sizeof(struct smmu_info) * num_smmus);
+
 	smmu_ptr[0].smmu_base = FVP_RMM_SMMU_BASE;
 
 	/* Read SMMU_ROOT_IDR0.BA_REALM[31:22] register field */
@@ -991,6 +1009,13 @@ int plat_rmmd_load_manifest(struct rmm_manifest *manifest)
 	o_realm = 0x20000 + (o_realm >> (SMMU_ROOT_IDR0_BA_REALM_SHIFT - 16U));
 
 	smmu_ptr[0].smmu_r_base = FVP_RMM_SMMU_BASE + o_realm;
+	/* Realm SMMU interrupts are delivered as MSIs through the GIC ITS. */
+	smmu_ptr[0].irq_cfg = RMM_SMMU_IRQ_CFG_MSI;
+	smmu_ptr[0].cmdq_sync_irq_wired = RMM_SMMU_CMDQ_SYNC_IRQ_NOT_WIRED;
+	smmu_ptr[0].gerror_intr_num = 0U;
+	smmu_ptr[0].eventq_intr_num = 0U;
+	smmu_ptr[0].priq_intr_num = 0U;
+	smmu_ptr[0].cmdq_sync_intr_num = 0U;
 
 	/* Update checksum */
 	checksum += checksum_calc((uint64_t *)smmu_ptr,

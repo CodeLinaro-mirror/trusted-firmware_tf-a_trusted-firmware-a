@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022-2025, Arm Limited. All rights reserved.
+ * Copyright (c) 2022-2026, Arm Limited. All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -15,7 +15,7 @@
 #include <lib/utils_def.h>
 
 #define RMMD_MANIFEST_VERSION_MAJOR		U(0)
-#define RMMD_MANIFEST_VERSION_MINOR		U(5)
+#define RMMD_MANIFEST_VERSION_MINOR		U(6)
 
 #define RMM_CONSOLE_MAX_NAME_LEN		U(8)
 
@@ -109,15 +109,42 @@ CASSERT(offsetof(struct console_list, checksum) == 16UL,
 			rmm_manifest_console_list_checksum);
 
 /* SMMUv3 Info structure */
+#define RMM_SMMU_IRQ_CFG_DISABLED	U(0)
+#define RMM_SMMU_IRQ_CFG_WIRED		U(1)
+#define RMM_SMMU_IRQ_CFG_MSI		U(2)
+
+#define RMM_SMMU_CMDQ_SYNC_IRQ_NOT_WIRED	U(0)
+#define RMM_SMMU_CMDQ_SYNC_IRQ_WIRED		U(1)
+
 struct smmu_info {
 	uint64_t smmu_base;		/* SMMUv3 base address */
 	uint64_t smmu_r_base;		/* SMMUv3 Realm Pages base address */
+	uint16_t irq_cfg;		/* Interrupt config for Gerror/EventQ/PRIQ */
+	uint16_t cmdq_sync_irq_wired;	/* Whether CMDQ-sync interrupt is wired */
+	uint16_t gerror_intr_num;	/* GError wired interrupt number */
+	uint16_t eventq_intr_num;	/* EventQ wired interrupt number */
+	uint16_t priq_intr_num;		/* PRIQ wired interrupt number */
+	uint16_t cmdq_sync_intr_num;	/* CMDQ-sync wired interrupt number */
 };
 
 CASSERT(offsetof(struct smmu_info, smmu_base) == 0UL,
 			rmm_manifest_smmu_base);
 CASSERT(offsetof(struct smmu_info, smmu_r_base) == 8UL,
 			rmm_manifest_smmu_r_base);
+CASSERT(offsetof(struct smmu_info, irq_cfg) == 16UL,
+			rmm_manifest_smmu_irq_cfg);
+CASSERT(offsetof(struct smmu_info, cmdq_sync_irq_wired) == 18UL,
+			rmm_manifest_smmu_cmdq_sync_irq_wired);
+CASSERT(offsetof(struct smmu_info, gerror_intr_num) == 20UL,
+			rmm_manifest_smmu_gerror_intr_num);
+CASSERT(offsetof(struct smmu_info, eventq_intr_num) == 22UL,
+			rmm_manifest_smmu_eventq_intr_num);
+CASSERT(offsetof(struct smmu_info, priq_intr_num) == 24UL,
+			rmm_manifest_smmu_priq_intr_num);
+CASSERT(offsetof(struct smmu_info, cmdq_sync_intr_num) == 26UL,
+			rmm_manifest_smmu_cmdq_sync_intr_num);
+CASSERT(sizeof(struct smmu_info) == 32UL,
+			rmm_manifest_smmu_info_size);
 
 /* SMMUv3 Info List structure */
 struct smmu_list {
@@ -136,8 +163,8 @@ CASSERT(offsetof(struct smmu_list, checksum) == 16UL,
 /* PCIe BDF Mapping Info structure */
 struct bdf_mapping_info {
 	uint16_t mapping_base;	/* Base of BDF mapping (inclusive) */
-	uint16_t mapping_top;	/* Top of BDF mapping (exclusive) */
-	uint16_t mapping_off;	/* Mapping offset, as per Arm Base System Architecture: */
+	uint16_t mapping_top;	/* Top of BDF mapping (inclusive) */
+	uint16_t mapping_off;	/* BSA Constant_B, as per Arm Base System Architecture: */
 				/* StreamID = zero_extend(RequesterID[N-1:0]) + (1<<N)*Constant_B */
 	uint16_t smmu_idx;	/* SMMU index in smmu_info[] array */
 };
@@ -227,7 +254,7 @@ CASSERT(offsetof(struct root_complex_list, checksum) == 24UL,
 		(_root_ports)				\
 	}
 
-/* Boot manifest core structure as per v0.5 */
+/* Boot manifest core structure as per v0.6 */
 struct rmm_manifest {
 	uint32_t version;			/* Manifest version */
 	uint32_t padding;			/* RES0 */
@@ -261,5 +288,7 @@ CASSERT(offsetof(struct rmm_manifest, plat_smmu) == 112UL,
 			rmm_manifest_plat_smmu_unaligned);
 CASSERT(offsetof(struct rmm_manifest, plat_root_complex) == 136UL,
 			rmm_manifest_plat_root_complex);
+CASSERT(sizeof(struct rmm_manifest) == 168UL,
+			rmm_manifest_size);
 
 #endif /* RMM_CORE_MANIFEST_H */

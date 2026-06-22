@@ -53,7 +53,7 @@ are explained below:
     consistency with the versioning schemes used in other parts of RMM.
 
 This document specifies the 2.0 version of Boot Interface ABI and RMM-EL3
-services specification and the 0.5 version of the Boot Manifest.
+services specification and the 0.6 version of the Boot Manifest.
 
 .. _rmm_el3_boot_interface:
 
@@ -187,12 +187,12 @@ platform information.
 
 This Boot Manifest is versioned independently of the Boot Interface, to help
 evolve the former independent of the latter.
-The current version for the Boot Manifest is ``v0.4`` and the rules explained
+The current version for the Boot Manifest is ``v0.6`` and the rules explained
 in :ref:`rmm_el3_ifc_versioning` apply on this version as well.
 
-The Boot Manifest v0.4 has the following fields:
+The Boot Manifest v0.6 has the following fields:
 
-   - version : Version of the Manifest (v0.4)
+   - version : Version of the Manifest (v0.6)
    - plat_data : Pointer to the platform specific data and not specified by this
      document. These data are optional and can be NULL.
    - plat_dram : Structure encoding the NS DRAM information on the platform. This
@@ -201,6 +201,13 @@ The Boot Manifest v0.4 has the following fields:
    - plat_console : Structure encoding the list of consoles for RMM use on the
      platform. This field is optional and platform can choose to not populate
      the console list if this is not needed by the RMM for this platform.
+   - plat_ncoh_region : Structure encoding the device non-coherent memory
+     ranges available to RMM.
+   - plat_coh_region : Structure encoding the device coherent memory ranges
+     available to RMM.
+   - plat_smmu : Structure encoding the list of SMMUs available to RMM.
+   - plat_root_complex : Structure encoding the list of PCIe root complexes
+     available to RMM.
 
 For the current version of the Boot Manifest, the core manifest contains a pointer
 to the platform data. EL3 must ensure that the whole Boot Manifest, including
@@ -1158,8 +1165,8 @@ _____
 RMM-EL3 Boot Manifest structure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The RMM-EL3 Boot Manifest v0.5 structure contains platform boot information passed
-from EL3 to RMM. The size of the Boot Manifest is 160 bytes.
+The RMM-EL3 Boot Manifest v0.6 structure contains platform boot information passed
+from EL3 to RMM. The size of the Boot Manifest is 168 bytes.
 
 The members of the RMM-EL3 Boot Manifest structure are shown in the following
 table:
@@ -1183,6 +1190,7 @@ table:
 +-------------------+--------+-------------------+----------------------------------------------+
 | plat_smmu         |   112  |     smmu_list     | List of SMMUs available to RMM               |
 |                   |        |                   | (from Boot Manifest v0.5)                    |
+|                   |        |                   | PSMMU IRQ metadata is available from v0.6    |
 +-------------------+--------+-------------------+----------------------------------------------+
 | plat_root_complex |   136  | root_complex_list | List of PCIe root complexes available to RMM |
 |                   |        |                   | (from Boot Manifest v0.5)                    |
@@ -1300,6 +1308,39 @@ SMMU Info structure contains information about each SMMU available to RMM.
 +-------------+--------+----------+-------------------------------+
 | smmu_r_base |   8    | uint64_t | SMMU Realm Pages base address |
 +-------------+--------+----------+-------------------------------+
+| irq_cfg     |   16   | uint16_t | Interrupt configuration for   |
+|             |        |          | Gerror, EventQ and PRIQ       |
++-------------+--------+----------+-------------------------------+
+| cmdq_sync_  |   18   | uint16_t | Whether CMDQ-sync interrupt   |
+| irq_wired   |        |          | is wired                      |
++-------------+--------+----------+-------------------------------+
+| gerror_     |   20   | uint16_t | Gerror wired interrupt number |
+| intr_num    |        |          |                               |
++-------------+--------+----------+-------------------------------+
+| eventq_     |   22   | uint16_t | EventQ wired interrupt number |
+| intr_num    |        |          |                               |
++-------------+--------+----------+-------------------------------+
+| priq_       |   24   | uint16_t | PRIQ wired interrupt number   |
+| intr_num    |        |          |                               |
++-------------+--------+----------+-------------------------------+
+| cmdq_sync_  |   26   | uint16_t | CMDQ-sync wired interrupt     |
+| intr_num    |        |          | number                        |
++-------------+--------+----------+-------------------------------+
+
+``irq_cfg`` uses the following values:
+
+   - ``0``: Interrupts are disabled.
+   - ``1``: Gerror, EventQ and PRIQ interrupts are wired interrupts.
+   - ``2``: Gerror, EventQ and PRIQ interrupts are MSI interrupts.
+
+``cmdq_sync_irq_wired`` uses the following values:
+
+   - ``0``: CMDQ-sync interrupt is not wired.
+   - ``1``: CMDQ-sync interrupt is wired.
+
+The interrupt number fields describe the platform wired interrupt numbers.
+``irq_cfg`` and ``cmdq_sync_irq_wired`` describe the interrupt configuration
+advertised by EL3.
 
 .. _root_complex_list_struct:
 
@@ -1385,7 +1426,7 @@ for PCIe root port.
 +--------------+--------+----------+------------------------------------------------------+
 | mapping_top  |   2    | uint16_t | Top of BDF mapping (inclusive)                       |
 +--------------+--------+----------+------------------------------------------------------+
-| mapping_off  |   4    | uint16_t | Mapping offset, as per Arm Base System Architecture: |
+| mapping_off  |   4    | uint16_t | BSA Constant_B, as per Arm Base System Architecture: |
 |              |        |          | StreamID = RequesterID[15:0] + (1<<16)*mapping_off   |
 +--------------+--------+----------+------------------------------------------------------+
 | smmu_idx     |   6    | uint16_t | SMMU index in 'smmu_info'[] array                    |
