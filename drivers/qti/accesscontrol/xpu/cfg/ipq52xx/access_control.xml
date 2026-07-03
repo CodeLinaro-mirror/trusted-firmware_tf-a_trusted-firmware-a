@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
-<!-- Generated Tue May 12 10:04:54 2026 UTC -->
+<!-- Generated Fri July 03 05:10:03 2026 UTC -->
 
-<!-- Checksum: e40fe772aac2e234849e62b4c8843853 -->
+<!-- Checksum: 79fc0ca39a4bc872353de233a920c20d -->
 <AccessControl>
-   <Version>0.3</Version>
+   <Version>0.4</Version>
    <MPU fqname="HERMOSA.BOOT_ROM.BOOT_ROM_MPUQ7_4_CL32L12M31_LE.XPU4" name="BOOT_ROM_XPU4">
       <HWConfig>
          <HWDesignParameters>
@@ -1055,9 +1055,9 @@ Permission Leveraged from Miami.</SecurityRationale>
          </HWIntegrationParameters>
       </HWConfig>
       <SWConfig>
-         <PRTn confirmed="false" end="0x7a000" index="0" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" start="0x78000" wdomains="HYP" wvmids="">
+         <PRTn confirmed="false" end="0xf8000" index="0" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x78000" wdomains="ALL_ROT" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>USBPHY</SecurityRationale>
+            <SecurityRationale>USBPHY, PCIE_g3x1, PCIE_g3x2</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
          <PRTn confirmed="false" end="0x7b000" index="1" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x7a000" wdomains="TZ" wvmids="">
@@ -1065,14 +1065,15 @@ Permission Leveraged from Miami.</SecurityRationale>
             <SecurityRationale>EUD_EUD_EN2 access protected and HLOS will access this via Secure IO SCM</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="0x88000" index="2" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" start="0x7b000" wdomains="HYP" wvmids="">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>USBPHY, PCIE_g3x1</SecurityRationale>
+         <PRTn confirmed="false" end="" index="2" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
+            <SecurityRationalePoC/>
+            <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="0xf8000" index="3" locks="HYP" order="0" profile="" rdomains="HYP" rvmids="" start="0xf0000" wdomains="HYP" wvmids="">
+         <PRTn confirmed="false" end="0x82000" index="3" locks="TME_ROM" order="0" profile="TME_ROM" rdomains="ALL_ROT" rvmids="" start="0x81000" wdomains="TME_ROM" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>PCIE_g3x2</SecurityRationale>
+            <SecurityRationale>In skew QCF2200 PCIE0 write access is restricted .
+FR204666: Hermosa - Restrict PCie0 from operating in RC mode (QCF2200)</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
          <Global confirmed="false" profile="" value="">
