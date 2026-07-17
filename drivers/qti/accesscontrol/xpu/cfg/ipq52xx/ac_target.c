@@ -17,6 +17,12 @@ const uint32_t g_ac_enabled = true;
 
 const ac_xpu_protected_range g_ac_xpu_protected_ranges[] = {
 	{
+		// IMEM region
+		.start = 0x8600000,
+		.end   = 0x8620000,
+		.xpu_id = HAL_XPU2_IMEM_MPU,
+	},
+	{
 		// DDR space - region 1
 		.start = 0x80000000,
 		.end   = 0x100000000,
@@ -151,4 +157,4 @@ const HAL_xpu2_XPU2Type g_xpu_enum_count = HAL_XPU2_COUNT;
 const bool g_was_supported = true;
 
 
-/*MD5:88b287ae4e5148fdfc217717afa7cd66*/
+/*MD5:47a6917982af0d490e200c1741da7e49*/

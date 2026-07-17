@@ -1330,14 +1330,6 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg machx_llcc_mpu_xpu4[
 		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
-	{
-		.rg_num        = 1,
-		.start        = 0x8a680000,
-		.end          = 0x8a900000,
-		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_APPS_SEC_BIT,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
-	},
 };
 
 /* MACHX_LLCC_SCID_XPU4 */
@@ -1488,14 +1480,6 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg ocimem_mpu_xpu4[] = 
 	},
 	{
 		.rg_num        = 14,
-		.start        = 0x08608000,
-		.end          = 0x0860e000,
-		.profile_flags = AC_PROFILE_DEFAULT,
-		.read_qads     = AC_DOMAIN_ALL_ROT_BITS,
-		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
-	},
-	{
-		.rg_num        = 15,
 		.start        = 0x0860e000,
 		.end          = 0x0860f000,
 		.profile_flags = AC_PROFILE_DEFAULT,
@@ -1503,7 +1487,7 @@ __section(".ac_static_cfg_data.xpu") static const ac_mpu_rg ocimem_mpu_xpu4[] = 
 		.write_qads    = AC_DOMAIN_APPS_SEC_BIT
 	},
 	{
-		.rg_num        = 16,
+		.rg_num        = 15,
 		.start        = 0x0860f000,
 		.end          = 0x0861f000,
 		.profile_flags = AC_PROFILE_DEFAULT,
@@ -2539,4 +2523,4 @@ const ac_xpu_cfg g_ac_xpu_cfg[] = {
 };
 const uint32_t g_ac_xpu_cfg_count = ARRAY_SIZE(g_ac_xpu_cfg);
 
-/*MD5:fa20bbea28b562f1ee5668ff40cbef33*/
+/*MD5:1747240f568fb9688a4acb3e1dbf13fe*/

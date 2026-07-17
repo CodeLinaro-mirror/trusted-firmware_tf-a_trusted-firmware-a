@@ -32,6 +32,15 @@ static const ac_xpu_dynamic_rgs s_ac_xpu_dynamic_rgs_MEMNOC_SCH_MPU = {
 	.shadow_write_perm = s_shadow_write_perm_MEMNOC_SCH_MPU,
 };
 
+static uint32_t s_shadow_read_perm_IMEM_MPU[2];
+static uint32_t s_shadow_write_perm_IMEM_MPU[2];
+static const ac_xpu_dynamic_rgs s_ac_xpu_dynamic_rgs_IMEM_MPU = {
+	.rg_start = 9,
+	.rg_count = 2,
+	.shadow_read_perm = s_shadow_read_perm_IMEM_MPU,
+	.shadow_write_perm = s_shadow_write_perm_IMEM_MPU,
+};
+
 ac_xpu4_priv_info g_ac_xpu_infos[] = {
 	{
 		.soc_addr = 0x003fe000,
@@ -183,7 +192,7 @@ ac_xpu4_priv_info g_ac_xpu_infos[] = {
 		.xpu_id = HAL_XPU2_IMEM_MPU,
 		.idr = {0},
 		.rev = 0,
-		.dyn_rgs = NULL,
+		.dyn_rgs = &s_ac_xpu_dynamic_rgs_IMEM_MPU,
 	},
 	{
 		.soc_addr = 0x060e0000,
@@ -276,4 +285,4 @@ ac_xpu4_priv_info g_ac_xpu_infos[] = {
 };
 const uint32_t g_ac_xpu_infos_count = ARRAY_SIZE(g_ac_xpu_infos);
 
-/*MD5:9cb73b5c88c0d3a8875461ef162b125f*/
+/*MD5:7921b549890b212b70460ef505331e5f*/

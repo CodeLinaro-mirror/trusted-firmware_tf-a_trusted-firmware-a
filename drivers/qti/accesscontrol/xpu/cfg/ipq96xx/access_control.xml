@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
-<!-- Generated Tue May 12 12:07:19 2026 UTC -->
+<!-- Generated Fri July 17 19:31:10 2026 UTC -->
 
-<!-- Checksum: d69c926a7ceaa919b6d42175f9923a0e -->
+<!-- Checksum: fa546ebf644f7f6d473869f313ba4ad2 -->
 <AccessControl>
-   <Version>0.3</Version>
+   <Version>0.5</Version>
    <MPU fqname="JUHU.BOOT_ROM.BOOT_ROM_MPUQ12_4_CL32L12M31_LE.XPU4" name="BOOT_ROM_XPU4">
       <HWConfig>
          <HWDesignParameters>
@@ -3755,9 +3755,9 @@ AC Policy leveraged from Marina.</SecurityRationale>
             <SecurityRationale>TF-A Region</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="0x8a900000" index="1" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x8a680000" wdomains="TZ" wvmids="">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>OPTEE DDR Region. This needs to be updated later to be dynamically protected from OPTEE based on OPTEE DDR Size.	</SecurityRationale>
+         <PRTn confirmed="false" end="" index="1" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
+            <SecurityRationalePoC/>
+            <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
          <PRTn confirmed="false" end="" index="2" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
@@ -4731,25 +4731,25 @@ AC Policy leveraged from Marina.</SecurityRationale>
             <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="6" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <PRTn confirmed="false" end="0xffffffff" index="6" locks="" order="0" profile="" rdomains="" rvmids="" start="0xffffffff" wdomains="" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
+            <XPU_RGn_FLAGS enabled="true" static="false"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="7" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <PRTn confirmed="false" end="0xffffffff" index="7" locks="" order="0" profile="" rdomains="" rvmids="" start="0xffffffff" wdomains="" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
+            <XPU_RGn_FLAGS enabled="true" static="false"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="8" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <PRTn confirmed="false" end="0xffffffff" index="8" locks="" order="0" profile="" rdomains="" rvmids="" start="0xffffffff" wdomains="" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
+            <XPU_RGn_FLAGS enabled="true" static="false"/>
          </PRTn>
-         <PRTn confirmed="false" end="" index="9" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
-            <SecurityRationalePoC/>
+         <PRTn confirmed="false" end="0xffffffff" index="9" locks="" order="0" profile="" rdomains="" rvmids="" start="0xffffffff" wdomains="" wvmids="">
+            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale/>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
+            <XPU_RGn_FLAGS enabled="true" static="false"/>
          </PRTn>
          <PRTn confirmed="false" end="0x8601000" index="10" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x8600000" wdomains="ALL_ROT" wvmids="">
             <SecurityRationalePoC>snlakshm</SecurityRationalePoC>
@@ -4771,19 +4771,19 @@ AC Policy leveraged from Marina.</SecurityRationale>
             <SecurityRationale>TF-A DIAG Log</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="0x860e000" index="14" locks="TZ" order="0" profile="" rdomains="ALL_ROT" rvmids="" start="0x8608000" wdomains="TZ" wvmids="">
-            <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
-            <SecurityRationale>OPTEE DIAG Log</SecurityRationale>
-            <XPU_RGn_FLAGS enabled="true" static="true"/>
-         </PRTn>
-         <PRTn confirmed="false" end="0x860f000" index="15" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x860e000" wdomains="TZ" wvmids="">
+         <PRTn confirmed="false" end="0x860f000" index="14" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x860e000" wdomains="TZ" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>OEM Reserved for secure use-cases</SecurityRationale>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
-         <PRTn confirmed="false" end="0x861f000" index="16" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x860f000" wdomains="TZ" wvmids="">
+         <PRTn confirmed="false" end="0x861f000" index="15" locks="TZ" order="0" profile="" rdomains="TZ" rvmids="" start="0x860f000" wdomains="TZ" wvmids="">
             <SecurityRationalePoC>mpiyaraj</SecurityRationalePoC>
             <SecurityRationale>DDR DSF/U-Boot SPL usage of OCIMEM</SecurityRationale>
+            <XPU_RGn_FLAGS enabled="true" static="true"/>
+         </PRTn>
+         <PRTn confirmed="false" end="" index="16" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
+            <SecurityRationalePoC/>
+            <SecurityRationale/>
             <XPU_RGn_FLAGS enabled="true" static="true"/>
          </PRTn>
          <PRTn confirmed="false" end="" index="17" locks="" order="0" profile="" rdomains="" rvmids="" start="" wdomains="" wvmids="">
