@@ -62,8 +62,9 @@
  */
 #define QTI_LOCAL_STATE_OFF	3
 /*
- * Local power state for OFF/power-down. Valid for CPU and cluster power
- * domains.
+ * Local power state for deep OFF/power-down (PLAT_MAX_OFF_STATE).
+ * This is the value ATF's PSCI layer sends for CPU_OFF and system suspend.
+ * Must be distinct from QTI_LOCAL_STATE_OFF so is_cpu_off() compares correctly.
  */
 #define QTI_LOCAL_STATE_DEEPOFF	4
 
