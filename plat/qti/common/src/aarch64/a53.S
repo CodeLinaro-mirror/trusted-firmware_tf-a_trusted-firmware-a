@@ -18,6 +18,9 @@
 #include <plat_macros.S>
 #include <qti_cpu.h>
 
+#define CORTEX_A53_ECTLR_SMP_BIT	(U(1) << 6)
+#define CORTEX_A53_ECTLR_EL1		S3_1_C15_C2_1
+
 /* -------------------------------------------------
  * The CPU Ops reset function for Kryo-3 Gold
  * -------------------------------------------------
@@ -32,12 +35,47 @@ func qti_a53_reset_func
 
 endfunc qti_a53_reset_func
 
+	/* ---------------------------------------------
+	 * Disable L1 data cache and unified L2 cache
+	 * ---------------------------------------------
+	 */
+func qti_a53_disable_dcache
+	sysreg_bit_clear sctlr_el3, SCTLR_C_BIT
+	isb
+	ret
+endfunc qti_a53_disable_dcache
+
+	/* ---------------------------------------------
+	 * Disable intra-cluster coherency
+	 * ---------------------------------------------
+	 */
+func qti_a53_disable_smp
+	sysreg_bit_clear CORTEX_A53_ECTLR_EL1, CORTEX_A53_ECTLR_SMP_BIT
+	isb
+	dsb	sy
+	ret
+endfunc qti_a53_disable_smp
+
 /* ----------------------------------------------------
  * The CPU Ops core power down function for Kryo-3 Gold
+ *
+ * This A53/Kryo variant is not hardware-assisted-coherency (no DSU), so unlike
+ * ipq96xx's cortex_a78/a55_core_pwr_dwn (which just arm CPUPWRCTLR and let the
+ * DSU handle cache/coherency exit autonomously), software here must disable
+ * the dcache, flush L1 by set/way, and explicitly leave SMP/coherency before
+ * the SPM clamps/powers down the core. Mirrors upstream cortex_a53_core_pwr_dwn.
  * ----------------------------------------------------
  */
 func qti_a53_core_pwr_dwn
-	ret
+	mov	x18, x30
+
+	bl	qti_a53_disable_dcache
+
+	mov	x0, #DCCISW
+	bl	dcsw_op_level1
+
+	mov	x30, x18
+	b	qti_a53_disable_smp
 endfunc qti_a53_core_pwr_dwn
 
 /* -------------------------------------------------------
@@ -45,7 +83,20 @@ endfunc qti_a53_core_pwr_dwn
  * -------------------------------------------------------
  */
 func qti_a53_cluster_pwr_dwn
-	ret
+	mov	x18, x30
+
+	bl	qti_a53_disable_dcache
+
+	mov	x0, #DCCISW
+	bl	dcsw_op_level1
+
+	bl	plat_disable_acp
+
+	mov	x0, #DCCISW
+	bl	dcsw_op_level2
+
+	mov	x30, x18
+	b	qti_a53_disable_smp
 endfunc qti_a53_cluster_pwr_dwn
 
 func qti_a53_errata_report
