@@ -667,6 +667,15 @@ int gm_gpi_set(uint64_t base, uint8_t target_gpi, uint8_t src_sec_state)
 
 	read_gpi(&gpi_info);
 
+	/*
+	 * Based on FIRME rule, if source amd target GPI are same then skip
+	 * GPT update.
+	 */
+	if (gpi_info.gpi == target_gpi) {
+		firme_gpt_unlock(base);
+		return 0;
+	}
+
 	/* Verify that transition of this granule is allowed. */
 	if (!is_gpi_transition_permitted(src_sec_state, gpi_info.gpi,
 					 target_gpi)) {
