@@ -13,7 +13,7 @@
 
 #include <common/debug.h>
 #include <common/smc_validation_framework.h>
-#include <lib/gpt_rme/gpc_fault.h>
+#include <firme/firme_buf.h>
 #include <lib/xlat_tables/xlat_tables_v2.h>
 #include <services/firme/firme_attestation.h>
 #include <services/firme_svc.h>

@@ -146,7 +146,7 @@
  * -----------------------------------------------------------------------------
  */
 func handle_el3_sync_exception
-#if ENABLE_FEAT_RME
+#if FIRME_SUPPORT && ENABLE_FEAT_RME
 	stp	x4, x5, [sp, #-16]!
 	stp	x2, x3, [sp, #-16]!
 	stp	x0, x1, [sp, #-16]!
@@ -169,7 +169,7 @@ sync_error:
 	ldp	x0, x1, [sp], #16
 	ldp	x2, x3, [sp], #16
 	ldp	x4, x5, [sp], #16
-#endif /* ENABLE_FEAT_RME */
+#endif /* FIRME_SUPPORT && ENABLE_FEAT_RME */
 
 	msr	TPIDRRO_EL0, x0
 	mov	x0, #SYNC_EXCEPTION_SP_EL0

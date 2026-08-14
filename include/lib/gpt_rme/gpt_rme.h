@@ -9,7 +9,6 @@
 
 #include <stdint.h>
 #include <lib/extensions/rme.h>
-#include <lib/gpt_rme/gpc_fault.h>
 #include <lib/spinlock.h>
 
 /******************************************************************************/

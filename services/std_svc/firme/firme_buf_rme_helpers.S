@@ -5,7 +5,7 @@
  */
 
 #include <asm_macros.S>
-#include <lib/gpt_rme/gpc_fault.h>
+#include "firme_buf.h"
 
 	.globl	get_el3_gpf_resume_pc
 	.globl	rme_gpf_safe_read

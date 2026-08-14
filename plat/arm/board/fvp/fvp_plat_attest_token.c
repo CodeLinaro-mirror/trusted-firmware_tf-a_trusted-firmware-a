@@ -9,7 +9,7 @@
 #include <stdint.h>
 #include <string.h>
 
-#include <lib/gpt_rme/gpc_fault.h>
+#include <firme/firme_buf.h>
 #include <lib/spinlock.h>
 #include <lib/xlat_tables/xlat_tables_defs.h>
 #include <plat/common/platform.h>
