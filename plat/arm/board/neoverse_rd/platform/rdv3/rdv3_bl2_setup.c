@@ -5,7 +5,7 @@
  */
 
 #include <common/debug.h>
-#include <lib/gpt_rme/gpt_rme.h>
+#include <lib/extensions/rme.h>
 #include <plat/arm/common/plat_arm.h>
 #include <plat/common/platform.h>
 #include <nrd_plat.h>

@@ -7,7 +7,7 @@
 #ifndef QEMU_PAS_DEF_H
 #define QEMU_PAS_DEF_H
 
-#include <lib/gpt_rme/gpt_rme.h>
+#include <lib/extensions/rme.h>
 #include "platform_def.h"
 
 /*****************************************************************************

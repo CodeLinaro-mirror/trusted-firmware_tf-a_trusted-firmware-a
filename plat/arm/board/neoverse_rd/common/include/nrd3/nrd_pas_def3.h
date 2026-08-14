@@ -9,7 +9,7 @@
 
 #ifndef __ASSEMBLER__
 #include <stddef.h>
-#include <lib/gpt_rme/gpt_rme.h>
+#include <lib/extensions/rme.h>
 #endif
 
 #include <nrd_css_def3.h>

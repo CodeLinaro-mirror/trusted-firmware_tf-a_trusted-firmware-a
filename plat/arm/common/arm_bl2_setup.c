@@ -18,7 +18,7 @@
 #include <drivers/partition/partition.h>
 #include <lib/fconf/fconf.h>
 #include <lib/fconf/fconf_dyn_cfg_getter.h>
-#include <lib/gpt_rme/gpt_rme.h>
+#include <lib/extensions/rme.h>
 #if TRANSFER_LIST
 #include <transfer_list.h>
 #endif

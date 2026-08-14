@@ -6,7 +6,7 @@
 #ifndef FVP_PAS_DEF_H
 #define FVP_PAS_DEF_H
 
-#include <lib/gpt_rme/gpt_rme.h>
+#include <lib/extensions/rme.h>
 #include <platform_def.h>
 
 /*****************************************************************************

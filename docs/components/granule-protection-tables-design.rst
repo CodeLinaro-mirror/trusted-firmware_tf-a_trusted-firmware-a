@@ -162,6 +162,7 @@ Library APIs
 
 The public APIs and types can be found in ``include/lib/gpt_rme/gpt_rme.h`` and this
 section is intended to provide additional details and clarifications.
+TODO: update Library APIs name change and GPT library changes.
 
 To create the GPTs and enable granule protection checks the APIs need to be
 called in the correct order and at the correct time during the system boot
