@@ -28,6 +28,9 @@
 
 #define REGISTER_VALID(offs) ((offs) != REGISTER_NOT_APPLICABLE)
 
+/* Reset reason values */
+#define NOC_ERROR_RESET_REASON		0x6
+
 extern spinlock_t isr_log_sync_lock;
 
 extern nocerr_config_info_type nocerr_config_info;
@@ -694,6 +697,7 @@ void *qti_noc_error_handle_interrupt(uint32_t intnum, void *handle, void *arg)
 		dbg_err_fatal(DBG_ERR_FATAL_NOC_ERROR);
 	} else if (noc_timeout) {
 		ERROR("NOC timeout detected!\n");
+		qti_set_reset_reason(NOC_ERROR_RESET_REASON);
 		dbg_err_fatal(DBG_ERR_FATAL_NOC_ERROR);
 	} else if (noc_info != NULL && noc_info_oem != NULL) {
 		noc_ipc_fault();

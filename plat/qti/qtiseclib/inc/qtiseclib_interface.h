@@ -131,4 +131,6 @@ int int_svc_register_isr(uint32_t intnum, const char *intdesc,
 
 void dbg_err_fatal(dbg_err_fatal_t err);
 
+void qti_set_reset_reason(unsigned int value);
+
 #endif /* QTISECLIB_INTERFACE_H */
