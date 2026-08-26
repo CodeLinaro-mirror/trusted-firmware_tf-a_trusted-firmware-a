@@ -157,3 +157,17 @@ LDFLAGS += -L $(dir $(QTISECLIB_PATH))
 LDLIBS += -l$(patsubst lib%.a,%,$(notdir $(QTISECLIB_PATH)))
 endif
 
+# Enable NOC error decode for IPQ56xx
+ENABLE_NOC_DECODE := 1
+# Define feature flag to enable NOC error decode
+$(eval $(call add_define,ENABLE_NOC_DECODE))
+
+# Enable NOC (ICB) error handling for IPQ56xx
+ENABLE_ICB := 1
+# Define feature flag to enable ICB error handler
+$(eval $(call add_define,ENABLE_ICB))
+
+ifeq (${ENABLE_ICB},1)
+include drivers/qti/icb/common/icb.mk
+endif
+
