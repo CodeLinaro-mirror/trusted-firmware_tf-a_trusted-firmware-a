@@ -23,6 +23,6 @@
 #define QTISECLIB_INT_ID_NON_SEC_WDOG_BITE		(0x21)
 
 //TME-L IPC Interrupt
-#define QTISECLIB_INT_ID_TME_IPC			(0x9A)
+#define QTISECLIB_INT_ID_TME_IPC			(0xA3)
 
 #endif /* __QTISECLIB_DEFS_PLAT_H__ */
