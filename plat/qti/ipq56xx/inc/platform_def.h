@@ -149,9 +149,8 @@
 /* UART related constants. */
 /*----------------------------------------------------------------------------*/
 /* BASE ADDRESS OF DIFFERENT REGISTER SPACES IN HW */
-/* GENI Serial Engine 6 (SE6) - ASIC platform */
-// TODO FIXME_IPQ56xx
-// #define GENI_UART_BASE				0x01A98000
+/* GENI Serial Engine 1 (SE1) - ASIC platform */
+#define GENI_UART_BASE				0x01A84000
 
 #define GENI4_CFG				0x0
 #define GENI4_IMAGE_REGS			0x100
