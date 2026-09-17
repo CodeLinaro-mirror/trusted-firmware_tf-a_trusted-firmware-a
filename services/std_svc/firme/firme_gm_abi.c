@@ -567,8 +567,8 @@ static void read_gpi(uint64_t base, firme_gpi_info_t *gpi_info)
 }
 
 /*
- * This function checks to see if a GPI value is valid.
- * todo: is_gpi_transition_permitted check should be enough?
+ * This function checks to see if the target GPI value is valid that is passed
+ * to FIRME GPI set ABI
  *
  * Parameters
  *   gpi		GPI to check for validity.
@@ -576,26 +576,36 @@ static void read_gpi(uint64_t base, firme_gpi_info_t *gpi_info)
  * Return
  *   true for a valid GPI, false for an invalid one.
  */
-static bool is_gpi_valid(unsigned int gpi)
+static bool firme_is_target_gpi_valid(uint8_t sec_state, uint8_t tgpi)
 {
-	switch (gpi) {
-	case GPT_GPI_NO_ACCESS:
-	case GPT_GPI_SECURE:
-	case GPT_GPI_NS:
-	case GPT_GPI_ROOT:
+	bool tgpi_valid = false;
+
+	switch (sec_state) {
+	case SMC_FROM_NON_SECURE:
+		if ((tgpi == GPT_GPI_NS) ||
+		    (is_feat_rme_gpc2_supported() && (tgpi == GPT_GPI_NSO)) ||
+		    (is_feat_rme_gdi_supported() && ((tgpi == GPT_GPI_NSP) ||
+						     (tgpi == GPT_GPI_SA)))) {
+			tgpi_valid = true;
+		}
+		break;
+	case SMC_FROM_SECURE:
+		if ((tgpi == GPT_GPI_NS) || (tgpi == GPT_GPI_SECURE)) {
+			tgpi_valid = true;
+		}
+		break;
 #if ENABLE_RMM
-	case GPT_GPI_REALM:
+	case SMC_FROM_REALM:
+		if ((tgpi == GPT_GPI_NS) || (tgpi == GPT_GPI_REALM)) {
+			tgpi_valid = true;
+		}
+		break;
 #endif
-	case GPT_GPI_ANY:
-		return true;
-	case GPT_GPI_NSO:
-		return is_feat_rme_gpc2_supported();
-	case GPT_GPI_SA:
-	case GPT_GPI_NSP:
-		return is_feat_rme_gdi_supported();
 	default:
-		return false;
+		break;
 	}
+
+	return tgpi_valid;
 }
 
 static void tlbi_page_dsbosh(uintptr_t base)
@@ -835,17 +845,17 @@ static int gm_gpi_set(uint64_t base, uint64_t gcnt, uint8_t target_gpi,
 		return -EINVAL;
 	}
 
+	/* Make sure target GPI is valid. */
+	if (!firme_is_target_gpi_valid(src_sec_state, target_gpi)) {
+		VERBOSE("Caller secuity state: %d has Invalid target GPI: %u\n",
+			src_sec_state, target_gpi);
+		return -EINVAL;
+	}
+
 	/* Calculate total region size and zero out granule count. */
 	size = gcnt * GPT_PGS_ACTUAL_SIZE(firme_gpt_config.pgs_bits);
 
 	assert(gcnt_ret != NULL);
-
-	/* Make sure target GPI is valid. */
-	if (!is_gpi_valid(target_gpi)) {
-		VERBOSE("GPT: Invalid target GPI value in request: %u\n",
-			target_gpi);
-		return -EPERM;
-	}
 
 	/* Check that base and size are valid */
 	if ((ULONG_MAX - base) < size) {
