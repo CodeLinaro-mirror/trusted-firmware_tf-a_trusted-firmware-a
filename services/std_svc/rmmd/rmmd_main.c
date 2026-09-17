@@ -421,7 +421,7 @@ static void *rmmd_cpu_on_finish_handler(const void *arg)
 SUBSCRIBE_TO_EVENT(psci_cpu_on_finish, rmmd_cpu_on_finish_handler);
 
 /* Convert GPT lib error to RMMD GTS error */
-static int gpt_to_gts_error(int error, uint32_t smc_fid, uint64_t address)
+static int __unused gpt_to_gts_error(int error, uint32_t smc_fid, uint64_t address)
 {
 	int ret;
 
@@ -483,12 +483,14 @@ uint64_t rmmd_rmm_el3_handler(uint32_t smc_fid, uint64_t x1, uint64_t x2,
 	}
 
 	switch (smc_fid) {
+#if (FIRME_SUPPORT == 0)
 	case RMM_GTSI_DELEGATE:
 		ret = gpt_delegate_pas(x1, PAGE_SIZE_4KB, SMC_FROM_REALM);
 		SMC_RET1(handle, gpt_to_gts_error(ret, smc_fid, x1));
 	case RMM_GTSI_UNDELEGATE:
 		ret = gpt_undelegate_pas(x1, PAGE_SIZE_4KB, SMC_FROM_REALM);
 		SMC_RET1(handle, gpt_to_gts_error(ret, smc_fid, x1));
+#endif /* FIRME_SUPPORT */
 	case RMM_ATTEST_GET_REALM_KEY:
 		ret = rmmd_attest_get_signing_key(x1, &x2, x3);
 		SMC_RET2(handle, ret, x2);

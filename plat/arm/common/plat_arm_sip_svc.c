@@ -39,10 +39,12 @@ uintptr_t plat_arm_sip_handler(uint32_t smc_fid, u_register_t x1,
 #endif
 
 #if defined(SPD_spmd) && SPMD_SPM_AT_SEL2 == 1
+#if (FIRME_SUPPORT == 0)
 	case PLAT_PROTECT_MEM_SMC64:
 		return arm_sip_protect_mem_handler(handle, true, secure_origin);
 	case PLAT_UNPROTECT_MEM_SMC64:
 		return arm_sip_protect_mem_handler(handle, false, secure_origin);
+#endif
 #endif
 	}
 

@@ -42,7 +42,7 @@ static entry_point_info_t bl33_image_ep_info;
 static entry_point_info_t rmm_image_ep_info;
 #endif
 
-#if ENABLE_FEAT_RME && (RME_GPT_BITLOCK_BLOCK != 0)
+#if ENABLE_FEAT_RME && (RME_GPT_BITLOCK_BLOCK != 0) && (FIRME_SUPPORT == 0)
 /*
  * Number of bitlock_t entries in bitlocks array for PLAT_ARM_PPS
  * with RME_GPT_BITLOCK_BLOCK * 512MB per bitlock.
@@ -554,6 +554,7 @@ void __init arm_bl31_plat_arch_setup(void)
 			panic();
 		}
 
+#if (FIRME_SUPPORT == 0)
 		/*
 		 * Initialze locks for runtime services that handle granule
 		 * transition using legacy delegate/undelegate calls.
@@ -562,6 +563,7 @@ void __init arm_bl31_plat_arch_setup(void)
 			ERROR("gpt_runtime_init() failed!\n");
 			panic();
 		}
+#endif
 	}
 
 	arm_setup_romlib();

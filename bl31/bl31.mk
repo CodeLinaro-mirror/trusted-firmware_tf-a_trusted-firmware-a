@@ -175,10 +175,14 @@ endif
 
 ifneq (${ENABLE_FEAT_RME},0)
 BL31_SOURCES		+=	lib/extensions/rme/rme.c
+
+# Support  legacy GPT lib when FIRME is disabled
+ifeq (${FIRME_SUPPORT},0)
 include lib/gpt_rme/gpt_rme.mk
 
 BL31_SOURCES		+=	${GPT_LIB_SRCS}
-endif
+endif # FIRME_SUPPORT
+endif # ENABLE_FEAT_RME
 
 ifeq (${ENABLE_RMM},1)
 BL31_SOURCES		+=	${RMMD_SOURCES}
