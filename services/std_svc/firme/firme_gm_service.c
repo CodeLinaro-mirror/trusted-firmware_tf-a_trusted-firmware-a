@@ -99,19 +99,18 @@ u_register_t firme_granule_mgmt_service_handler(firme_instance_e instance,
 
 	switch (smc_fid) {
 	case FIRME_GM_GPI_SET_FID: {
-		uint32_t ret;
+		int firme_rc;
 		uint64_t gcnt = 0;
 
-		ret = firme_gm_gpi_set(x1, x2, x3, flags, &gcnt);
-		switch (ret) {
-		case 0:
-			SMC_RET2(handle, FIRME_SUCCESS, gcnt);
-		case -EINVAL:
-			SMC_RET2(handle, FIRME_INVALID_PARAMETERS, 0);
-		case -EPERM:
-			SMC_RET2(handle, FIRME_DENIED, 0);
+		firme_rc = firme_gm_gpi_set(x1, x2, x3, flags, &gcnt);
+		switch (firme_rc) {
+		case FIRME_SUCCESS:
+		case FIRME_DENIED:
+		case FIRME_OP_CONFLICT:
+		case FIRME_NO_ENTRY:
+			SMC_RET2(handle, firme_rc, gcnt);
 		default:
-			SMC_RET2(handle, FIRME_NOT_SUPPORTED, 0);
+			SMC_RET2(handle, firme_rc, 0);
 		}
 		break;
 	}

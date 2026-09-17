@@ -84,6 +84,127 @@ static firme_gpi_config_t firme_gpi_config[] = {
 #define L1_BYTES_2MB	(firme_gpt_config.l1_cnt_2mb * sizeof(uint64_t))
 #define L1_BYTES_32MB	(L1_BYTES_2MB * 16U)
 
+#ifndef ALIGN_UP
+#define ALIGN_UP(num, align)	(((num) + ((align) - 1)) & ~((align) - 1))
+#endif
+
+#define IS_ALIGNED(val, align)	(val == ALIGN_UP(val, align))
+
+/* Granule size */
+#define GPT_GSIZE		(1UL << (uint32_t)(firme_gpt_config.pgs_bits))
+
+#if (RME_GPT_MAX_BLOCK == 512)
+#define PA_RANGE_SIZE	(SZ_512M)
+#elif (RME_GPT_MAX_BLOCK == 32)
+#define PA_RANGE_SIZE	(SZ_32M)
+#elif (RME_GPT_MAX_BLOCK == 2)
+#define PA_RANGE_SIZE	(SZ_2M)
+#else /* set default PA_RANGE_SIZE to 4MB, when contig is not used  */
+#define PA_RANGE_SIZE	(SZ_4M)
+#endif
+
+/* TODO: This can come from platform build macro */
+#define FIRME_GM_OPS_MAX	U(64)
+#define INVALID_LOCK_IDX	U(0xff)
+
+CASSERT(((FIRME_GM_OPS_MAX >= 1) && (FIRME_GM_OPS_MAX <= 64)), assert_firme_gm_ops_max);
+
+/*
+ * This metadata stores the state of FIRME GM operations. The less the space this
+ * struct consumes the FIRME_GM_OPS_MAX can have a large value. The
+ * FIRME_GM_OPS_MAX value doesn't guarentee that many number of operations can
+ * be active at a time. The value of FIRME_GM_OPS_MAX amd non-conflicting PA
+ * range decides the number of active stateless/stateful GM operations.
+ * Setting FIRME_GM_OPS_MAX to 1 is like a global lock for FIRME GM ops.
+ */
+struct firme_gm_par {
+	/*
+	 * The PA range in which the gpi transition happebs. RME_GPT_MAX_BLOCK
+	 * decides the PA block base for the given granule base.
+	 */
+	uint64_t par_base;
+
+	/* these fields will be used for LRO */
+	bool is_active;
+	uint64_t lro_cookie;
+};
+
+static spinlock_t firme_gm_par_lock;
+static uint64_t firme_gm_par_bitmap;
+static struct firme_gm_par firme_gm_pars[FIRME_GM_OPS_MAX];
+
+static bool is_pa_range_conflict(uint64_t par_base)
+{
+	uint64_t active_pars;
+
+	active_pars = firme_gm_par_bitmap;
+
+	/* Iterate through set bits in the bitmap */
+	while (active_pars) {
+		uint32_t idx = __builtin_ctzll(active_pars);
+
+		if (par_base == firme_gm_pars[idx].par_base) {
+			return true;
+		}
+
+		active_pars &= (active_pars - 1);
+	}
+
+	return false;
+}
+
+static int gm_gpi_pa_range_lock(uint64_t par_base, uint32_t *lock_index_ret)
+{
+	uint64_t inverted;
+	uint64_t mask;
+	uint32_t idx;
+	int rc;
+
+	mask = (FIRME_GM_OPS_MAX == 64) ? UINT64_MAX :
+		(1UL << FIRME_GM_OPS_MAX) - 1;
+
+	spin_lock(&firme_gm_par_lock);
+
+	inverted = (~firme_gm_par_bitmap) & mask;
+	if (inverted == 0) {
+		rc = -EBUSY;
+		goto out_unlock;
+	}
+
+	if (is_pa_range_conflict(par_base)) {
+		rc = -EINPROGRESS;
+		goto out_unlock;
+	}
+
+	/* reserve a slot for this PA range */
+	idx = (uint32_t)__builtin_ctzll(inverted);
+	firme_gm_par_bitmap |= (1UL << idx);
+
+	/* Init PA range */
+	firme_gm_pars[idx].par_base = par_base;
+	firme_gm_pars[idx].is_active = true;
+	*lock_index_ret = idx;
+	rc = 0;
+
+out_unlock:
+	spin_unlock(&firme_gm_par_lock);
+
+	return rc;
+}
+
+static void gm_gpi_pa_range_unlock(uint32_t lock_index)
+{
+	spin_lock(&firme_gm_par_lock);
+
+	assert(lock_index < FIRME_GM_OPS_MAX);
+	assert((firme_gm_par_bitmap & (1UL << lock_index)) != 0);
+
+	firme_gm_par_bitmap &= ~(1UL << lock_index);
+	memset(&firme_gm_pars[lock_index], 0, sizeof(struct firme_gm_par));
+
+	spin_unlock(&firme_gm_par_lock);
+}
+
 static void fill_desc(uint64_t *l1, uint64_t l1_desc, unsigned int cnt)
 {
 	uint128_t *l1_quad = (uint128_t *)l1;
@@ -419,8 +540,19 @@ __unused static void shatter_block(uint64_t base, firme_gpi_info_t *gpi_info,
 	gpi_info->gpt_l1_desc = l1_desc;
 }
 
-static void read_gpi(firme_gpi_info_t *gpi_info)
+static void read_gpi(uint64_t base, firme_gpi_info_t *gpi_info)
 {
+	uint64_t gpt_l0_desc, *gpt_l0_base;
+
+	gpt_l0_base = (uint64_t *)GPT_L0BASE;
+	gpt_l0_desc = gpt_l0_base[GPT_L0_IDX(base)];
+	assert(GPT_L0_TYPE(gpt_l0_desc) == GPT_L0_TYPE_TBL_DESC);
+
+	/* Get the table index and GPI shift from PA */
+	gpi_info->gpt_l1_addr = GPT_L0_TBLD_ADDR(gpt_l0_desc);
+	gpi_info->idx = (unsigned int)GPT_L1_INDEX(base);
+	gpi_info->gpi_shift = GPT_L1_GPI_IDX(firme_gpt_config.pgs_bits, base) << 2;
+
 	gpi_info->gpt_l1_desc = (gpi_info->gpt_l1_addr)[gpi_info->idx];
 
 	if ((gpi_info->gpt_l1_desc & GPT_L1_TYPE_CONT_DESC_MASK) ==
@@ -501,6 +633,14 @@ static inline bool is_gpi_transition_permitted(uint8_t caller,
 					       uint8_t target_gpi)
 {
 	/*
+	 * Based on FIRME rule, if source amd target GPI are same then skip
+	 * GPT update.
+	 */
+	if (current_gpi == target_gpi) {
+		return true;
+	}
+
+	/*
 	 * So we can use a small lookup table, change caller security state 0x21
 	 * (from realm) to 0x2 so it can be an index.
 	 */
@@ -580,26 +720,80 @@ static inline void gpt_undelegate(uint64_t base, uint8_t target_gpi,
 }
 
 /*
- * Helper to retrieve the gpt_l1_* information from the base address
- * returned in gpi_info.
+ * Transition set of granules. On success all granules are transitioned, on
+ * failure no granules are transitioned.
+ *
+ * This is naive implementation of range based GPI set.
  */
-static int get_gpi_params(uint64_t base, firme_gpi_info_t *gpi_info)
+static int gpi_set_range(uint64_t base, uint64_t gcnt, uint8_t target_gpi,
+			 uint8_t src_sec_state, uint64_t *gcnt_ret)
 {
-	uint64_t gpt_l0_desc, *gpt_l0_base;
-	__unused unsigned int block_idx;
+	firme_gpi_info_t gpi_info = { 0, NULL, 0, 0, 0 };
+	uint32_t cnt;
+	uint64_t addr;
 
-	gpt_l0_base = (uint64_t *)GPT_L0BASE;
-	gpt_l0_desc = gpt_l0_base[GPT_L0_IDX(base)];
-	if (GPT_L0_TYPE(gpt_l0_desc) != GPT_L0_TYPE_TBL_DESC) {
-		VERBOSE("GPT: Granule is not covered by a table descriptor!\n");
-		VERBOSE("      Base=0x%"PRIx64"\n", base);
-		return -EINVAL;
+	/* Check if all granules are in PAS that can be transistioned */
+	addr = base;
+	for (cnt = 0; cnt < gcnt; cnt++) {
+		/* Get GPI info for next granule to transition. */
+		read_gpi(addr, &gpi_info);
+
+		/* Verify that transition of this granule is allowed. */
+		if (!is_gpi_transition_permitted(src_sec_state, gpi_info.gpi,
+						 target_gpi)) {
+			VERBOSE("(%s) Sec state %u is not allowed to "
+				"transition %u to %u!\n", __func__,
+				src_sec_state, gpi_info.gpi, target_gpi);
+			*gcnt_ret = 0UL;
+			return -EACCES;
+		}
+
+		addr += GPT_GSIZE;
 	}
 
-	/* Get the table index and GPI shift from PA */
-	gpi_info->gpt_l1_addr = GPT_L0_TBLD_ADDR(gpt_l0_desc);
-	gpi_info->idx = (unsigned int)GPT_L1_INDEX(base);
-	gpi_info->gpi_shift = GPT_L1_GPI_IDX(firme_gpt_config.pgs_bits, base) << 2;
+	addr = base;
+	for (cnt = 0; cnt < gcnt; cnt++, addr += GPT_GSIZE) {
+		/* Get GPI info for next granule to transition. */
+		read_gpi(addr, &gpi_info);
+
+		if (target_gpi == gpi_info.gpi) {
+			continue;
+		}
+
+#if (RME_GPT_MAX_BLOCK != 0)
+		/* Check for Contiguous descriptor */
+		if ((gpi_info.gpt_l1_desc & GPT_L1_TYPE_CONT_DESC_MASK) ==
+		    GPT_L1_TYPE_CONT_DESC) {
+			shatter_block(addr, &gpi_info,
+				      GPI_TO_DESC(gpi_info.gpi));
+		}
+#endif
+
+		if (((target_gpi == GPT_GPI_NS) &&
+		     (gpi_info.gpi == GPT_GPI_NSO)) ||
+		    ((target_gpi == GPT_GPI_NSO) &&
+		     (gpi_info.gpi == GPT_GPI_NS))) {
+			/* Handle NS/NSO transition. */
+			gpt_write_entry(addr, target_gpi, &gpi_info);
+		} else if ((target_gpi == GPT_GPI_NS) ||
+			   (target_gpi == GPT_GPI_NSO)) {
+			/* Handle undelegate transition. */
+			gpt_undelegate(addr, target_gpi, &gpi_info);
+		} else {
+			/* Handle delegate transition. */
+			gpt_delegate(addr, target_gpi, &gpi_info);
+		}
+
+#if (RME_GPT_MAX_BLOCK != 0)
+		if (gpi_info.gpt_l1_desc == GPI_TO_DESC(target_gpi)) {
+			/* Try to fuse */
+			fuse_block(addr, &gpi_info, GPI_TO_DESC(target_gpi));
+		}
+#endif
+	}
+
+	/* currently, on success all granules are transitioned */
+	*gcnt_ret = gcnt;
 
 	return 0;
 }
@@ -613,16 +807,23 @@ static int get_gpi_params(uint64_t base, firme_gpi_info_t *gpi_info)
  * Parameters
  *   base               Base address of the first granule to transition, aligned
  *                      to granule size.
+ *   gcnt               Number of granules to set GPI
  *   target_gpi         GPI to transition the granules to.
  *   src_sec_state      Security state of the requesting entity. This will be
  *                      combined with target_gpi to determine whether a
  *                      transition is allowed.
  */
-int gm_gpi_set(uint64_t base, uint8_t target_gpi, uint8_t src_sec_state)
+static int gm_gpi_set(uint64_t base, uint64_t gcnt, uint8_t target_gpi,
+		      uint8_t src_sec_state, uint64_t *gcnt_ret)
 {
-	firme_gpi_info_t gpi_info = { 0, NULL, 0, 0, 0 };
 	int res;
 	size_t size;
+	uint32_t lock_index = INVALID_LOCK_IDX;
+	uint64_t par_base;
+	uint64_t gbase_in_par;
+	uint64_t gcnt_in_par;
+	uint64_t gcnt_to_process;
+	uint64_t gpt_l0_desc, *gpt_l0_base;
 
 	/* Ensure that the tables have been set up before taking requests */
 	assert((unsigned long)GPT_L0BASE != 0UL);
@@ -630,8 +831,14 @@ int gm_gpi_set(uint64_t base, uint8_t target_gpi, uint8_t src_sec_state)
 	/* Ensure that MMU and caches are enabled */
 	assert((read_sctlr_el3() & SCTLR_C_BIT) != 0UL);
 
+	if (gcnt == 0UL) {
+		return -EINVAL;
+	}
+
 	/* Calculate total region size and zero out granule count. */
-	size = GPT_PGS_ACTUAL_SIZE(firme_gpt_config.pgs_bits);
+	size = gcnt * GPT_PGS_ACTUAL_SIZE(firme_gpt_config.pgs_bits);
+
+	assert(gcnt_ret != NULL);
 
 	/* Make sure target GPI is valid. */
 	if (!is_gpi_valid(target_gpi)) {
@@ -648,109 +855,77 @@ int gm_gpi_set(uint64_t base, uint8_t target_gpi, uint8_t src_sec_state)
 		return -EINVAL;
 	}
 
+	if (!IS_ALIGNED(base, GPT_GSIZE)) {
+		return -EINVAL;
+	}
+
 	/* Make sure base and size are valid */
-	if (((base & (size - 1UL)) != 0UL) ||
-	    ((base + size) >= GPT_PPS_ACTUAL_SIZE(firme_gpt_config.pps_bits))) {
+	if ((base + size) >= GPT_PPS_ACTUAL_SIZE(firme_gpt_config.pps_bits)) {
 		VERBOSE("GPT: Invalid granule transition address range!\n");
 		VERBOSE("      Base=0x%" PRIx64 "\n", base);
 		VERBOSE("      Size=%lu\n", size);
 		return -EINVAL;
 	}
 
-	/* Get GPI info for next granule to transition. */
-	res = get_gpi_params(base, &gpi_info);
+	/* Get PAR lock */
+	par_base = round_down(base, PA_RANGE_SIZE);
+	res = gm_gpi_pa_range_lock(par_base, &lock_index);
 	if (res != 0) {
+		VERBOSE("PA lock failed: %d\n", res);
 		return res;
 	}
 
-	firme_gpt_lock(base);
-
-	read_gpi(&gpi_info);
+	/* check if PAR is backed by table descriptor */
+	gpt_l0_base = (uint64_t *)GPT_L0BASE;
+	gpt_l0_desc = gpt_l0_base[GPT_L0_IDX(par_base)];
+	if (GPT_L0_TYPE(gpt_l0_desc) != GPT_L0_TYPE_TBL_DESC) {
+		res = -ENOENT;
+		goto out_unlock;
+	}
 
 	/*
-	 * Based on FIRME rule, if source amd target GPI are same then skip
-	 * GPT update.
+	 * find number of granules that resides in a single PAR and limit the
+	 * size of range to transition to 2MB for stateless LRO.
 	 */
-	if (gpi_info.gpi == target_gpi) {
-		firme_gpt_unlock(base);
-		return 0;
+	gbase_in_par = base & (PA_RANGE_SIZE - 1);
+	gcnt_in_par = (PA_RANGE_SIZE - gbase_in_par) / GPT_GSIZE;
+	gcnt_to_process = MIN(gcnt, gcnt_in_par);
+
+	if ((gcnt_to_process * GPT_GSIZE) > SZ_2M) {
+		gcnt_to_process = SZ_2M / GPT_GSIZE;
 	}
 
-	/* Verify that transition of this granule is allowed. */
-	if (!is_gpi_transition_permitted(src_sec_state, gpi_info.gpi,
-					 target_gpi)) {
-		VERBOSE("(%s) Sec state %u is not allowed to transition %u to %u!\n",
-			__func__, src_sec_state, gpi_info.gpi, target_gpi);
-		firme_gpt_unlock(base);
-		return -EPERM;
-	}
+	/* call set GPI range with PAR lock */
+	VERBOSE("gm_gpi_set: gcnt to process: %ld\n", gcnt_to_process);
+	res = gpi_set_range(base, gcnt_to_process, target_gpi, src_sec_state,
+			    gcnt_ret);
 
-#if (RME_GPT_MAX_BLOCK != 0)
-	/* Check for Contiguous descriptor */
-	if ((gpi_info.gpt_l1_desc & GPT_L1_TYPE_CONT_DESC_MASK) ==
-	    GPT_L1_TYPE_CONT_DESC) {
-		shatter_block(base, &gpi_info, GPI_TO_DESC(gpi_info.gpi));
-	}
-#endif
+out_unlock:
+	gm_gpi_pa_range_unlock(lock_index);
 
-	if (((target_gpi == GPT_GPI_NS) && (gpi_info.gpi == GPT_GPI_NSO)) ||
-	    ((target_gpi == GPT_GPI_NSO) && (gpi_info.gpi == GPT_GPI_NS))) {
-		/* Handle NS/NSO transition. */
-		gpt_write_entry(base, target_gpi, &gpi_info);
-	} else if ((target_gpi == GPT_GPI_NS) || (target_gpi == GPT_GPI_NSO)) {
-		/* Handle undelegate transition. */
-		gpt_undelegate(base, target_gpi, &gpi_info);
-	} else {
-		/* Handle delegate transition. */
-		gpt_delegate(base, target_gpi, &gpi_info);
-	}
-
-#if (RME_GPT_MAX_BLOCK != 0)
-	if (gpi_info.gpt_l1_desc == GPI_TO_DESC(target_gpi)) {
-		/* Try to fuse */
-		fuse_block(base, &gpi_info, GPI_TO_DESC(target_gpi));
-	}
-#endif
-
-	firme_gpt_unlock(base);
-
-	return 0;
+	return res;
 }
 
-uint32_t firme_gm_gpi_set(uint64_t base, uint64_t gcnt, uint64_t attrs,
-			  uint64_t flags, uint64_t *gcnt_ret)
+/* FIRME ABI handler to set GPI on range. Returns FIRME error codes  */
+int firme_gm_gpi_set(uint64_t base, uint64_t gcnt, uint64_t attrs,
+		     uint64_t flags, uint64_t *gcnt_ret)
 {
-	uint32_t ret;
+	int rc;
 	uint8_t target_gpi;
 	uint32_t src_sec_state = caller_sec_state(flags);
 
-	/* gpi set currently supports one granule  */
-	if (gcnt != 1U) {
-		return -EINVAL;
-	}
-
 	/* Extract target GPI value from attributes in x3. */
-	target_gpi = (attrs >> FIRME_GM_GPI_SET_TGT_GPI_SHIFT) &
-		FIRME_GM_GPI_SET_TGT_GPI_MASK;
+	target_gpi = EXTRACT(FIRME_GM_GPI_SET_TGT_GPI, attrs);
 
-	ret = gm_gpi_set(base, target_gpi, src_sec_state);
-	if (ret == 0) {
-		*gcnt_ret = 1U;
-	}
+	rc = gm_gpi_set(base, gcnt, target_gpi, src_sec_state, gcnt_ret);
 
-	return ret;
+	return firme_errno_from_generic_errno(rc);
 }
 
 void firme_gm_gpi_init(void)
 {
 	uint8_t pps_to_bits[] = { 32, 36, 40, 42, 44, 48, 52, 56 };
 	uint8_t pgs_to_bits[] = { 12, 16, 14 };
-
-#if 0
-	u_register_t reg = read_gptbr_el3();
-	firme_gpt_config.l0_base = ((reg >> GPTBR_BADDR_SHIFT) &
-				    GPTBR_BADDR_MASK) << GPTBR_BADDR_VAL_SHIFT;
-#endif
 
 	firme_gpt_config.pps_bits = pps_to_bits[EXTRACT(GPCCR_PPS,
 							read_gpccr_el3())];

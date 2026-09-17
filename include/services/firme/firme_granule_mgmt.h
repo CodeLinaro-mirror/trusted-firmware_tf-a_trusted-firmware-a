@@ -14,6 +14,7 @@
 
 /* FIRME Granule Transition bit fields. */
 #define FIRME_GM_GPI_SET_TGT_GPI_SHIFT		U(0)
+#define FIRME_GM_GPI_SET_TGT_GPI_WIDTH		U(4)
 #define FIRME_GM_GPI_SET_TGT_GPI_MASK		U(0xF)
 
 /* Granule management service feature register definitions. */
