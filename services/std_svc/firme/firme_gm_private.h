@@ -55,4 +55,10 @@ void firme_gm_gpi_init(void);
 int firme_gm_gpi_set(uint64_t base, uint64_t gcnt, uint64_t attrs,
 		     uint64_t flags, uint64_t *gcnt_ret);
 
+/*
+ * FIRME helper to transition granules to/from ROOT/NS PAS. This API is used by
+ * FIRME L1 GPT create/destroy ABI handlers.
+ */
+int firme_l1_gpt_gpi_set(uint64_t base, uint64_t gcnt, uint8_t target_gpi,
+			 uint64_t *gcnt_ret);
 #endif /* FIRME_GM_PRIVATE_H */

@@ -84,6 +84,9 @@ static firme_gpi_config_t firme_gpi_config[] = {
 #define L1_BYTES_2MB	(firme_gpt_config.l1_cnt_2mb * sizeof(uint64_t))
 #define L1_BYTES_32MB	(L1_BYTES_2MB * 16U)
 
+/* an unused sec_state value to represent ROOT state BIT5_NSE=1 BIT0_NS=0*/
+#define SEC_STATE_ROOT	U(0x20)
+
 #ifndef ALIGN_UP
 #define ALIGN_UP(num, align)	(((num) + ((align) - 1)) & ~((align) - 1))
 #endif
@@ -601,6 +604,11 @@ static bool firme_is_target_gpi_valid(uint8_t sec_state, uint8_t tgpi)
 		}
 		break;
 #endif
+	case SEC_STATE_ROOT:
+		if ((tgpi == GPT_GPI_NS) || (tgpi == GPT_GPI_ROOT)) {
+			tgpi_valid = true;
+		}
+		break;
 	default:
 		break;
 	}
@@ -648,6 +656,18 @@ static inline bool is_gpi_transition_permitted(uint8_t caller,
 	 */
 	if (current_gpi == target_gpi) {
 		return true;
+	}
+
+	/* Allow transition to/from GPI_ROOT/GPI_NS only for caller state ROOT */
+	if (caller == SEC_STATE_ROOT) {
+		if (((current_gpi == GPT_GPI_NS) ||
+		     (current_gpi == GPT_GPI_ROOT)) &&
+		    ((target_gpi == GPT_GPI_NS) ||
+		     (target_gpi == GPT_GPI_ROOT))) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/*
@@ -914,6 +934,36 @@ out_unlock:
 	gm_gpi_pa_range_unlock(lock_index);
 
 	return res;
+}
+
+/*
+ * FIRME helper to transition granules to/from ROOT/NS PAS. This API is used by
+ * FIRME L1 GPT create/destroy ABI handlers.
+ *
+ * Parameters
+ *   base               Base address of the first granule to transition, aligned
+ *                      to granule size.
+ *   gcnt               Number of granules to set GPI
+ *   target_gpi         GPI state to transition the granules. Can be ROOT or NS.
+ *   *gcnt_ret          On success, set the number of granules transitioned.
+ *
+ * Returns:
+ *  FIRME_SUCCESS		granules transitioned to target state.
+ *				'gcnt_ret' set to count
+ *  FIRME_INVALID_PARAMETERS	Invalid Arguments
+ *  FIRME_DENIED		Granule transition not permitted
+ *  FIRME_BUSY			No free PAR locks. retry the operation.
+ *  FIRME_OP_CONFLICT		An operation is already in progress on this PAR
+ *  FIRME_NO_ENTRY		Granules not backed by table descriptor in L0
+ */
+int firme_l1_gpt_gpi_set(uint64_t base, uint64_t gcnt, uint8_t target_gpi,
+			 uint64_t *gcnt_ret)
+{
+	int rc;
+
+	rc = gm_gpi_set(base, gcnt, target_gpi, SEC_STATE_ROOT, gcnt_ret);
+
+	return firme_errno_from_generic_errno(rc);
 }
 
 /* FIRME ABI handler to set GPI on range. Returns FIRME error codes  */
