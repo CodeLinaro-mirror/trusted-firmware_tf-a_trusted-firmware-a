@@ -70,7 +70,7 @@ static bool firme_granule_mgmt_service_is_supported(firme_instance_e instance)
 }
 
 static int32_t
-firme_granule_mgmt_service_get_feature_reg(firme_instance_e instance __unused,
+firme_granule_mgmt_service_get_feature_reg(firme_instance_e instance,
 					   uint8_t reg_index, uint64_t *reg)
 {
 	if (reg == NULL) {
@@ -82,6 +82,10 @@ firme_granule_mgmt_service_get_feature_reg(firme_instance_e instance __unused,
 	}
 
 	*reg = registers[reg_index];
+	if ((reg_index == 0U) && (instance == FIRME_REALM) &&
+	    firme_gm_l1_lifecycle_is_supported()) {
+		*reg |= FIRME_GM_L1_GPT_CREATE_BIT;
+	}
 	return FIRME_SUCCESS;
 }
 
@@ -91,13 +95,16 @@ u_register_t firme_granule_mgmt_service_handler(firme_instance_e instance,
 						uint64_t x4, void *cookie,
 						void *handle, uint64_t flags)
 {
+	uint64_t l1_base = 0U;
+	int firme_rc;
+
+
 	if (!is_feat_rme_supported()) {
 		SMC_RET1(handle, FIRME_NOT_SUPPORTED);
 	}
 
 	switch (smc_fid) {
 	case FIRME_GM_GPI_SET_FID: {
-		int firme_rc;
 		uint64_t gcnt = 0;
 
 		firme_rc = firme_gm_gpi_set(x1, x2, x3, flags, &gcnt);
@@ -112,6 +119,14 @@ u_register_t firme_granule_mgmt_service_handler(firme_instance_e instance,
 		}
 		break;
 	}
+	case FIRME_GM_L1_GPT_CREATE_FID:
+		if ((instance != FIRME_REALM) ||
+		    !firme_gm_l1_lifecycle_is_supported()) {
+			SMC_RET1(handle, FIRME_NOT_SUPPORTED);
+		}
+
+		SMC_RET1(handle, firme_gm_l1_gpt_create(x1, x2));
+		break;
 	default:
 		ERROR("FIRME Granule Management Service FID 0x%X not implemented\n",
 		      smc_fid);

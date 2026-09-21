@@ -126,8 +126,21 @@ int firme_errno_from_generic_errno(int errno)
 	case -EAGAIN:
 		rc = FIRME_INCOMPLETE;
 		break;
+	case -EEXIST:
+		rc = FIRME_ALREADY_EXISTS;
+		break;
 	case -ENOENT:
 		rc = FIRME_NOT_FOUND;
+		break;
+	case -ENOMEM:
+	case -ERANGE:
+		rc = FIRME_NO_MEMORY;
+		break;
+	case -EPERM:
+		rc = FIRME_DENIED;
+		break;
+	case -ESTALE:
+		rc = FIRME_OP_CONFLICT;
 		break;
 	default:
 		assert(0);

@@ -136,4 +136,6 @@ int firme_gm_l0_read(uint64_t par_base, uint64_t *descriptor);
 int firme_gm_l0_publish(uint64_t par_base, uint64_t expected,
 			uint64_t replacement);
 
+int firme_gm_l1_gpt_create(uint64_t par_base, uint64_t l1_base);
+
 #endif /* FIRME_GM_PRIVATE_H */
