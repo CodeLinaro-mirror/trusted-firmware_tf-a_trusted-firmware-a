@@ -10,8 +10,14 @@
 #include <platform_def.h>
 #include "trp_private.h"
 
+#define TRP_RES_X0_X1		0
+#define TRP_RES_X2_X3		16
+#define TRP_RES_X4_X5		32
+#define TRP_RES_X6_X7		48
+
 .global trp_head
 .global trp_smc
+.global trp_smc_with_result
 
 .section ".head.text", "ax"
 
@@ -123,6 +129,24 @@ func trp_smc
 endfunc trp_smc
 
 	/* ---------------------------------------------
+	 * Direct SMC call that captures X0-X7. This is
+	 * used by test interfaces whose EL3 ABI returns
+	 * more than a status value.
+	 * ---------------------------------------------
+	 */
+func trp_smc_with_result
+	stp	x1, x30, [sp, #-16]!
+	restore_args_call_smc
+	ldr	x12, [sp]
+	stp	x0, x1, [x12, #TRP_RES_X0_X1]
+	stp	x2, x3, [x12, #TRP_RES_X2_X3]
+	stp	x4, x5, [x12, #TRP_RES_X4_X5]
+	stp	x6, x7, [x12, #TRP_RES_X6_X7]
+	ldp	x12, x30, [sp], #16
+	ret
+endfunc trp_smc_with_result
+
+	/* ---------------------------------------------
 	 * RMI call handler
 	 * ---------------------------------------------
 	 */
@@ -130,11 +154,6 @@ endfunc trp_smc
 /* Size of the frame header: [sp+0] res pointer + [sp+8] saved LR */
 #define LR_AND_RES_PTR_SIZE	16
 /* TRP_RESULT_SIZE is derived from TRP_SMC_RESULT_REGS in trp_helpers.h */
-#define TRP_RES_X0_X1		0
-#define TRP_RES_X2_X3		16
-#define TRP_RES_X4_X5		32
-#define TRP_RES_X6_X7		48
-
 func trp_handler
 	/*
 	 * Allocate (LR_AND_RES_PTR_SIZE + TRP_RESULT_SIZE) bytes on the stack. Layout:

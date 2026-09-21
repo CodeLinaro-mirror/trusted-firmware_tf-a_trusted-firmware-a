@@ -214,6 +214,39 @@ static void trp_asc_mark_nonsecure(unsigned long long x1,
 	smc_ret->x[1] = x1 + PAGE_SIZE_4KB;
 }
 
+#if FIRME_SUPPORT
+/*******************************************************************************
+ * Test-RMM passthroughs for exercising the Realm-only FIRME L1 GPT ABIs.
+ * RMI_RMM_GPT_L1_CREATE uses x2 as the donor L1 GPT base in TRP builds. This
+ * extra argument is test-only; a production RMM obtains the donor via its SRO.
+ ******************************************************************************/
+static void trp_firme_l1_gpt_create(unsigned long long par_base,
+				    unsigned long long l1_base,
+				    struct trp_smc_result *smc_ret)
+{
+	struct trp_smc_result firme_ret = { { 0U } };
+
+	trp_smc_with_result(
+		set_smc_args(FIRME_GM_L1_GPT_CREATE_FID, par_base, l1_base,
+			     0UL, 0UL, 0UL, 0UL, 0UL, 0UL, 0UL, 0UL, 0UL),
+		&firme_ret);
+	smc_ret->x[0] = firme_ret.x[0];
+}
+
+static void trp_firme_l1_gpt_destroy(unsigned long long par_base,
+				     struct trp_smc_result *smc_ret)
+{
+	struct trp_smc_result firme_ret = { { 0U } };
+
+	trp_smc_with_result(
+		set_smc_args(FIRME_GM_L1_GPT_DESTROY_FID, par_base, 0UL,
+			     0UL, 0UL, 0UL, 0UL, 0UL, 0UL, 0UL, 0UL, 0UL),
+		&firme_ret);
+	smc_ret->x[0] = firme_ret.x[0];
+	smc_ret->x[2] = firme_ret.x[2];
+}
+#endif /* FIRME_SUPPORT */
+
 #if RMMD_ENABLE_IDE_KEY_PROG
 /*******************************************************************************
  * Test the IDE Key management interface
@@ -308,6 +341,14 @@ void trp_rmi_handler(unsigned long fid,
 	case RMI_RMM_GRANULE_RANGE_UNDELEGATE:
 		trp_asc_mark_nonsecure(x1, smc_ret);
 		break;
+#if FIRME_SUPPORT
+	case RMI_RMM_GPT_L1_CREATE:
+		trp_firme_l1_gpt_create(x1, x2, smc_ret);
+		break;
+	case RMI_RMM_GPT_L1_DESTROY:
+		trp_firme_l1_gpt_destroy(x1, smc_ret);
+		break;
+#endif
 #if RMMD_ENABLE_IDE_KEY_PROG
 	case RMI_RMM_PDEV_CREATE:
 		trp_ide_keymgmt_interface_fn(x1, x2, smc_ret);

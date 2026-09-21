@@ -230,6 +230,7 @@ BL31_SOURCES		+=	services/std_svc/firme/firme_svc.c \
 				services/std_svc/firme/firme_gm_common.c \
 				services/std_svc/firme/firme_gm_l1_gpt_common.c \
 				services/std_svc/firme/firme_gm_l1_gpt_create.c \
+				services/std_svc/firme/firme_gm_l1_gpt_destroy.c \
 				services/std_svc/firme/firme_gm_abi.c \
 				services/std_svc/firme/firme_mecid.c
 

@@ -33,6 +33,8 @@
 #define RMI_RMM_CONFIG_GET			SMC64_RMI_FID(U(0x9C))
 #define RMI_RMM_GRANULE_RANGE_DELEGATE		SMC64_RMI_FID(U(0xA1))
 #define RMI_RMM_GRANULE_RANGE_UNDELEGATE	SMC64_RMI_FID(U(0xA2))
+#define RMI_RMM_GPT_L1_CREATE			SMC64_RMI_FID(U(0xA3))
+#define RMI_RMM_GPT_L1_DESTROY			SMC64_RMI_FID(U(0xA4))
 #define RMI_RMM_PDEV_CREATE			SMC64_RMI_FID(U(0x26))
 
 /* Definitions for RMI VERSION */
@@ -49,6 +51,7 @@
 
 /* Helper to issue SMC calls to BL31 */
 uint64_t trp_smc(trp_args_t *);
+void trp_smc_with_result(trp_args_t *args, struct trp_smc_result *result);
 
 /* The main function to executed only by Primary CPU */
 void trp_main(void);
