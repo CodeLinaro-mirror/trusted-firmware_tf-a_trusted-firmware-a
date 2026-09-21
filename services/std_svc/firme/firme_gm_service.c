@@ -36,23 +36,21 @@ static uint64_t registers[FIRME_GRANULE_MGMT_FEATURE_REG_COUNT] = {
 
 static int32_t firme_granule_mgmt_service_init(void)
 {
-	/* Build feat reg 1 value from GPCCR value. */
-	uint64_t gpccr;
+	int rc;
 
 	registers[1] = 0U;
 
-	if (is_feat_rme_supported()) {
-		gpccr = read_gpccr_el3();
-
-		registers[1] |= ((gpccr >> GPCCR_PGS_SHIFT) & GPCCR_PGS_MASK)
-				<< FIRME_GM_PGS_SHIFT;
-		registers[1] |=
-			((gpccr >> GPCCR_L0GPTSZ_SHIFT) & GPCCR_L0GPTSZ_MASK)
-			<< FIRME_GM_L0GPTSZ_SHIFT;
-		registers[1] |= ((gpccr >> GPCCR_PPS_SHIFT) & GPCCR_PPS_MASK)
-				<< FIRME_GM_PPS_SHIFT;
+	if (!is_feat_rme_supported()) {
+		return FIRME_SUCCESS;
 	}
 
+	rc = firme_gm_geometry_init();
+	if (rc != 0) {
+		ERROR("Unable to initialise immutable GPT geometry (%d)\n", rc);
+		return rc;
+	}
+
+	registers[1] = firme_gm_geometry_feature_register();
 	firme_gm_gpi_init();
 
 	return FIRME_SUCCESS;

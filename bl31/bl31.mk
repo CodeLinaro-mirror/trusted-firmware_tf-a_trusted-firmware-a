@@ -226,6 +226,8 @@ ifeq (${FIRME_SUPPORT},1)
 BL31_SOURCES		+=	services/std_svc/firme/firme_svc.c \
 				services/std_svc/firme/firme_base_service.c \
 				services/std_svc/firme/firme_gm_service.c \
+				services/std_svc/firme/firme_gm_geometry.c \
+				services/std_svc/firme/firme_gm_common.c \
 				services/std_svc/firme/firme_gm_abi.c \
 				services/std_svc/firme/firme_mecid.c
 
