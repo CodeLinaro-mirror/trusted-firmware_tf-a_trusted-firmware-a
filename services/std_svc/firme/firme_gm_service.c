@@ -84,7 +84,8 @@ firme_granule_mgmt_service_get_feature_reg(firme_instance_e instance,
 	*reg = registers[reg_index];
 	if ((reg_index == 0U) && (instance == FIRME_REALM) &&
 	    firme_gm_l1_lifecycle_is_supported()) {
-		*reg |= FIRME_GM_L1_GPT_CREATE_BIT;
+		*reg |= FIRME_GM_L1_GPT_CREATE_BIT |
+			FIRME_GM_L1_GPT_DESTROY_BIT;
 	}
 	return FIRME_SUCCESS;
 }
@@ -127,6 +128,18 @@ u_register_t firme_granule_mgmt_service_handler(firme_instance_e instance,
 
 		SMC_RET1(handle, firme_gm_l1_gpt_create(x1, x2));
 		break;
+	case FIRME_GM_L1_GPT_DESTROY_FID: {
+		if ((instance != FIRME_REALM) ||
+		    !firme_gm_l1_lifecycle_is_supported()) {
+			SMC_RET3(handle, FIRME_NOT_SUPPORTED, 0U, 0U);
+		}
+
+		firme_rc = firme_gm_l1_gpt_destroy(x1, &l1_base);
+
+		SMC_RET3(handle, firme_rc, 0U,
+			 (firme_rc == FIRME_SUCCESS) ? l1_base : 0U);
+		break;
+	}
 	default:
 		ERROR("FIRME Granule Management Service FID 0x%X not implemented\n",
 		      smc_fid);
