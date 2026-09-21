@@ -107,7 +107,7 @@ u_register_t firme_granule_mgmt_service_handler(firme_instance_e instance,
 		case FIRME_SUCCESS:
 		case FIRME_DENIED:
 		case FIRME_OP_CONFLICT:
-		case FIRME_NO_ENTRY:
+		case FIRME_NOT_FOUND:
 			SMC_RET2(handle, firme_rc, gcnt);
 		default:
 			SMC_RET2(handle, firme_rc, 0);

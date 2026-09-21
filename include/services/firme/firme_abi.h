@@ -19,8 +19,8 @@
 #define FIRME_DENIED			-5
 #define FIRME_BUSY			-6
 #define FIRME_OP_CONFLICT		-7
-#define FIRME_EXISTS			-8
-#define FIRME_NO_ENTRY			-9
+#define FIRME_ALREADY_EXISTS		-8
+#define FIRME_NOT_FOUND			-9
 #define FIRME_NO_MEMORY			-10
 #define FIRME_BAD_DATA			-11
 

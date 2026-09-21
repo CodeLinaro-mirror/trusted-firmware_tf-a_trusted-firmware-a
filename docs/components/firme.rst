@@ -30,8 +30,8 @@ Non-secure, Realm, and Secure security states. A FIRME implementation is also
 permitted on systems that do not implement FEAT_RME, for example when parts of
 the interface are still useful independently of Realm support.
 
-TF-A currently implements the Arm FIRME specification version ``1.0 alp2`` as
-defined by `DEN0149`_.
+TF-A's exposed ABI definitions and return status codes follow the Arm FIRME
+specification version ``1.0 ALP4`` as defined by `DEN0149`_.
 
 FIRME is exposed as a 64-bit fast SMC standard service. The currently allocated
 TF-A function ID range is ``0xC4000400`` to ``0xC4000412``.

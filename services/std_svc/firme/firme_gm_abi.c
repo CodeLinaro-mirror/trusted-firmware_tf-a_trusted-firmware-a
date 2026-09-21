@@ -954,7 +954,7 @@ out_unlock:
  *  FIRME_DENIED		Granule transition not permitted
  *  FIRME_BUSY			No free PAR locks. retry the operation.
  *  FIRME_OP_CONFLICT		An operation is already in progress on this PAR
- *  FIRME_NO_ENTRY		Granules not backed by table descriptor in L0
+ *  FIRME_NOT_FOUND		Granules not backed by table descriptor in L0
  */
 int firme_l1_gpt_gpi_set(uint64_t base, uint64_t gcnt, uint8_t target_gpi,
 			 uint64_t *gcnt_ret)

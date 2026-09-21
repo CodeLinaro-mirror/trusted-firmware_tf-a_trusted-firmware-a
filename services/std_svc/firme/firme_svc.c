@@ -127,7 +127,7 @@ int firme_errno_from_generic_errno(int errno)
 		rc = FIRME_INCOMPLETE;
 		break;
 	case -ENOENT:
-		rc = FIRME_NO_ENTRY;
+		rc = FIRME_NOT_FOUND;
 		break;
 	default:
 		assert(0);
