@@ -165,9 +165,9 @@ static int qti_cpu_power_on(u_register_t mpidr)
 {
 	int core_pos = plat_core_pos_by_mpidr(mpidr);
 
-	/* If not valid mpidr, return error */
+	/* If not valid mpidr, return failure without panic */
 	if (core_pos < 0 || core_pos >= QTISECLIB_PLAT_CORE_COUNT) {
-		return PSCI_E_INVALID_PARAMS;
+		return PSCI_E_INTERN_FAIL;
 	}
 
 	return qtiseclib_psci_node_power_on(mpidr);
