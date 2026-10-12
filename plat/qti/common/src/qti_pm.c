@@ -92,6 +92,31 @@ const unsigned int qti_pm_idle_states[] = {
 	0,
 };
 
+#ifdef PLAT_ipq52xx
+/*
+ * No cluster/L2 power collapse on ipq52xx, so clamp CPU_SUSPEND to
+ * CPU-level power collapse only.
+ */
+static void qti_clamp_idle_pwr_lvl(psci_power_state_t *req_state)
+{
+	int i;
+
+	for (i = (int)QTI_PWR_LVL0 + 1; i <= (int)PLAT_MAX_PWR_LVL; i++) {
+		req_state->pwr_domain_state[i] = QTI_LOCAL_STATE_RUN;
+	}
+#if PSCI_OS_INIT_MODE
+	if (req_state->last_at_pwrlvl > QTI_PWR_LVL0) {
+		req_state->last_at_pwrlvl = QTI_PWR_LVL0;
+	}
+#endif
+}
+#else
+static inline void qti_clamp_idle_pwr_lvl(psci_power_state_t *req_state)
+{
+	(void)req_state;
+}
+#endif /* PLAT_ipq52xx */
+
 /*******************************************************************************
  * QTI standard platform handler called to check the validity of the power
  * state parameter. The power state parameter has to be a composite power
@@ -137,6 +162,8 @@ int qti_validate_power_state(unsigned int power_state,
 	req_state->last_at_pwrlvl = state_id & QTI_LOCAL_PSTATE_MASK;
 #endif
 
+	qti_clamp_idle_pwr_lvl(req_state);
+
 	return PSCI_E_SUCCESS;
 }
 
@@ -155,7 +182,47 @@ static void qti_set_cpupwrctlr_val(void)
 
 	isb();
 }
+#else
+static inline void qti_set_cpupwrctlr_val(void) {}
 #endif
+
+#ifdef PLAT_ipq52xx
+/* Check if the CPU-wakeup SGI is enabled on this core. */
+static bool qti_wakeup_sgi_enabled(void)
+{
+	uint32_t en = mmio_read_32(BASE_GICD_BASE + GICD_ISENABLER);
+
+	return (en & (1U << QTISECLIB_INT_ID_CPU_WAKEUP_SGI)) != 0U;
+}
+
+/*
+ * Re-arm this core's wake SGI right before it collapses. OP-TEE masks
+ * it once FIQ is unmasked, so re-arming earlier in on_finish() is too
+ * early. Clear any stale pending SGI first to avoid an immediate
+ * wake-up with PSCI state still OFF.
+ */
+static void qti_rearm_wakeup_sgi_before_collapse(unsigned int core)
+{
+	mmio_write_8(BASE_GICD_BASE + GICD_CPENDSGIR +
+		     QTISECLIB_INT_ID_CPU_WAKEUP_SGI, 0xFFU);
+	dsbsy();
+
+	if (!qti_wakeup_sgi_enabled()) {
+		VERBOSE("qti_hp: core%u wake SGI%u was masked while running, "
+			"re-arming before collapse",
+			core, QTISECLIB_INT_ID_CPU_WAKEUP_SGI);
+	}
+
+	mmio_write_32(BASE_GICD_BASE + GICD_ISENABLER,
+		      1U << QTISECLIB_INT_ID_CPU_WAKEUP_SGI);
+	dsbsy();
+}
+#else
+static inline void qti_rearm_wakeup_sgi_before_collapse(unsigned int core)
+{
+	(void)core;
+}
+#endif /* PLAT_ipq52xx */
 
 /**
  * CPU power on function - ideally we want a wrapper since this function is
@@ -185,10 +252,6 @@ static bool is_cpu_off(const psci_power_state_t *target_state)
 	}
 }
 
-#ifdef PLAT_ipq52xx
-static void qti_gic_restore_spis_to_core(unsigned int core);
-#endif
-
 static void qti_cpu_power_on_finish(const psci_power_state_t *target_state)
 {
 	const uint8_t *pwr_states =
@@ -197,14 +260,6 @@ static void qti_cpu_power_on_finish(const psci_power_state_t *target_state)
 
 	if (is_cpu_off(target_state)) {
 		plat_qti_gic_cpuif_enable();
-#ifdef PLAT_ipq52xx
-		/*
-		 * Restore the SPI target affinity that qti_node_power_off
-		 * cleared for this core, so hot-unplug/re-plug is affinity
-		 * neutral across cycles.
-		 */
-		qti_gic_restore_spis_to_core(plat_my_core_pos());
-#endif
 	}
 }
 
@@ -212,234 +267,14 @@ static void qti_cpu_standby(plat_local_state_t cpu_state)
 {
 }
 
-#ifdef PLAT_ipq52xx
-/*
- * Migrate GIC SPIs away from a CPU that is powering down.
- *
- * ipq52xx uses the legacy SPM sequencer and (unlike ipq96xx's CPUCP P-Channel
- * with PCHANNEL_MASK_WAKEUP) has no hardware way to mask wake-up interrupts to a
- * collapsing core. On CPU_OFF, Linux is expected to migrate a core's affine
- * IRQs elsewhere, but for some SPIs that migration fails (kernel logs
- * "IRQx: set affinity failed"). Any SPI still targeting the dying core (e.g.
- * an all-CPU-affine SPI with target mask 0xF) will re-assert sys_spm_wakeup and
- * pull the core straight back out of C3, so it warm-boots while its PSCI
- * affinity state is OFF and BL31 panics.
- *
- * Defensively clear the dying core's bit from every SPI's GICD_ITARGETSR byte.
- * GICv2 ITARGETSR is one byte per interrupt id; only SPIs (id >= 32) are
- * writable (SGIs/PPIs ignore writes).
- *
- * Reroute target when the dying core was an SPI's SOLE target:
- * we send it to the PRIMARY cpu (core 0). Core 0 is the last-man-standing core
- * in Linux CPU hotplug (it is never offlined), so it is the only core
- * guaranteed to still be online regardless of how many other cores have already
- * been hot-unplugged. This keeps the migration correct and scalable for
- * offlining core 1, 2 and 3 in any order - we never reroute onto a core that
- * may itself already be powered down (which would re-introduce the very wake
- * bug we are fixing).
- *
- * ipq96xx does not need any of this: its CPUCP P-Channel hardware masks
- * wake-up interrupts to a collapsing core directly, so this workaround is
- * scoped to PLAT_ipq52xx only.
- */
-#define QTI_PRIMARY_CORE_POS	0U
-
-/*
- * Per-core saved bitmap of which SPIs had this core in their target mask when
- * the core went down, so power-on can restore exactly what offline cleared.
- * One bit per SPI id; sized for the max SPI count (GICv2: up to 1020 ids).
- *
- * qti_saved_spi_map:      bit set  => this SPI targeted the dying core.
- * qti_saved_spi_rerouted: bit set  => that SPI was the dying core's SOLE
- *                          target, so migrate force-rewrote its byte to the
- *                          reroute (primary) core rather than just clearing a
- *                          bit. These two cases are NOT inverses of each
- *                          other and must be restored differently:
- *   - normal (multi-target) clear: restore ORs the core's bit back in.
- *   - sole-owner reroute: restore must overwrite the target back to exactly
- *     {core}, undoing the reroute precisely - a plain OR would instead leave
- *     the SPI permanently targeting {core, primary}, drifting a bit further
- *     every offline/online cycle (confirmed bug: 2nd+ offline/online of the
- *     same core left previously-sole-owner SPIs stuck on {core0, core}).
- */
-#define QTI_GIC_MAX_INTS	1020U
-#define QTI_GIC_SPI_WORDS	((QTI_GIC_MAX_INTS + 31U) / 32U)
-static uint32_t qti_saved_spi_map[PLATFORM_CORE_COUNT][QTI_GIC_SPI_WORDS];
-static uint32_t qti_saved_spi_rerouted[PLATFORM_CORE_COUNT][QTI_GIC_SPI_WORDS];
-
-static void qti_gic_migrate_spis_off_core(unsigned int dying_core)
-{
-	uintptr_t gicd = BASE_GICD_BASE;
-	uint8_t dying_mask = (uint8_t)(1U << dying_core);
-	uint8_t reroute_mask;
-	uint32_t *saved = qti_saved_spi_map[dying_core];
-	uint32_t *rerouted = qti_saved_spi_rerouted[dying_core];
-	unsigned int i;
-	unsigned int it_lines, num_ids;
-	unsigned int cleared_count = 0U;
-	unsigned int rerouted_count = 0U;
-
-	/*
-	 * Reroute orphaned SPIs to the primary core, unless the primary is the
-	 * one going down (should not happen via Linux hotplug); in that
-	 * degenerate case fall back to the lowest core that is not the dying
-	 * one so we never write an all-zero (disabled) target.
-	 */
-	if (dying_core != QTI_PRIMARY_CORE_POS) {
-		reroute_mask = (uint8_t)(1U << QTI_PRIMARY_CORE_POS);
-	} else {
-		reroute_mask = (uint8_t)(1U << ((dying_core == 0U) ? 1U : 0U));
-	}
-
-	/* GICD_TYPER.ITLinesNumber: total ids = 32 * (ITLinesNumber + 1). */
-	it_lines = mmio_read_32(gicd + GICD_TYPER) & TYPER_IT_LINES_NO_MASK;
-	num_ids = 32U * (it_lines + 1U);
-	if (num_ids > QTI_GIC_MAX_INTS) {
-		num_ids = QTI_GIC_MAX_INTS;
-	}
-
-	/* Fresh snapshot for this power-down. */
-	for (i = 0U; i < QTI_GIC_SPI_WORDS; i++) {
-		saved[i] = 0U;
-		rerouted[i] = 0U;
-	}
-
-	for (i = 32U; i < num_ids; i++) {
-		uintptr_t addr = gicd + GICD_ITARGETSR + i;
-		uint8_t tgt = mmio_read_8(addr);
-		uint8_t new_tgt;
-
-		if ((tgt & dying_mask) == 0U) {
-			continue;	/* not routed to the dying core */
-		}
-
-		/* Remember this SPI targeted the dying core, to restore later. */
-		saved[i / 32U] |= (1U << (i % 32U));
-		cleared_count++;
-
-		new_tgt = (uint8_t)(tgt & (uint8_t)~dying_mask);
-		if (new_tgt == 0U) {
-			/*
-			 * Was sole target: reroute to the primary core, and
-			 * remember it so restore can UNDO this precisely
-			 * (overwrite back to {core}) instead of OR-ing the
-			 * core's bit into {primary}, which would leave the
-			 * SPI permanently on {primary, core} and drift
-			 * further on every subsequent offline/online cycle.
-			 */
-			new_tgt = reroute_mask;
-			rerouted[i / 32U] |= (1U << (i % 32U));
-			rerouted_count++;
-			VERBOSE("qti_gic: core%u off: SPI%u sole-owner, tgt 0x%x -> 0x%x (rerouted)\n",
-				dying_core, i, tgt, new_tgt);
-		} else {
-			VERBOSE("qti_gic: core%u off: SPI%u tgt 0x%x -> 0x%x\n",
-				dying_core, i, tgt, new_tgt);
-		}
-		mmio_write_8(addr, new_tgt);
-	}
-	dsbsy();
-
-	INFO("qti_gic: core%u off: migrated %u SPIs off (%u sole-owner rerouted to core%u)\n",
-	     dying_core, cleared_count, rerouted_count, QTI_PRIMARY_CORE_POS);
-}
-
-/*
- * Symmetric restore: when the core comes back online, undo exactly what
- * qti_gic_migrate_spis_off_core() did on the way down, so interrupt affinity
- * is bit-for-bit what it was before the hot-unplug - stable across any number
- * of offline/online cycles, in any order, and safe even when another core is
- * restored in between (see the un-reroute derivation below).
- *
- * Two cases, handled differently (see the comment on qti_saved_spi_rerouted):
- *  - normal clear (SPI still had other targets): OR this core's bit back in.
- *  - sole-owner reroute (SPI was forced onto {primary}): clear the reroute
- *    core's bit and OR this core's bit back in - NOT a blind overwrite to
- *    {core}, because another core's restore may have already OR'd its own
- *    bit into this same byte (e.g. a multi-target SPI whose OTHER target was
- *    restored first while this core was still down); overwriting would
- *    silently drop that core's legitimate restore.
- */
-static void qti_gic_restore_spis_to_core(unsigned int core)
-{
-	uintptr_t gicd = BASE_GICD_BASE;
-	uint8_t core_mask = (uint8_t)(1U << core);
-	uint8_t reroute_mask;
-	uint32_t *saved = qti_saved_spi_map[core];
-	uint32_t *rerouted = qti_saved_spi_rerouted[core];
-	unsigned int i;
-	unsigned int restored_count = 0U;
-	unsigned int unrerouted_count = 0U;
-
-	/* Must match the reroute target qti_gic_migrate_spis_off_core() used. */
-	if (core != QTI_PRIMARY_CORE_POS) {
-		reroute_mask = (uint8_t)(1U << QTI_PRIMARY_CORE_POS);
-	} else {
-		reroute_mask = (uint8_t)(1U << ((core == 0U) ? 1U : 0U));
-	}
-
-	for (i = 32U; i < QTI_GIC_MAX_INTS; i++) {
-		uintptr_t addr;
-		uint8_t tgt;
-		uint8_t new_tgt;
-
-		if ((saved[i / 32U] & (1U << (i % 32U))) == 0U) {
-			continue;
-		}
-
-		addr = gicd + GICD_ITARGETSR + i;
-		tgt = mmio_read_8(addr);
-
-		if ((rerouted[i / 32U] & (1U << (i % 32U))) != 0U) {
-			/*
-			 * Undo the sole-owner reroute: drop the reroute core's
-			 * bit, add this core's bit back. Any OTHER bits set by
-			 * a different core's restore in the meantime are left
-			 * untouched.
-			 */
-			new_tgt = (uint8_t)((tgt & (uint8_t)~reroute_mask) | core_mask);
-			unrerouted_count++;
-		} else {
-			new_tgt = (uint8_t)(tgt | core_mask);
-		}
-
-		VERBOSE("qti_gic: core%u on: SPI%u tgt 0x%x -> 0x%x%s\n",
-			core, i, tgt, new_tgt,
-			((rerouted[i / 32U] & (1U << (i % 32U))) != 0U) ?
-			" (un-rerouted)" : "");
-		mmio_write_8(addr, new_tgt);
-		restored_count++;
-	}
-	dsbsy();
-
-	INFO("qti_gic: core%u on: restored %u SPIs (%u un-rerouted from core%u)\n",
-	     core, restored_count, unrerouted_count, QTI_PRIMARY_CORE_POS);
-
-	/* Snapshot consumed. */
-	for (i = 0U; i < QTI_GIC_SPI_WORDS; i++) {
-		saved[i] = 0U;
-		rerouted[i] = 0U;
-	}
-}
-#endif /* PLAT_ipq52xx */
-
 static void qti_node_power_off(const psci_power_state_t *target_state)
 {
 	qtiseclib_psci_node_power_off((const uint8_t *)
 				      target_state->pwr_domain_state);
 	if (is_cpu_off(target_state)) {
-#ifdef PLAT_ipq52xx
-		/*
-		 * Retarget any SPI still pointing at this (dying) core BEFORE
-		 * the SPM collapses it, so a re-asserted interrupt cannot wake
-		 * it back up into a warm-boot-while-OFF panic.
-		 */
-		qti_gic_migrate_spis_off_core(plat_my_core_pos());
-#endif
+		qti_rearm_wakeup_sgi_before_collapse(plat_my_core_pos());
 		plat_qti_gic_cpuif_disable();
-#ifndef PLAT_ipq52xx
 		qti_set_cpupwrctlr_val();
-#endif
 	}
 }
 
@@ -449,9 +284,7 @@ static void qti_node_suspend(const psci_power_state_t *target_state)
 				    pwr_domain_state);
 	if (is_cpu_off(target_state)) {
 		plat_qti_gic_cpuif_disable();
-#ifndef PLAT_ipq52xx
 		qti_set_cpupwrctlr_val();
-#endif
 	}
 }
 
